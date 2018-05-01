@@ -3,15 +3,24 @@ import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 
 import { REACT_APP_API_KEY } from '../config';
 
+//google map container
 export class MapContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showingInfoWindow: false,
+      activeMarker: {},
+      selectedPlace: {},
+      location: null
+    };
+  }
   componentDidMount() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         position => {
-          console.log(position);
           this.setState({
             location: {
-              long: position.coords.longitude,
+              lng: position.coords.longitude,
               lat: position.coords.latitude
             }
           });
@@ -21,16 +30,6 @@ export class MapContainer extends Component {
         }
       );
     }
-  }
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      showingInfoWindow: false,
-      activeMarker: {},
-      selectedPlace: {},
-      location: {}
-    };
   }
 
   onMarkerClick = (props, marker, e) =>
@@ -58,9 +57,16 @@ export class MapContainer extends Component {
     //       position={{lat: obj.lat, lng: obj.lng}}
     //     />
     // ))
+    let location =
+      this.state.location !== null ? this.state.location : undefined;
 
     return (
-      <Map google={this.props.google} zoom={12} onClick={this.onMapClicked}>
+      <Map
+        google={this.props.google}
+        center={location}
+        zoom={12}
+        onClick={this.onMapClicked}
+      >
         <Marker
           onClick={this.onMarkerClick}
           name={'Petco Park'}
@@ -84,7 +90,9 @@ export class MapContainer extends Component {
           visible={this.state.showingInfoWindow}
         >
           <div>
-            <h1>{this.state.selectedPlace.name}</h1>
+            <h1>
+              {this.state.location !== null ? this.state.location.lat : 'Hello'}
+            </h1>
           </div>
         </InfoWindow>
       </Map>
