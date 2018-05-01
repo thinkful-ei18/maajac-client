@@ -13,8 +13,8 @@ export class MapContainer extends Component {
           this.setState({
             location: {
               lng: position.coords.longitude,
-              lat: position.coords.latitude
-            }
+              lat: position.coords.latitude,
+            },
           });
         },
         error => {
@@ -30,7 +30,7 @@ export class MapContainer extends Component {
       showingInfoWindow: false,
       activeMarker: {},
       selectedPlace: {},
-      location: null
+      location: null,
     };
   }
 
@@ -38,14 +38,14 @@ export class MapContainer extends Component {
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
-      showingInfoWindow: true
+      showingInfoWindow: true,
     });
 
   onMapClicked = props => {
     if (this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
-        activeMarker: null
+        activeMarker: null,
       });
     }
   };
@@ -64,6 +64,7 @@ export class MapContainer extends Component {
         ? this.state.location
         : { lat: 36.778259, lng: -119 };
 
+    console.log(location);
     return (
       <Map
         google={this.props.google}
@@ -103,7 +104,7 @@ export class MapContainer extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: REACT_APP_API_KEY
+  apiKey: REACT_APP_API_KEY,
 })(MapContainer);
 
 /*
