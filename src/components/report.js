@@ -16,7 +16,6 @@ class reportForm extends Component {
           <Field
             component="select"
             id="type"
-            label="Incident Type"
             name="type"
             required="required"
             >
