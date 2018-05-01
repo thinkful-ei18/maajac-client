@@ -3,6 +3,7 @@ import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 
 import { REACT_APP_API_KEY } from '../config';
 
+//google map container
 export class MapContainer extends Component {
   componentDidMount() {
     if (navigator.geolocation) {
