@@ -6,17 +6,32 @@ import { REACT_APP_API_KEY } from '../config';
 export class MapContainer extends Component {
   componentDidMount() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(position => {
-        console.log(position);
-      });
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          console.log(position);
+          this.setState({
+            location: {
+              long: position.coords.longitude,
+              lat: position.coords.latitude
+            }
+          });
+        },
+        error => {
+          console.log(error);
+        }
+      );
     }
   }
 
-  state = {
-    showingInfoWindow: false,
-    activeMarker: {},
-    selectedPlace: {}
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      showingInfoWindow: false,
+      activeMarker: {},
+      selectedPlace: {},
+      location: {}
+    };
+  }
 
   onMarkerClick = (props, marker, e) =>
     this.setState({
