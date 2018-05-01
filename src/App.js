@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Report from './components/report';
+import {reportForm as Report} from './components/report';
 
 class App extends Component {
   render() {
