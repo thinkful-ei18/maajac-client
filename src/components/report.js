@@ -9,55 +9,51 @@ class reportForm extends Component {
 
     return(
       <div>
-        <Field
-          component={Input}
-          id="incident-type"
-          label="Incident Type"
-          name="type"
-        />
         <form id="incident-report">
           <label
             htmlFor="incident-type">Incident Type
           </label>
-          <select
-            id="incident-type"
+          <Field
+            component="select"
+            id="type"
+            label="Incident Type"
             name="type"
-            required="required">
+            required="required"
+            >
             <option value=""></option>
             <option value="crime">Crime</option>
             <option value="accident">Traffic Accident</option>
             <option value="other">Other</option>
-          </select>
-          <label
-            htmlFor="incident-date">
-            Date
-          </label>
-          <input
+          </Field>
+          <Field
+            component={Input}
+            id="date"
+            label="Date"
             type="date"
             name="date"
-            id="incident-date"/>
-          <label
-            htmlFor="incident-time">
-            Time
-          </label>
-          <input
+            required="required"
+          />
+          <Field
+            component={Input}
+            id="time"
+            label="Time"
             type="time"
             name="time"
-            id="incident-time"/>
-          <label htmlFor="incident-desc">Description of Incident</label>
-          <textarea
+          />
+          <Field
+            component={Input}
+            id="description"
+            label="Description of Incident"
+            type="text"
             name="description"
-            id="incident-desc"
-            cols="30"
-            rows="10">
-          </textarea>
-          <label htmlFor="incident-susp">Description of Suspect</label>
-          <textarea
+          />
+          <Field
+            component={Input}
+            id="suspect"
+            label="Description of Suspect"
+            type="text"
             name="suspect"
-            id="incident-desc"
-            cols="30"
-            rows="10">
-          </textarea>
+          />
           <button
             type="submit">
             Submit
