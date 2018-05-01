@@ -1,7 +1,9 @@
 import React from 'react';
 import Input from './input';
+import {connect} from 'react-redux';
+import {Field, reduxForm} from 'redux-form';
 
-export default function report(props) {
+export function reportForm(props) {
   return(
     <div>
       <form id="incident-report">
@@ -55,3 +57,7 @@ export default function report(props) {
     </div>
   );
 }
+
+export default reduxForm({
+  form: "report"
+})(reportForm);
