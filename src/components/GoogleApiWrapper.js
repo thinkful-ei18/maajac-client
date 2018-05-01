@@ -5,16 +5,24 @@ import { REACT_APP_API_KEY } from '../config';
 
 //google map container
 export class MapContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showingInfoWindow: false,
+      activeMarker: {},
+      selectedPlace: {},
+      location: null
+    };
+  }
   componentDidMount() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         position => {
-          console.log(position);
           this.setState({
             location: {
               lng: position.coords.longitude,
-              lat: position.coords.latitude,
-            },
+              lat: position.coords.latitude
+            }
           });
         },
         error => {
@@ -24,28 +32,18 @@ export class MapContainer extends Component {
     }
   }
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      showingInfoWindow: false,
-      activeMarker: {},
-      selectedPlace: {},
-      location: null,
-    };
-  }
-
   onMarkerClick = (props, marker, e) =>
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
-      showingInfoWindow: true,
+      showingInfoWindow: true
     });
 
   onMapClicked = props => {
     if (this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
-        activeMarker: null,
+        activeMarker: null
       });
     }
   };
@@ -60,15 +58,12 @@ export class MapContainer extends Component {
     //     />
     // ))
     let location =
-      this.state.location !== null
-        ? this.state.location
-        : { lat: 36.778259, lng: -119 };
+      this.state.location !== null ? this.state.location : undefined;
 
-    console.log(location);
     return (
       <Map
         google={this.props.google}
-        initialCenter={location}
+        center={location}
         zoom={12}
         onClick={this.onMapClicked}
       >
@@ -95,7 +90,9 @@ export class MapContainer extends Component {
           visible={this.state.showingInfoWindow}
         >
           <div>
-            <h1>{this.state.selectedPlace.name}</h1>
+            <h1>
+              {this.state.location !== null ? this.state.location.lat : 'Hello'}
+            </h1>
           </div>
         </InfoWindow>
       </Map>
@@ -104,7 +101,7 @@ export class MapContainer extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: REACT_APP_API_KEY,
+  apiKey: REACT_APP_API_KEY
 })(MapContainer);
 
 /*
