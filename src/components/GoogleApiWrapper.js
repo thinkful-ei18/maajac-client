@@ -1,15 +1,37 @@
-import React, { Component } from 'react'
-import { Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import React, { Component } from 'react';
+import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 
-import { REACT_APP_API_KEY } from '../config'
- 
- 
+import { REACT_APP_API_KEY } from '../config';
+
 export class MapContainer extends Component {
-  state = {
-    showingInfoWindow: false,
-    activeMarker: {},
-    selectedPlace: {},
-  };
+  componentDidMount() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          console.log(position);
+          this.setState({
+            location: {
+              long: position.coords.longitude,
+              lat: position.coords.latitude
+            }
+          });
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      showingInfoWindow: false,
+      activeMarker: {},
+      selectedPlace: {},
+      location: {}
+    };
+  }
 
   onMarkerClick = (props, marker, e) =>
     this.setState({
@@ -18,12 +40,12 @@ export class MapContainer extends Component {
       showingInfoWindow: true
     });
 
-  onMapClicked = (props) => {
+  onMapClicked = props => {
     if (this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
         activeMarker: null
-      })
+      });
     }
   };
 
@@ -33,51 +55,46 @@ export class MapContainer extends Component {
     //   <Marker
     //       onClick={this.onMarkerClick}
     //       name={obj.name}
-    //       position={{lat: obj.lat, lng: obj.lng}} 
+    //       position={{lat: obj.lat, lng: obj.lng}}
     //     />
     // ))
 
     return (
-      <Map 
-        google={this.props.google} 
-        zoom={12} 
-        onClick={this.onMapClicked}
-      >
-
+      <Map google={this.props.google} zoom={12} onClick={this.onMapClicked}>
         <Marker
           onClick={this.onMarkerClick}
           name={'Petco Park'}
-          position={{lat: 32.7077, lng: -117.1569}} 
+          position={{ lat: 32.7077, lng: -117.1569 }}
         />
 
         <Marker
           onClick={this.onMarkerClick}
           name={'Dolores park'}
-          position={{lat: 37.759703, lng: -122.428093}} 
+          position={{ lat: 37.759703, lng: -122.428093 }}
         />
 
         <Marker
           onClick={this.onMarkerClick}
           name={'AT&T Park'}
-          position={{lat: 37.7786, lng: -122.3893}} 
+          position={{ lat: 37.7786, lng: -122.3893 }}
         />
 
         <InfoWindow
           marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}>
-            <div>
-              <h1>{this.state.selectedPlace.name}</h1>
-            </div>
+          visible={this.state.showingInfoWindow}
+        >
+          <div>
+            <h1>{this.state.selectedPlace.name}</h1>
+          </div>
         </InfoWindow>
       </Map>
     );
   }
 }
- 
+
 export default GoogleApiWrapper({
   apiKey: REACT_APP_API_KEY
-})(MapContainer)
-
+})(MapContainer);
 
 /*
 Resources:
