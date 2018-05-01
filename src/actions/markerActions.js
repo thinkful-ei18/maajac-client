@@ -1,9 +1,9 @@
 import { API_BASE_URL } from '../config'
 
 export const GET_MARKER_SUCCESS = 'GET_MARKER_SUCCESS';
-export const getMarkerSuccess = marker => ({
+export const getMarkerSuccess = markers => ({
   type: GET_MARKER_SUCCESS,
-  marker
+  markers
 });
 
 export const GET_MARKER_ERROR = 'GET_MARKER_ERROR';
@@ -68,6 +68,9 @@ export const getMarkers = () => (dispatch, getState) => {
   dispatch(getMarkerRequest())
   return fetch(`${API_BASE_URL}/markers`, {
     method: 'GET',
+    headers: {
+      'content-type': 'application/json'
+    }
   })
     .then(res => res.json())
     .then((data) => dispatch(getMarkerSuccess(data)))

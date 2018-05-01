@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 
 import { REACT_APP_API_KEY } from '../config'
- 
- 
+import { connect } from 'react-redux';
+import { getMarkers } from '../actions/markerActions';
+
 export class MapContainer extends Component {
   state = {
     showingInfoWindow: false,
@@ -27,6 +28,11 @@ export class MapContainer extends Component {
     }
   };
 
+  componentDidMount() {
+    this.props.dispatch(getMarkers());
+    console.log('done');
+  }
+
   render() {
     /* ==== MARKERS TEMPLATE ONCE BACKEND IS FUNCTIONAL ==== */
     // let markers = arrayOfMarkersFromServer.map(obj => (
@@ -38,45 +44,49 @@ export class MapContainer extends Component {
     // ))
 
     return (
-      <Map 
-        google={this.props.google} 
-        zoom={12} 
+      <Map
+        google={this.props.google}
+        zoom={12}
         onClick={this.onMapClicked}
       >
 
         <Marker
           onClick={this.onMarkerClick}
           name={'Petco Park'}
-          position={{lat: 32.7077, lng: -117.1569}} 
+          position={{ lat: 32.7077, lng: -117.1569 }}
         />
 
         <Marker
           onClick={this.onMarkerClick}
           name={'Dolores park'}
-          position={{lat: 37.759703, lng: -122.428093}} 
+          position={{ lat: 37.759703, lng: -122.428093 }}
         />
 
         <Marker
           onClick={this.onMarkerClick}
           name={'AT&T Park'}
-          position={{lat: 37.7786, lng: -122.3893}} 
+          position={{ lat: 37.7786, lng: -122.3893 }}
         />
 
         <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}>
-            <div>
-              <h1>{this.state.selectedPlace.name}</h1>
-            </div>
+          <div>
+            <h1>{this.state.selectedPlace.name}</h1>
+          </div>
         </InfoWindow>
       </Map>
     );
   }
 }
- 
-export default GoogleApiWrapper({
+
+export const mapStateToProps = (state, props) => ({
+  markers: state.markers.allMarkers,
+})
+
+export default connect(mapStateToProps)(GoogleApiWrapper({
   apiKey: REACT_APP_API_KEY
-})(MapContainer)
+})(MapContainer))
 
 
 /*
