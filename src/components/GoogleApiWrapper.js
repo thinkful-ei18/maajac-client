@@ -11,9 +11,9 @@ export class MapContainer extends Component {
           console.log(position);
           this.setState({
             location: {
-              long: position.coords.longitude,
-              lat: position.coords.latitude
-            }
+              lng: position.coords.longitude,
+              lat: position.coords.latitude,
+            },
           });
         },
         error => {
@@ -29,7 +29,7 @@ export class MapContainer extends Component {
       showingInfoWindow: false,
       activeMarker: {},
       selectedPlace: {},
-      location: {}
+      location: null,
     };
   }
 
@@ -37,14 +37,14 @@ export class MapContainer extends Component {
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
-      showingInfoWindow: true
+      showingInfoWindow: true,
     });
 
   onMapClicked = props => {
     if (this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
-        activeMarker: null
+        activeMarker: null,
       });
     }
   };
@@ -58,9 +58,15 @@ export class MapContainer extends Component {
     //       position={{lat: obj.lat, lng: obj.lng}}
     //     />
     // ))
+    let location = this.state.location !== null ? this.state.location : null;
 
     return (
-      <Map google={this.props.google} zoom={12} onClick={this.onMapClicked}>
+      <Map
+        google={this.props.google}
+        initialCenter={location}
+        zoom={12}
+        onClick={this.onMapClicked}
+      >
         <Marker
           onClick={this.onMarkerClick}
           name={'Petco Park'}
@@ -93,7 +99,7 @@ export class MapContainer extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: REACT_APP_API_KEY
+  apiKey: REACT_APP_API_KEY,
 })(MapContainer);
 
 /*
