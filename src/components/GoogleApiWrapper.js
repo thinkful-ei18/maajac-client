@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react'
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 
@@ -6,11 +7,32 @@ import { connect } from 'react-redux';
 import { getMarkers } from '../actions/markerActions';
 
 export class MapContainer extends Component {
-  state = {
-    showingInfoWindow: false,
-    activeMarker: {},
-    selectedPlace: {},
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      showingInfoWindow: false,
+      activeMarker: {},
+      selectedPlace: {},
+      location: null
+    };
+  }
+  componentDidMount() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          this.setState({
+            location: {
+              lng: position.coords.longitude,
+              lat: position.coords.latitude
+            }
+          });
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
+  }
 
   onMarkerClick = (props, marker, e) =>
     this.setState({
@@ -19,12 +41,12 @@ export class MapContainer extends Component {
       showingInfoWindow: true
     });
 
-  onMapClicked = (props) => {
+  onMapClicked = props => {
     if (this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
         activeMarker: null
-      })
+      });
     }
   };
 
@@ -39,17 +61,19 @@ export class MapContainer extends Component {
     //   <Marker
     //       onClick={this.onMarkerClick}
     //       name={obj.name}
-    //       position={{lat: obj.lat, lng: obj.lng}} 
+    //       position={{lat: obj.lat, lng: obj.lng}}
     //     />
     // ))
+    let location =
+      this.state.location !== null ? this.state.location : undefined;
 
     return (
       <Map
         google={this.props.google}
+        center={location}
         zoom={12}
         onClick={this.onMapClicked}
       >
-
         <Marker
           onClick={this.onMarkerClick}
           name={'Petco Park'}
@@ -70,15 +94,23 @@ export class MapContainer extends Component {
 
         <InfoWindow
           marker={this.state.activeMarker}
+
           visible={this.state.showingInfoWindow}>
           <div>
             <h1>{this.state.selectedPlace.name}</h1>
+          visible={this.state.showingInfoWindow}
+        >
+          <div>
+            <h1>
+              {this.state.location !== null ? this.state.location.lat : 'Hello'}
+            </h1>
           </div>
         </InfoWindow>
       </Map>
     );
   }
 }
+
 
 export const mapStateToProps = (state, props) => ({
   markers: state.markers.allMarkers,
