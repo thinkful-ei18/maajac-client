@@ -1,0 +1,29 @@
+form {
+  /* these can be changed later! */
+  width: 250px;
+  border: 5px solid black;
+}
+
+
+.form-input {
+  display: inline-block;
+  padding: 15px 0px;
+  width: 100%;
+}
+
+/* #description, #suspect {
+} */
+
+.form-input label {
+  display: block;
+}
+
+.form-error {
+  padding: 15px 0px;
+  color: red;
+}
+
+.form-warning {
+  padding: 15px 0px;
+  color: red;
+}
