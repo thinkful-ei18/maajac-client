@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import './App.css';
 import ReportForm from './components/report';
-// import GoogleApiWrapper from './components/GoogleApiWrapper';
+import GoogleApiWrapper from './components/GoogleApiWrapper';
 
 
 class App extends Component {
@@ -10,7 +10,7 @@ class App extends Component {
     return (
       <div className="App">
         <ReportForm/>
-        {/* <GoogleApiWrapper />  */}
+        <GoogleApiWrapper />
       </div>
     );
   }
