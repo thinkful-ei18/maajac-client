@@ -10,13 +10,12 @@ const passwordLength = length({ min: 10, max: 72 })
 const matchesPassword = matches("password")
 
 export class RegistrationForm extends React.Component {
-	onSubmit(values) {
-		console.log(values);
-	}
 
 	render() {
+    const { handleSubmit, pristine, submitting} = this.props;
+
 		return (
-			<form className="login-form" onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
+			<form className="login-form" onSubmit={handleSubmit(values => console.log(values))}>
 				<label htmlFor="firstName">First Name</label>
 				<Field
 					component={Input}
@@ -44,7 +43,7 @@ export class RegistrationForm extends React.Component {
 					validate={[required, nonEmpty, matchesPassword]}
 					placeholder="••••••••"
 				/>
-				<button className="form-primary-button" type="submit" disabled={this.props.pristine || this.props.submitting}>
+				<button className="form-primary-button" type="submit" disabled={pristine || submitting}>
 					Sign Up
 				</button>
 				<button className="form-login">
