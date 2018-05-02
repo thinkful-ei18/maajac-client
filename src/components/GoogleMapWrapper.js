@@ -1,34 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { compose, withProps } from 'recompose';
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
+import GoogleMapComponenet from './googleMap';
 import { getMarkers } from '../actions/markerActions'
 
-const MyMapComponent = compose(
-  withProps({
-    googleMapURL:
-      'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places',
-    loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: <div style={{ height: `100vh` }} />,
-    mapElement: <div style={{ height: `100%` }} />
-  }),
-  withScriptjs,
-  withGoogleMap
-)(props => (
-  <GoogleMap defaultZoom={12} center={props.position}>
-    {props.isMarkerShown && (
-      this.props.allMarkers.map(marker => {
-        return (<Marker
-          position={{ lat: marker.location[0], lng: marker.location[1] }}
-          onClick={props.onMarkerClick}
-        />)
-      })
-    )}
-    {console.log(props.onMarkerClick)}
-  </GoogleMap>
-));
 
-export class GoogleMapComponent extends React.PureComponent {
+
+export class GoogleMapWrapper extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -42,7 +19,10 @@ export class GoogleMapComponent extends React.PureComponent {
 
   componentDidMount() {
     // Get markers from server
-    this.props.dispatch(getMarkers())
+    // this.props.dispatch(getMarkers()).then(() => {
+    //   console.log(this.props.markersFromServer)
+
+    // })
 
     this.delayedShowMarker();
     if (navigator.geolocation) {
@@ -76,7 +56,7 @@ export class GoogleMapComponent extends React.PureComponent {
 
   render() {
     return (
-      <MyMapComponent
+      <GoogleMapComponenet
         isMarkerShown={this.state.isMarkerShown}
         onMarkerClick={this.handleMarkerClick}
         position={this.state.location}
@@ -85,8 +65,4 @@ export class GoogleMapComponent extends React.PureComponent {
   }
 }
 
-export const mapStateToProps = (state, props) => ({
-  allMarkers: state.markers.allMarkers ? state.markers.allMarkers : []
-})
-
-export default (connect(mapStateToProps)(GoogleMapComponent));
+export default GoogleMapWrapper
