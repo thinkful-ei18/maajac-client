@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
+
+import React, { Component } from 'react'
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 
-import { REACT_APP_API_KEY } from '../config';
+import { REACT_APP_API_KEY } from '../config'
+import { connect } from 'react-redux';
+import { getMarkers } from '../actions/markerActions';
 
-//google map container
 export class MapContainer extends Component {
   constructor(props) {
     super(props);
@@ -48,6 +50,11 @@ export class MapContainer extends Component {
     }
   };
 
+  componentDidMount() {
+    this.props.dispatch(getMarkers());
+    console.log('done');
+  }
+
   render() {
     /* ==== MARKERS TEMPLATE ONCE BACKEND IS FUNCTIONAL ==== */
     // let markers = arrayOfMarkersFromServer.map(obj => (
@@ -87,6 +94,10 @@ export class MapContainer extends Component {
 
         <InfoWindow
           marker={this.state.activeMarker}
+
+          visible={this.state.showingInfoWindow}>
+          <div>
+            <h1>{this.state.selectedPlace.name}</h1>
           visible={this.state.showingInfoWindow}
         >
           <div>
@@ -100,9 +111,15 @@ export class MapContainer extends Component {
   }
 }
 
-export default GoogleApiWrapper({
+
+export const mapStateToProps = (state, props) => ({
+  markers: state.markers.allMarkers,
+})
+
+export default connect(mapStateToProps)(GoogleApiWrapper({
   apiKey: REACT_APP_API_KEY
-})(MapContainer);
+})(MapContainer))
+
 
 /*
 Resources:
