@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Input from './input';
 import {Field, reduxForm} from 'redux-form';
-import {required, nonEmpty, minLength120} from '../utils/validators';
+import {required, nonEmpty, minLength120, checkDate} from '../utils/validators';
 import './css/report.css';
 // import {connect} from 'react-redux';
 
@@ -34,7 +34,7 @@ class reportForm extends Component {
             label="Date"
             type="date"
             name="date"
-            validate={[required, nonEmpty]}
+            validate={[required, nonEmpty, checkDate]}
           />
           <Field
             component={Input}
