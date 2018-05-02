@@ -29,6 +29,7 @@ const GoogleMapComponent = compose(
         return (
           <Marker
             key={index}
+            icon={marker.icon}
             position={{ lat: marker.location[0], lng: marker.location[1] }}
             onClick={props.onMarkerClick}
           />
