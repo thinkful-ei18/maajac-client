@@ -1,7 +1,8 @@
-import jwtDecode from "jwt-decode"
 import {API_BASE_URL} from '../config';
 import {SubmissionError} from 'redux-form';
 import normalizeResponseErrors from '../utils/noramlize-errors';
+import { saveAuthToken, clearAuthToken } from "../local-storage"
+import jwtDecode from "jwt-decode"
 
 /* REGISTER ACTIONS */
 
@@ -48,66 +49,89 @@ export const register = user => dispatch => {
 		})
 }
 
-/* LOGIN ACTIONS */
-
-export const LOGIN_REQUEST = "LOGIN_REQUEST"
-export const loginRequest = () => ({
-	type: LOGIN_REQUEST
-})
-
-export const LOGIN_ERROR = "LOGIN_ERROR"
-export const loginError = () => ({
-	type: LOGIN_ERROR
-})
-
-export const LOGIN_SUCCESS = "LOGIN_SUCCESS"
-export const loginSuccess = () => ({
-	type: LOGIN_SUCCESS
-})
-
 /* AUTH TOKEN ACTIONS NECESSARY FOR USERS TO LOGIN */
 
 export const SET_AUTH_TOKEN = "SET_AUTH_TOKEN"
 export const setAuthToken = authToken => ({
-	type: SET_AUTH_TOKEN,
+  type: SET_AUTH_TOKEN,
 	authToken
 })
 
 export const CLEAR_AUTH = "CLEAR_AUTH"
 export const clearAuth = () => ({
-	type: CLEAR_AUTH
+  type: CLEAR_AUTH
 })
 
 export const AUTH_REQUEST = "AUTH_REQUEST"
 export const authRequest = () => ({
-	type: AUTH_REQUEST
+  type: AUTH_REQUEST
 })
 
 export const AUTH_SUCCESS = "AUTH_SUCCESS"
 export const authSuccess = currentUser => ({
-	type: AUTH_SUCCESS,
+  type: AUTH_SUCCESS,
 	currentUser
 })
 
 export const AUTH_ERROR = "AUTH_ERROR"
 export const authError = error => ({
-	type: AUTH_ERROR,
+  type: AUTH_ERROR,
 	error
 })
 
 // Stores the auth token in state and localStorage, and decodes and stores
 // the user data stored in the token
-const storeAuthInfo = (authToken, dispatch) => {
-	const decodedToken = jwtDecode(authToken)
+const storeAuthToken = (authToken, dispatch) => {
+  const decodedToken = jwtDecode(authToken)
 	dispatch(setAuthToken(authToken))
 	dispatch(authSuccess(decodedToken.user))
 	saveAuthToken(authToken)
 }
 
+export const refreshAuthToken = () => (dispatch, getState) => {
+  dispatch(authRequest());
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/api/auth/refresh`, {
+    method: 'POST',
+    headers: {
+      // Provide our existing token as credentials to get a new one
+      Authorization: `Bearer ${authToken}`,
+    },
+  })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .then(({ authToken }) => storeAuthToken(authToken, dispatch))
+    .catch(err => {
+      // We couldn't get a refresh token because our current credentials
+      // are invalid or expired, or something else went wrong, so clear
+      // them and sign us out
+      dispatch(authError(err));
+      dispatch(clearAuth());
+      clearAuthToken(authToken);
+    });
+};
+
+/* LOGIN ACTIONS */
+
+export const LOGIN_REQUEST = "LOGIN_REQUEST"
+export const loginRequest = () => ({
+  type: LOGIN_REQUEST
+})
+
+export const LOGIN_ERROR = "LOGIN_ERROR"
+export const loginError = () => ({
+  type: LOGIN_ERROR
+})
+
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS"
+export const loginSuccess = () => ({
+  type: LOGIN_SUCCESS
+})
+
 export const login = data => dispatch => {
-	dispatch(authRequest())
+  dispatch(authRequest())
 	return (
-		fetch(`${API_BASE_URL}/auth/login`, {
+		fetch(`${API_BASE_URL}/api/auth/login`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"
@@ -118,7 +142,7 @@ export const login = data => dispatch => {
 			// errors which follow a consistent format
 			.then(res => normalizeResponseErrors(res))
 			.then(res => res.json())
-			.then(({ authToken }) => storeAuthInfo(authToken, dispatch))
+			.then(({ authToken }) => storeAuthToken(authToken, dispatch))
 			.catch(err => {
 				const { code } = err
 				const message = code === 401 ? "Incorrect username or password" : "Unable to login, please try again"
