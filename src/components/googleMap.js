@@ -5,7 +5,8 @@ import {
   withScriptjs,
   withGoogleMap,
   GoogleMap,
-  Marker
+  Marker,
+  InfoWindow
 } from 'react-google-maps';
 
 const GoogleMapComponent = compose(
@@ -35,7 +36,13 @@ const GoogleMapComponent = compose(
           />
         );
       })}) )
-    <Marker position={props.indicatorPin} onClick={props.onHandleClick} />
+    <Marker position={props.indicatorPin} onClick={props.onToggleOpen}>
+      {props.isOpen && (
+        <InfoWindow onCloseClick={props.onToggleOpen}>
+          <p>Hello from Canada</p>
+        </InfoWindow>
+      )}
+    </Marker>
   </GoogleMap>
 ));
 
