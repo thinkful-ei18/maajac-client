@@ -1,4 +1,13 @@
 .navbar {
   height: 2.5rem;
-  background-color: blueviolet
+  background-color: blueviolet;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between
+}
+
+.home a {
+  font-size: 32px;
+  color: white;
+  text-decoration: none;
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 // styles
 import './css/navbar.css'
@@ -7,8 +8,10 @@ import './css/navbar.css'
 export class Navbar extends Component {
   render() {
     return (
-      <div className='navbar'>
-      </div>
+      <nav className='navbar'>
+        <span className='home'><NavLink to='/'>GuardDog</NavLink></span>
+        <NavLink to='/submit'>Submit new report</NavLink>
+      </nav>
     )
   }
 }
