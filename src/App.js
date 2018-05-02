@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 
 import './App.css';
-import { reportForm as Report } from './components/report';
-import GoogleMapWrapper from './components/GoogleMapWrapper';
+import ReportForm from './components/report';
+import GoogleApiWrapper from './components/GoogleApiWrapper';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Report />
-        <GoogleMapWrapper />
+        <ReportForm/>
+        <GoogleApiWrapper />
       </div>
     );
   }
