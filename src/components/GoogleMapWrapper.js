@@ -29,7 +29,7 @@ const MyMapComponent = compose(
   </GoogleMap>
 ));
 
-export class MyFancyComponent extends React.PureComponent {
+export class GoogleMapComponent extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -71,3 +71,5 @@ export class MyFancyComponent extends React.PureComponent {
     );
   }
 }
+
+export default GoogleMapComponent;
