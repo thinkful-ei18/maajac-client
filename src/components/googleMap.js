@@ -24,6 +24,7 @@ const GoogleMapComponent = compose(
     center={props.position}
     onClick={props.onHandleClick}
   >
+
     {props.isMarkerShown && (
       props.markers.map((marker, index) => {
         return (
@@ -35,11 +36,10 @@ const GoogleMapComponent = compose(
           />
         )
       })
-
-      // <Marker position={{ lat: 21, lng: 11 }} onClick={props.onMarkerClick} />
     )
 
     }) )
+
   </GoogleMap>
 ));
 
