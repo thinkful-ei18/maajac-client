@@ -51,12 +51,6 @@ export const register = user => dispatch => {
 
 /* AUTH TOKEN ACTIONS NECESSARY FOR USERS TO LOGIN */
 
-export const SET_AUTH_TOKEN = "SET_AUTH_TOKEN"
-export const setAuthToken = authToken => ({
-  type: SET_AUTH_TOKEN,
-	authToken
-})
-
 export const CLEAR_AUTH = "CLEAR_AUTH"
 export const clearAuth = () => ({
   type: CLEAR_AUTH
@@ -68,9 +62,9 @@ export const authRequest = () => ({
 })
 
 export const AUTH_SUCCESS = "AUTH_SUCCESS"
-export const authSuccess = currentUser => ({
+export const authSuccess = authToken => ({
   type: AUTH_SUCCESS,
-	currentUser
+	authToken
 })
 
 export const AUTH_ERROR = "AUTH_ERROR"
@@ -82,15 +76,14 @@ export const authError = error => ({
 // Stores the auth token in state and localStorage, and decodes and stores
 // the user data stored in the token
 const storeAuthToken = (authToken, dispatch) => {
-  const decodedToken = jwtDecode(authToken)
-	dispatch(setAuthToken(authToken))
-	dispatch(authSuccess(decodedToken.user))
+  // const decodedToken = jwtDecode(authToken) // in case we want to pull information from the token
+	dispatch(authSuccess(authToken))
 	saveAuthToken(authToken)
 }
 
 export const refreshAuthToken = () => (dispatch, getState) => {
   dispatch(authRequest());
-  const authToken = getState().auth.authToken;
+  const authToken = getState().user.authToken;
   return fetch(`${API_BASE_URL}/api/auth/refresh`, {
     method: 'POST',
     headers: {
