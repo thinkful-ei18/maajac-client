@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Input from './input';
 import {Field, reduxForm} from 'redux-form';
 import {required, nonEmpty, minLength120} from '../utils/validators';
+import './css/report.css';
 // import {connect} from 'react-redux';
 
 class reportForm extends Component {
