@@ -18,12 +18,8 @@ form {
   display: block;
 }
 
-.form-error {
+.form-error, .form-warning {
   padding: 15px 0px;
-  color: red;
-}
-
-.form-warning {
-  padding: 15px 0px;
+  font-weight: bold;
   color: red;
 }
