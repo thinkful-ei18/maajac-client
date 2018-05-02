@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 import './App.css';
 import ReportForm from './components/report';
+import RegistrationForm from './components/register';
+import LoginForm from './components/login';
+
 import GoogleMapWrapper from './components/GoogleMapWrapper';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <ReportForm /> */}
-        <GoogleMapWrapper />
+        <Route exact path="/register" component={RegistrationForm} />
+        <Route exact path="/report" component={ReportForm} />
+        <Route exact path="/" component={GoogleMapWrapper} />
+        <Route exact path="/login" component={LoginForm} />
       </div>
     );
   }
