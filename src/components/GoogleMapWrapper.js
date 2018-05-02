@@ -1,9 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import GoogleMapComponenet from './googleMap';
-import { getMarkers } from '../actions/markerActions'
-
-
+import { getMarkers } from '../actions/markerActions';
 
 export class GoogleMapWrapper extends React.PureComponent {
   constructor(props) {
@@ -43,6 +41,12 @@ export class GoogleMapWrapper extends React.PureComponent {
     }
   }
 
+  handleMapClick(event) {
+    let lat = event.latLng.lat();
+    let lng = event.latLng.lng();
+    console.log(lat, lng);
+  }
+
   delayedShowMarker = () => {
     setTimeout(() => {
       this.setState({ isMarkerShown: true });
@@ -60,9 +64,10 @@ export class GoogleMapWrapper extends React.PureComponent {
         isMarkerShown={this.state.isMarkerShown}
         onMarkerClick={this.handleMarkerClick}
         position={this.state.location}
+        onHandleClick={e => this.handleMapClick(e)}
       />
     );
   }
 }
 
-export default GoogleMapWrapper
+export default GoogleMapWrapper;
