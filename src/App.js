@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 
 import './App.css';
 import ReportForm from './components/report';
-import GoogleApiWrapper from './components/GoogleApiWrapper';
+import GoogleMapWrapper from './components/GoogleMapWrapper';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <ReportForm/>
-        <GoogleApiWrapper />
+        {/* <ReportForm /> */}
+        <GoogleMapWrapper />
       </div>
     );
   }
