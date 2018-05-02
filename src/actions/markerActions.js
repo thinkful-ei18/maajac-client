@@ -69,7 +69,7 @@ export const getMarkers = () => (dispatch, getState) => {
   return fetch(`${API_BASE_URL}/markers`, {
     method: 'GET',
     headers: {
-      'content-type': 'application/json'
+      'Content-Type': 'application/json'
     }
   })
     .then(res => res.json())
