@@ -7,8 +7,12 @@ export class GoogleMapWrapper extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      isMarkerShown: false,
+      isMarkerShown: true,
       location: {
+        lat: -34.397,
+        lng: 150.644
+      },
+      indicatorPin: {
         lat: -34.397,
         lng: 150.644
       }
@@ -22,7 +26,6 @@ export class GoogleMapWrapper extends React.PureComponent {
 
     // })
 
-    this.delayedShowMarker();
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         position => {
@@ -45,18 +48,13 @@ export class GoogleMapWrapper extends React.PureComponent {
     let lat = event.latLng.lat();
     let lng = event.latLng.lng();
     console.log(lat, lng);
+    this.setState({
+      indicatorPin: {
+        lat,
+        lng
+      }
+    });
   }
-
-  delayedShowMarker = () => {
-    setTimeout(() => {
-      this.setState({ isMarkerShown: true });
-    }, 3000);
-  };
-
-  handleMarkerClick = () => {
-    this.setState({ isMarkerShown: false });
-    this.delayedShowMarker();
-  };
 
   render() {
     return (
@@ -65,6 +63,7 @@ export class GoogleMapWrapper extends React.PureComponent {
         onMarkerClick={this.handleMarkerClick}
         position={this.state.location}
         onHandleClick={e => this.handleMapClick(e)}
+        indicatorPin={this.state.indicatorPin}
       />
     );
   }
