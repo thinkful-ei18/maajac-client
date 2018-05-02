@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { compose, withProps } from 'recompose';
 import {
   withScriptjs,
@@ -6,6 +7,7 @@ import {
   GoogleMap,
   Marker
 } from 'react-google-maps';
+import { getMarkers } from '../actions/markerActions'
 
 const MyMapComponent = compose(
   withProps({
@@ -38,6 +40,7 @@ export class GoogleMapComponent extends React.PureComponent {
   }
 
   componentDidMount() {
+    this.props.dispatch(getMarkers())
     this.delayedShowMarker();
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -72,4 +75,7 @@ export class GoogleMapComponent extends React.PureComponent {
   }
 }
 
-export default GoogleMapComponent;
+export const mapStateToProps = (state, props) => ({
+})
+
+export default (connect(mapStateToProps)(GoogleMapComponent));
