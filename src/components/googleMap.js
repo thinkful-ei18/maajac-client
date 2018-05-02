@@ -24,7 +24,22 @@ const GoogleMapComponent = compose(
     center={props.position}
     onClick={props.onHandleClick}
   >
-    <Marker position={props.indicatorPin} onClick={props.onMarkerClick} />
+
+    {props.isMarkerShown && (
+      props.markers.map((marker, index) => {
+        return (
+          <Marker
+            key={index}
+            icon={marker.icon}
+            position={{ lat: marker.location[0], lng: marker.location[1] }}
+            onClick={props.onMarkerClick}
+          />
+        )
+      })
+    )
+
+    }) )
+
   </GoogleMap>
 ));
 
