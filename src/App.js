@@ -13,8 +13,9 @@ class App extends Component {
     return (
       <div className="App">
         <Route exact path="/register" component={RegistrationForm} />
-        <Route exact path="/login" component={ReportForm} />
+        <Route exact path="/report" component={ReportForm} />
         <Route exact path="/" component={GoogleMapWrapper} />
+        <Route exact path="/login" component={LoginForm} />
       </div>
     );
   }
