@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import Input from './input';
-// import {connect} from 'react-redux';
 import {Field, reduxForm} from 'redux-form';
+import {required, nonEmpty, minLength120} from '../utils/validators';
+// import {connect} from 'react-redux';
 
 class reportForm extends Component {
   render() {
-    // const { handleSubmit } = this.props;
+    const { handleSubmit, pristine, submitting, reset } = this.props;
+
 
     return(
       <div>
-        <form id="incident-report">
+        <form id="incident-report" onSubmit={handleSubmit(values => {console.log(values)}
+        )}>
           <label
             htmlFor="incident-type">Incident Type
           </label>
@@ -18,7 +21,7 @@ class reportForm extends Component {
             id="type"
             name="type"
             required="required"
-            >
+          >
             <option value=""></option>
             <option value="crime">Crime</option>
             <option value="accident">Traffic Accident</option>
@@ -30,7 +33,7 @@ class reportForm extends Component {
             label="Date"
             type="date"
             name="date"
-            required="required"
+            validate={[required, nonEmpty]}
           />
           <Field
             component={Input}
@@ -38,6 +41,7 @@ class reportForm extends Component {
             label="Time"
             type="time"
             name="time"
+            validate={[required, nonEmpty]}
           />
           <Field
             component={Input}
@@ -45,6 +49,7 @@ class reportForm extends Component {
             label="Description of Incident"
             type="text"
             name="description"
+            validate={[required, nonEmpty, minLength120]}
           />
           <Field
             component={Input}
@@ -52,9 +57,16 @@ class reportForm extends Component {
             label="Description of Suspect"
             type="text"
             name="suspect"
+            validate={[required, nonEmpty, minLength120]}
           />
           <button
-            type="submit">
+            type="submit"
+            onClick={reset}>
+            Clear Values
+          </button>
+          <button
+            type="submit"
+            disabled={pristine || submitting}>
             Submit
           </button>
         </form>
