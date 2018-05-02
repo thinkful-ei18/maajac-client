@@ -17,10 +17,8 @@ export class GoogleMapWrapper extends React.PureComponent {
 
   componentDidMount() {
     // Get markers from server
-    // this.props.dispatch(getMarkers()).then(() => {
-    //   console.log(this.props.markersFromServer)
+    this.props.dispatch(getMarkers())
 
-    // })
 
     this.delayedShowMarker();
     if (navigator.geolocation) {
@@ -59,15 +57,21 @@ export class GoogleMapWrapper extends React.PureComponent {
   };
 
   render() {
+
     return (
       <GoogleMapComponenet
         isMarkerShown={this.state.isMarkerShown}
         onMarkerClick={this.handleMarkerClick}
         position={this.state.location}
         onHandleClick={e => this.handleMapClick(e)}
+        markers={this.props.markersFromServer}
       />
     );
   }
 }
 
-export default GoogleMapWrapper;
+export const mapStateToProps = (state, props) => ({
+  markersFromServer: state.markers.allMarkers ? state.markers.allMarkers : []
+});
+
+export default (connect(mapStateToProps)(GoogleMapWrapper));

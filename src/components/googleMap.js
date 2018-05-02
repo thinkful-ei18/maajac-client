@@ -25,12 +25,19 @@ const GoogleMapComponent = compose(
     onClick={props.onHandleClick}
   >
     {props.isMarkerShown && (
-      // this.props.markersFromServer.map(marker => {
-      //   return (
-      <Marker position={{ lat: 21, lng: 11 }} onClick={props.onMarkerClick} />
+      props.markers.map((marker, index) => {
+        return (
+          <Marker
+            key={index}
+            position={{ lat: marker.location[0], lng: marker.location[1] }}
+            onClick={props.onMarkerClick}
+          />
+        )
+      })
+
+      // <Marker position={{ lat: 21, lng: 11 }} onClick={props.onMarkerClick} />
     )
-    // })
-    // )
+
     }) )
   </GoogleMap>
 ));
