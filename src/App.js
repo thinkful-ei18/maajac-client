@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Route, withRouter } from 'react-router-dom';
 
 import './App.css';
 import ReportForm from './components/report';
@@ -9,9 +10,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <RegistrationForm/>
-        {/* <ReportForm /> */}
-        <GoogleMapWrapper />
+        <Route exact path="/register" component={RegistrationForm} />
+        <Route exact path="/login" component={ReportForm} />
+        <Route exact path="/" component={GoogleMapWrapper} />
       </div>
     );
   }
