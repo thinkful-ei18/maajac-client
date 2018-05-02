@@ -4,7 +4,6 @@ import './App.css';
 import ReportForm from './components/report';
 import GoogleApiWrapper from './components/GoogleApiWrapper';
 
-
 class App extends Component {
   render() {
     return (
