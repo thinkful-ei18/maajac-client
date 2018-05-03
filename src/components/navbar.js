@@ -60,8 +60,7 @@ export class Navbar extends Component {
             this.state.showMenu
               ? (
                 <div className="dropdown-menu">
-                  <NavLink to='/submit'>Submit new report</NavLink>
-                  <button> Dummy link 1 </button>
+                  <NavLink to='/dashboard'>Dashboard</NavLink>
                   <button onClick={this.logout}> Logout </button>
                 </div>
               )
