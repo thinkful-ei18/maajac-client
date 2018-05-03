@@ -37,6 +37,7 @@ export class Dashboard extends React.Component {
     return (
       <main>
         <h2>Dashboard</h2>
+        <Link to={'/'}>Link</Link>
         {userReports}
         {instructions}
       </main>
