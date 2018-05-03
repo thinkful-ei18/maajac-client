@@ -1,0 +1,25 @@
+.navbar {
+  height: 2.5rem;
+  background-color: blueviolet;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: .5rem 2rem .5rem 2rem;
+
+}
+
+.home a {
+  font-size: 1.7rem;
+  color: white;
+  text-decoration: none;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 2.7rem;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}
+
