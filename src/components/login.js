@@ -12,7 +12,6 @@ export class LoginForm extends Component {
 
   render() {
     const { handleSubmit, pristine, submitting } = this.props;
-    console.log('login props:', this.props);
 
     let error;
     if (this.props.error) {
