@@ -1,30 +1,23 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux'
+
 import Input from './input';
 import { Redirect } from 'react-router-dom';
 import { required, nonEmpty } from '../utils/validators';
 import { login } from '../actions/userActions';
 
 export class LoginForm extends Component {
+
 	onLogin(values) {
 		return this.props.dispatch(login(values.username, values.password));
 	}
 
 	render() {
-		const { handleSubmit, pristine, submitting } = this.props;
-
-		let error;
-		if (this.props.error) {
-			error = (
-				<div className="form-error" aria-live="polite">
-					{this.props.error}
-				</div>
-			);
-		}
+		const { handleSubmit, pristine, submitting, error } = this.props;
 
 		return (
-			<div className='login-form'>
+			<div className='login'>
 				{this.props.loggedIn ? (<Redirect to='/' />) : ''}
 				<form
 					className="login-form"
@@ -32,7 +25,9 @@ export class LoginForm extends Component {
 						this.onLogin(values);
 					})}
 				>
-					{error}
+					<div className="form-error" aria-live="polite">
+          	{error}
+        	</div>
 
 					<label htmlFor="username">Username</label>
 					<Field
@@ -68,6 +63,7 @@ export class LoginForm extends Component {
 
 export const mapStateToProps = (state, props) => ({
 	loggedIn: state.auth.currentUser !== null,
+	error: state.auth.error !== null ? state.auth.error : ''
 });
 
 export default reduxForm({
