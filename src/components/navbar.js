@@ -40,7 +40,7 @@ export class Navbar extends Component {
 
 
           <button onClick={this.showMenu}>
-            Show menu
+            Welcome, User1
         </button>
 
           {
