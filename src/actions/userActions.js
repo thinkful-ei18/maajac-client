@@ -23,7 +23,7 @@ export const registerSuccess = () => ({
 })
 
 export const register = user => dispatch => {
-	return fetch(`${API_BASE_URL}/api/users`, {
+	return fetch(`${API_BASE_URL}/users`, {
 		method: "POST",
 		headers: {
 			"content-type": "application/json"
