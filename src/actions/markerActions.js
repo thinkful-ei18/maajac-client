@@ -34,10 +34,11 @@ export const newMarkerRequest = () => ({
   type: NEW_MARKER_REQUEST
 });
 
-export const newMarker = (values) => (dispatch, getState) => {
-
-  const { incidentType, location, date, time, description } = values
-  const authToken = localStorage.getItem('authToken') ? localStorage.getItem('authToken') : getState().auth.authToken;
+export const newMarker = values => (dispatch, getState) => {
+  const { incidentType, location, date, time, description } = values;
+  const authToken = localStorage.getItem('authToken')
+    ? localStorage.getItem('authToken')
+    : getState().auth.authToken;
   dispatch(newMarkerRequest());
   return fetch(`${API_BASE_URL}/new/marker`, {
     method: 'POST',
@@ -56,7 +57,7 @@ export const newMarker = (values) => (dispatch, getState) => {
     .then(res => res.json())
     .then(({ data }) => {
       dispatch(newMarkerSuccess(data));
-      getMarkers();
+      dispatch(getMarkers());
     })
     .catch(err => {
       dispatch(newMarkerError(err));
