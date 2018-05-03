@@ -1,5 +1,5 @@
 import React from "react";
-import { Field, reduxForm } from "redux-form";
+import { Field, reduxForm, focus } from "redux-form";
 import Input from "./input";
 import { required, nonEmpty, matches, length, isTrimmed } from "../utils/validators";
 import {register} from '../actions/userActions';
@@ -9,12 +9,16 @@ const matchesPassword = matches("password")
 
 export class RegistrationForm extends React.Component {
 
+	onSubmit(values){
+		return this.props.dispatch(register(values));
+	}
+
 	render() {
-    const { handleSubmit, pristine, submitting, dispatch} = this.props;
+    const { handleSubmit, pristine, submitting, dispatch, error} = this.props;
 
 		return (
 			<form className="register-form" onSubmit={handleSubmit(values => {
-				dispatch(register(values));
+				this.onSubmit(values);
 				})}>
 				<label htmlFor="username">Username</label>
         <Field component={Input}
@@ -61,5 +65,6 @@ export class RegistrationForm extends React.Component {
 }
 
 export default reduxForm({
-	form: "registration"
+	form: "registration",
+	onSubmitFail: (errors, dispatch) => dispatch(focus("registration", Object.keys(errors)[0]))
 })(RegistrationForm)
