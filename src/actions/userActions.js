@@ -4,7 +4,6 @@ import { normalizeResponseErrors } from '../utils/noramlize-errors';
 import { saveAuthToken, clearAuthToken } from '../local-storage';
 // import jwtDecode from "jwt-decode" // this is used on line 79 which is also commented out.
 
-
 /* REGISTER ACTIONS */
 
 export const REGISTER_REQUEST = 'REGISTER_REQUEST';
@@ -24,7 +23,7 @@ export const registerSuccess = () => ({
 });
 
 export const register = user => dispatch => {
-  return fetch(`${API_BASE_URL}/api/users`, {
+  return fetch(`${API_BASE_URL}/users`, {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
@@ -51,7 +50,6 @@ export const register = user => dispatch => {
     });
 };
 
-
 /* LOGIN ACTIONS */
 
 export const login = (username, password) => dispatch => {
@@ -63,9 +61,9 @@ export const login = (username, password) => dispatch => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-				username,
-				password
-			}),
+        username,
+        password,
+      }),
     })
       // Reject any requests which don't return a 200 status, creating
       // errors which follow a consistent format
@@ -89,7 +87,6 @@ export const login = (username, password) => dispatch => {
       })
   );
 };
-
 
 /* AUTH TOKEN ACTIONS NECESSARY FOR USERS TO LOGIN */
 
@@ -118,7 +115,7 @@ export const authError = error => ({
 // Stores the auth token in state and localStorage, and decodes and stores
 // the user data stored in the token
 const storeAuthToken = (authToken, dispatch) => {
-	// const decodedToken = jwtDecode(authToken) // in case we want to pull information from the token
+  // const decodedToken = jwtDecode(authToken) // in case we want to pull information from the token
   dispatch(authSuccess(authToken));
   saveAuthToken(authToken);
 };
@@ -126,7 +123,7 @@ const storeAuthToken = (authToken, dispatch) => {
 export const refreshAuthToken = () => (dispatch, getState) => {
   dispatch(authRequest());
   const authToken = getState().user.authToken;
-  return fetch(`${API_BASE_URL}/api/auth/refresh`, {
+  return fetch(`${API_BASE_URL}/auth/refresh`, {
     method: 'POST',
     headers: {
       // Provide our existing token as credentials to get a new one
@@ -145,4 +142,3 @@ export const refreshAuthToken = () => (dispatch, getState) => {
       clearAuthToken(authToken);
     });
 };
-
