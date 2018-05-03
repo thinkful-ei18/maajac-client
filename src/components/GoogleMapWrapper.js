@@ -3,7 +3,7 @@ import GoogleMapComponenet from './googleMap';
 import { connect } from 'react-redux';
 
 import { getMarkers } from '../actions/markerActions';
-import { setUserLocation } from '../actions/reportActions'
+import { setUserLocation } from '../actions/reportActions';
 
 export class GoogleMapWrapper extends React.PureComponent {
   constructor(props) {
@@ -12,13 +12,13 @@ export class GoogleMapWrapper extends React.PureComponent {
       isMarkerShown: true,
       location: {
         lat: -34.397,
-        lng: 150.644
+        lng: 150.644,
       },
       indicatorPin: {
         lat: -34.397,
-        lng: 150.644
+        lng: 150.644,
       },
-      popupIsOpen: false
+      popupIsOpen: false,
     };
   }
 
@@ -33,8 +33,8 @@ export class GoogleMapWrapper extends React.PureComponent {
           this.setState({
             location: {
               lat: position.coords.latitude,
-              lng: position.coords.longitude
-            }
+              lng: position.coords.longitude,
+            },
           });
         },
         error => {
@@ -47,21 +47,21 @@ export class GoogleMapWrapper extends React.PureComponent {
   handleMapClick(event) {
     let lat = event.latLng.lat();
     let lng = event.latLng.lng();
-    console.log('lat:',lat);
-    console.log('lng', lng)
+    console.log('lat:', lat);
+    console.log('lng', lng);
     this.setState({
       indicatorPin: {
         lat,
-        lng
-      }
+        lng,
+      },
     });
     // set the pin location in state
-    this.props.dispatch(setUserLocation({lat, lng}))
+    this.props.dispatch(setUserLocation({ lat, lng }));
   }
 
   onToggleOpen() {
     this.setState({
-      popupIsOpen: !this.state.popupIsOpen
+      popupIsOpen: !this.state.popupIsOpen,
     });
   }
 
@@ -82,7 +82,9 @@ export class GoogleMapWrapper extends React.PureComponent {
 }
 
 export const mapStateToProps = (state, props) => ({
-  markersFromServer: state.markers.allMarkers ? state.markers.allMarkers : []
+  markersFromServer: state.markers.allMarkers ? state.markers.allMarkers : [],
+  username: state.auth.username,
+  id: state.auth.id,
 });
 
 export default connect(mapStateToProps)(GoogleMapWrapper);
