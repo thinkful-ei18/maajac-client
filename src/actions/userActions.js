@@ -2,7 +2,7 @@ import { API_BASE_URL } from '../config';
 import { SubmissionError } from 'redux-form';
 import { normalizeResponseErrors } from '../utils/noramlize-errors';
 import { saveAuthToken, clearAuthToken } from '../local-storage';
-// import jwtDecode from "jwt-decode" // this is used on line 79 which is also commented out.
+import jwtDecode from "jwt-decode" // this is used on line 79 which is also commented out.
 
 /* REGISTER ACTIONS */
 
@@ -13,8 +13,8 @@ export const registerRequest = () => ({
 
 export const REGISTER_ERROR = "REGISTER_ERROR"
 export const registerError = error => ({
-	type: REGISTER_ERROR,
-	error
+  type: REGISTER_ERROR,
+  error
 })
 
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
@@ -90,6 +90,12 @@ export const login = (username, password) => dispatch => {
 
 /* AUTH TOKEN ACTIONS NECESSARY FOR USERS TO LOGIN */
 
+export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN';
+export const setAuthToken = (authToken) => ({
+  type: SET_AUTH_TOKEN,
+  authToken,
+})
+
 export const CLEAR_AUTH = 'CLEAR_AUTH';
 export const clearAuth = () => ({
   type: CLEAR_AUTH,
@@ -101,9 +107,9 @@ export const authRequest = () => ({
 });
 
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
-export const authSuccess = authToken => ({
+export const authSuccess = currentUser => ({
   type: AUTH_SUCCESS,
-  authToken,
+  currentUser,
 });
 
 export const AUTH_ERROR = 'AUTH_ERROR';
@@ -115,8 +121,9 @@ export const authError = error => ({
 // Stores the auth token in state and localStorage, and decodes and stores
 // the user data stored in the token
 const storeAuthToken = (authToken, dispatch) => {
-  // const decodedToken = jwtDecode(authToken) // in case we want to pull information from the token
-  dispatch(authSuccess(authToken));
+  const decodedToken = jwtDecode(authToken);
+  dispatch(setAuthToken(authToken));
+  dispatch(authSuccess(decodedToken.user));
   saveAuthToken(authToken);
 };
 
