@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Field, reduxForm } from 'redux-form';
+
 import Input from './input';
-import {Field, reduxForm} from 'redux-form';
-import {required, nonEmpty, minLength120, checkDate} from '../utils/validators';
+import { required, nonEmpty, minLength120, checkDate } from '../utils/validators';
+
 import './css/report.css';
-// import {connect} from 'react-redux';
 
 class reportForm extends Component {
+
   render() {
     const { handleSubmit, pristine, submitting, reset } = this.props;
-
+    console.log('user local:', this.props.location)
 
     return(
       <div>
@@ -52,14 +55,14 @@ class reportForm extends Component {
             name="description"
             validate={[required, nonEmpty, minLength120]}
           />
-          <Field
+          {/* <Field
             component={Input}
             id="suspect"
             label="Description of Suspect"
             type="text"
             name="suspect"
             validate={[required, nonEmpty, minLength120]}
-          />
+          /> */}
           <button
             type="submit"
             onClick={reset}>
@@ -76,8 +79,21 @@ class reportForm extends Component {
   }
 }
 
-reportForm = reduxForm({
+const mapStateToProps = (state) => ({
+  location: state.report.userLocation
+});
+
+reportForm = connect(
+  mapStateToProps,
+)(reportForm)
+
+export default reduxForm({
   form: "report"
 })(reportForm);
 
-export default reportForm;
+
+// reportForm = reduxForm({
+//   form: "report"
+// })(reportForm);
+
+// export default reportForm;
