@@ -1,12 +1,20 @@
-import React from "react"
+import React, { Component } from "react"
 import { Field, reduxForm } from "redux-form"
+
 import Input from "./input"
 import { required, nonEmpty } from "../utils/validators"
+import { login } from '../actions/userActions'
 
-export class LoginForm extends React.Component {
+export class LoginForm extends Component {
 
+	onLogin(values) {
+		console.log('passed values')
+    return this.props.dispatch(login( values.username, values.password ))
+	}
+	
 	render() {
-    const { handleSubmit, pristine, submitting} = this.props;
+		const { handleSubmit, pristine, submitting } = this.props;
+		console.log('login props:', this.props)
 
 		let error
 		if (this.props.error) {
@@ -16,18 +24,43 @@ export class LoginForm extends React.Component {
 				</div>
 			)
 		}
+
 		return (
-			<form className="login-form" onSubmit={handleSubmit(values => console.log(values))}>
+			<form className="login-form" 
+				onSubmit={handleSubmit(values => { this.onLogin(values)} )}>
 				{error}
+
 				<label htmlFor="username">Username</label>
-				<Field component={Input} placeholder="sally123" type="text" name="username" id="username" validate={[required, nonEmpty]} />
+				<Field 
+					component={Input} 
+					placeholder="sally123" 
+					type="text" 
+					name="username" 
+					id="username" 
+					validate={[required, nonEmpty]} 
+				/>
+
 				<label htmlFor="password">Password</label>
-				<Field component={Input} placeholder="••••••••" type="password" name="password" id="password" validate={[required, nonEmpty]} />
-				<button className="form-primary-button" disabled={pristine || submitting}>Log in</button>
+				<Field 
+					component={Input} 
+					placeholder="••••••••" 
+					type="password" 
+					name="password" 
+					id="password" 
+					validate={[required, nonEmpty]} 
+				/>
+
+				<button 
+					className="form-primary-button" 
+					disabled={pristine || submitting}
+				>
+					Log in
+				</button>
 			</form>
 		)
 	}
 }
+
 
 export default reduxForm({
 	form: "login",
