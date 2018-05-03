@@ -4,6 +4,7 @@ import { normalizeResponseErrors } from '../utils/noramlize-errors';
 import { saveAuthToken, clearAuthToken } from '../local-storage';
 // import jwtDecode from "jwt-decode" // this is used on line 79 which is also commented out.
 
+
 /* REGISTER ACTIONS */
 
 export const REGISTER_REQUEST = 'REGISTER_REQUEST';
@@ -49,6 +50,46 @@ export const register = user => dispatch => {
     });
 };
 
+
+/* LOGIN ACTIONS */
+
+export const login = (username, password) => dispatch => {
+  dispatch(authRequest());
+  return (
+    fetch(`${API_BASE_URL}/auth/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+				username,
+				password
+			}),
+    })
+      // Reject any requests which don't return a 200 status, creating
+      // errors which follow a consistent format
+      .then(res => normalizeResponseErrors(res))
+      .then(res => res.json())
+      .then(({ authToken }) => storeAuthToken(authToken, dispatch))
+      .catch(err => {
+        const { code } = err;
+        const message =
+          code === 401
+            ? 'Incorrect username or password'
+            : 'Unable to login, please try again';
+        dispatch(authError(err));
+        // Could not authenticate, so return a SubmissionError for Redux
+        // Form
+        return Promise.reject(
+          new SubmissionError({
+            _error: message,
+          })
+        );
+      })
+  );
+};
+
+
 /* AUTH TOKEN ACTIONS NECESSARY FOR USERS TO LOGIN */
 
 export const CLEAR_AUTH = 'CLEAR_AUTH';
@@ -76,7 +117,7 @@ export const authError = error => ({
 // Stores the auth token in state and localStorage, and decodes and stores
 // the user data stored in the token
 const storeAuthToken = (authToken, dispatch) => {
-  // const decodedToken = jwtDecode(authToken) // in case we want to pull information from the token
+	// const decodedToken = jwtDecode(authToken) // in case we want to pull information from the token
   dispatch(authSuccess(authToken));
   saveAuthToken(authToken);
 };
@@ -104,52 +145,3 @@ export const refreshAuthToken = () => (dispatch, getState) => {
     });
 };
 
-/* LOGIN ACTIONS */
-
-// export const LOGIN_REQUEST = "LOGIN_REQUEST"
-// export const loginRequest = () => ({
-//   type: LOGIN_REQUEST
-// })
-
-// export const LOGIN_ERROR = "LOGIN_ERROR"
-// export const loginError = () => ({
-//   type: LOGIN_ERROR
-// })
-
-// export const LOGIN_SUCCESS = "LOGIN_SUCCESS"
-// export const loginSuccess = () => ({
-//   type: LOGIN_SUCCESS
-// })
-
-export const login = data => dispatch => {
-  dispatch(authRequest());
-  return (
-    fetch(`${API_BASE_URL}/api/auth/login`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-      // Reject any requests which don't return a 200 status, creating
-      // errors which follow a consistent format
-      .then(res => normalizeResponseErrors(res))
-      .then(res => res.json())
-      .then(({ authToken }) => storeAuthToken(authToken, dispatch))
-      .catch(err => {
-        const { code } = err;
-        const message =
-          code === 401
-            ? 'Incorrect username or password'
-            : 'Unable to login, please try again';
-        dispatch(authError(err));
-        // Could not authenticate, so return a SubmissionError for Redux
-        // Form
-        return Promise.reject(
-          new SubmissionError({
-            _error: message,
-          })
-        );
-      })
-  );
-};
