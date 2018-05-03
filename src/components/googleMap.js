@@ -8,6 +8,7 @@ import {
   Marker,
   InfoWindow
 } from 'react-google-maps';
+import { styles } from './mapStyle';
 
 const GoogleMapComponent = compose(
   withProps({
@@ -24,6 +25,7 @@ const GoogleMapComponent = compose(
     defaultZoom={12}
     center={props.position}
     onClick={props.onHandleClick}
+    defaultOptions={{ styles }}
   >
     {props.isMarkerShown &&
       props.markers.map((marker, index) => {
