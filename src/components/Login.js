@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
-
+import { connect } from 'react-redux'
 import Input from './input';
+import { Redirect } from 'react-router-dom';
 import { required, nonEmpty } from '../utils/validators';
 import { login } from '../actions/userActions';
 
@@ -23,45 +24,52 @@ export class LoginForm extends Component {
 		}
 
 		return (
-			<form
-				className="login-form"
-				onSubmit={handleSubmit(values => {
-					this.onLogin(values);
-				})}
-			>
-				{error}
-
-				<label htmlFor="username">Username</label>
-				<Field
-					component={Input}
-					placeholder="sally123"
-					type="text"
-					name="username"
-					id="username"
-					validate={[required, nonEmpty]}
-				/>
-
-				<label htmlFor="password">Password</label>
-				<Field
-					component={Input}
-					placeholder="••••••••"
-					type="password"
-					name="password"
-					id="password"
-					validate={[required, nonEmpty]}
-				/>
-
-				<button
-					className="form-primary-button"
-					disabled={pristine || submitting}
+			<div className='login-form'>
+				{this.props.loggedIn ? (<Redirect to='/' />) : ''}
+				<form
+					className="login-form"
+					onSubmit={handleSubmit(values => {
+						this.onLogin(values);
+					})}
 				>
-					Log in
+					{error}
+
+					<label htmlFor="username">Username</label>
+					<Field
+						component={Input}
+						placeholder="sally123"
+						type="text"
+						name="username"
+						id="username"
+						validate={[required, nonEmpty]}
+					/>
+
+					<label htmlFor="password">Password</label>
+					<Field
+						component={Input}
+						placeholder="••••••••"
+						type="password"
+						name="password"
+						id="password"
+						validate={[required, nonEmpty]}
+					/>
+
+					<button
+						className="form-primary-button"
+						disabled={pristine || submitting}
+					>
+						Log in
         </button>
-			</form>
+				</form>
+			</div>
 		);
 	}
 }
 
+export const mapStateToProps = (state, props) => ({
+	loggedIn: state.auth.currentUser !== null,
+});
+
 export default reduxForm({
 	form: 'login',
-})(LoginForm);
+})(connect(mapStateToProps)((LoginForm)));

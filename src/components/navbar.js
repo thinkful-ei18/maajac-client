@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { clearAuth } from '../actions/userActions'
 // import Menu from '../components/dropdownMenu';
 
 // styles
@@ -16,6 +17,7 @@ export class Navbar extends Component {
 
     this.showMenu = this.showMenu.bind(this);
     this.closeMenu = this.closeMenu.bind(this);
+    this.logout = this.logout.bind(this)
   }
 
   showMenu(event) {
@@ -32,24 +34,35 @@ export class Navbar extends Component {
     });
   }
 
+  logout() {
+    this.props.dispatch(clearAuth());
+  }
+
   render() {
+    let loggedInNavbar;
+
+    if (this.props.loggedIn) {
+      loggedInNavbar = (
+        <button onClick={this.showMenu}>
+          Welcome, User1
+        </button>
+      )
+    } else {
+      loggedInNavbar = (<NavLink to='/login'>Login</NavLink>)
+    }
     return (
       <div>
         <nav className='navbar'>
           <span className='home'><NavLink to='/'>App Title</NavLink></span>
 
-
-          <button onClick={this.showMenu}>
-            Welcome, User1
-        </button>
-
+          {loggedInNavbar}
           {
             this.state.showMenu
               ? (
                 <div className="dropdown-menu">
                   <NavLink to='/submit'>Submit new report</NavLink>
                   <button> Dummy link 1 </button>
-                  <button> Dummy link 2 </button>
+                  <button onClick={this.logout}> Logout </button>
                 </div>
               )
               : (
@@ -62,5 +75,8 @@ export class Navbar extends Component {
   }
 }
 
+export const mapStateToProps = (state, props) => ({
+  loggedIn: state.auth.currentUser !== null,
+});
 
-export default Navbar;
+export default (connect(mapStateToProps)(Navbar));
