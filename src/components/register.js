@@ -2,6 +2,7 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 import Input from "./input";
 import { required, nonEmpty, matches, length, isTrimmed } from "../utils/validators";
+import {register} from '../actions/userActions';
 
 const passwordLength = length({ min: 10, max: 72 })
 const matchesPassword = matches("password")
@@ -12,7 +13,7 @@ export class RegistrationForm extends React.Component {
     const { handleSubmit, pristine, submitting} = this.props;
 
 		return (
-			<form className="login-form" onSubmit={handleSubmit(values => console.log(values))}>
+			<form className="register-form" onSubmit={handleSubmit(values => console.log(values))}>
 				<label htmlFor="username" >Username</label>
         <Field component={Input}
 					type="text"
