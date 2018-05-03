@@ -44,7 +44,7 @@ export class Navbar extends Component {
     if (this.props.loggedIn) {
       loggedInNavbar = (
         <button onClick={this.showMenu}>
-          Welcome, User1
+          Welcome, {this.props.currentUser.username}
         </button>
       )
     } else {
@@ -76,6 +76,7 @@ export class Navbar extends Component {
 
 export const mapStateToProps = (state, props) => ({
   loggedIn: state.auth.currentUser !== null,
+  currentUser: state.auth.currentUser ? state.auth.currentUser : ''
 });
 
 export default (connect(mapStateToProps)(Navbar));
