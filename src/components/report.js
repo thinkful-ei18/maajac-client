@@ -53,7 +53,7 @@ class reportForm extends Component {
             label="Description of Incident"
             type="text"
             name="description"
-            validate={[required, nonEmpty, minLength120]}
+            validate={[required, nonEmpty]}
           />
           {/* <Field
             component={Input}
