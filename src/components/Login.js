@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, focus } from 'redux-form';
 
 import Input from './input';
 import { required, nonEmpty } from '../utils/validators';
@@ -11,16 +11,16 @@ export class LoginForm extends Component {
 	}
 
 	render() {
-		const { handleSubmit, pristine, submitting } = this.props;
+		const { handleSubmit, pristine, submitting, submitFailed } = this.props;
 
-		let error;
-		if (this.props.error) {
-			error = (
-				<div className="form-error" aria-live="polite">
-					{this.props.error}
-				</div>
-			);
-		}
+    let errorMessage;
+    if (submitFailed) {
+      errorMessage = (
+        <div className="form-error" aria-live="polite">
+          {this.props.error}
+        </div>
+      );
+    }
 
 		return (
 			<form
@@ -29,7 +29,7 @@ export class LoginForm extends Component {
 					this.onLogin(values);
 				})}
 			>
-				{error}
+				{errorMessage}
 
 				<label htmlFor="username">Username</label>
 				<Field
@@ -62,6 +62,14 @@ export class LoginForm extends Component {
 	}
 }
 
+// export default reduxForm({
+//   form: 'login',
+//   onSubmitFail: (errors, dispatch) =>
+//     dispatch(focus('login', Object.keys(errors)[0]))
+// })(LoginForm);
+
 export default reduxForm({
-	form: 'login',
-})(LoginForm);
+  form:'login',
+  onSubmitFail: (errors, dispatch) =>
+    dispatch(focus('complaint', Object.keys(errors)[0]))
+})(LoginForm)
