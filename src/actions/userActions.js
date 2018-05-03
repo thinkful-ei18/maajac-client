@@ -34,7 +34,7 @@ export const register = user => dispatch => {
 		.then(res => res.json())
 		.then(() => {
 			const newUser = {username: user.username, password: user.password};
-			console.log(newUser);
+			console.log('new user created:', newUser);
 			// now log in the user!
 		})
 		.catch(err => {
