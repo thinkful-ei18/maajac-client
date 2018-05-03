@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 
 import './App.css';
-import { Route, withRouter } from 'react-router-dom'
+// import { Route, withRouter } from 'react-router-dom'
 import ReportForm from './components/report';
 import RegistrationForm from './components/register';
 import LoginForm from './components/login';
@@ -15,6 +15,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Navbar />
         <Route exact path="/register" component={RegistrationForm} />
         <Route exact path="/report" component={ReportForm} />
         <Route exact path="/" component={GoogleMapWrapper} />
