@@ -5,6 +5,8 @@ import LandingPage from './components/LandingPage'
 import RegistrationForm from './components/register';
 import LoginForm from './components/login';
 import ReportForm from './components/report';
+import GoogleMapWrapper from './components/GoogleMapWrapper';
+import Navbar from './components/navbar';
 
 import './App.css';
 
@@ -12,6 +14,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Navbar />
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/register" component={RegistrationForm} />
         <Route exact path="/login" component={LoginForm} />
