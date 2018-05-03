@@ -22,7 +22,7 @@ export const registerSuccess = () => ({
 });
 
 export const register = user => dispatch => {
-  return fetch(`${API_BASE_URL}/api/users`, {
+  return fetch(`${API_BASE_URL}/users`, {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
@@ -84,7 +84,7 @@ const storeAuthToken = (authToken, dispatch) => {
 export const refreshAuthToken = () => (dispatch, getState) => {
   dispatch(authRequest());
   const authToken = getState().user.authToken;
-  return fetch(`${API_BASE_URL}/api/auth/refresh`, {
+  return fetch(`${API_BASE_URL}/auth/refresh`, {
     method: 'POST',
     headers: {
       // Provide our existing token as credentials to get a new one
@@ -124,7 +124,7 @@ export const refreshAuthToken = () => (dispatch, getState) => {
 export const login = data => dispatch => {
   dispatch(authRequest());
   return (
-    fetch(`${API_BASE_URL}/api/auth/login`, {
+    fetch(`${API_BASE_URL}/auth/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
