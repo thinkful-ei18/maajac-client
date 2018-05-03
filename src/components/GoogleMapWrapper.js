@@ -1,7 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import GoogleMapComponenet from './googleMap';
+import { connect } from 'react-redux';
+
 import { getMarkers } from '../actions/markerActions';
+import { setUserLocation } from '../actions/reportActions'
 
 export class GoogleMapWrapper extends React.PureComponent {
   constructor(props) {
@@ -45,13 +47,16 @@ export class GoogleMapWrapper extends React.PureComponent {
   handleMapClick(event) {
     let lat = event.latLng.lat();
     let lng = event.latLng.lng();
-    console.log(lat, lng);
+    console.log('lat:',lat);
+    console.log('lng', lng)
     this.setState({
       indicatorPin: {
         lat,
         lng
       }
     });
+    // set the pin location in state
+    this.props.dispatch(setUserLocation({lat, lng}))
   }
 
   onToggleOpen() {
