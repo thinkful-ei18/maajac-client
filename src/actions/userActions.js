@@ -12,8 +12,9 @@ export const registerRequest = () => ({
 })
 
 export const REGISTER_ERROR = "REGISTER_ERROR"
-export const registerError = () => ({
-	type: REGISTER_ERROR
+export const registerError = error => ({
+	type: REGISTER_ERROR,
+	error
 })
 
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS"
