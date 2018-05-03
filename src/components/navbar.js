@@ -33,16 +33,23 @@ export class Navbar extends Component {
   }
 
   render() {
+    let loggedInNavbar;
+
+    if (this.props.loggedIn) {
+      loggedInNavbar = (
+        <button onClick={this.showMenu}>
+          Welcome, User1
+        </button>
+      )
+    } else {
+      loggedInNavbar = (<NavLink to='/login'>Login</NavLink>)
+    }
     return (
       <div>
         <nav className='navbar'>
           <span className='home'><NavLink to='/'>App Title</NavLink></span>
 
-
-          <button onClick={this.showMenu}>
-            Welcome, User1
-        </button>
-
+          {loggedInNavbar}
           {
             this.state.showMenu
               ? (
@@ -62,5 +69,8 @@ export class Navbar extends Component {
   }
 }
 
+export const mapStateToProps = (state, props) => ({
+  loggedIn: state.auth.currentUser !== null,
+});
 
-export default Navbar;
+export default (connect(mapStateToProps)(Navbar));
