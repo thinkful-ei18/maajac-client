@@ -1,32 +1,41 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
+import { newMarker } from '../actions/markerActions';
 
 import Input from './input';
-import { required, nonEmpty, minLength120, checkDate } from '../utils/validators';
+import {
+  required,
+  nonEmpty,
+  minLength120,
+  checkDate
+} from '../utils/validators';
 
 import './css/report.css';
 
 class reportForm extends Component {
-
   render() {
     const { handleSubmit, pristine, submitting, reset } = this.props;
-    console.log('user local:', this.props.location)
+    console.log('user local:', this.props.location);
 
-    return(
+    return (
       <div>
-        <form id="incident-report" onSubmit={handleSubmit(values => {console.log(values)}
-        )}>
-          <label
-            htmlFor="incident-type">Incident Type
-          </label>
+        <form
+          id="incident-report"
+          onSubmit={handleSubmit(values => {
+            values.location = this.props.location;
+            console.log(values);
+            this.props.dispatch(newMarker(values));
+          })}
+        >
+          <label htmlFor="incident-type">Incident Type</label>
           <Field
             component="select"
             id="type"
-            name="type"
+            name="incidentType"
             required="required"
           >
-            <option value=""></option>
+            <option value="" />
             <option value="crime">Crime</option>
             <option value="accident">Traffic Accident</option>
             <option value="other">Other</option>
@@ -63,14 +72,10 @@ class reportForm extends Component {
             name="suspect"
             validate={[required, nonEmpty, minLength120]}
           /> */}
-          <button
-            type="submit"
-            onClick={reset}>
+          <button type="submit" onClick={reset}>
             Clear Values
           </button>
-          <button
-            type="submit"
-            disabled={pristine || submitting}>
+          <button type="submit" disabled={pristine || submitting}>
             Submit
           </button>
         </form>
@@ -79,18 +84,15 @@ class reportForm extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   location: state.report.userLocation
 });
 
-reportForm = connect(
-  mapStateToProps,
-)(reportForm)
+reportForm = connect(mapStateToProps)(reportForm);
 
 export default reduxForm({
-  form: "report"
+  form: 'report'
 })(reportForm);
-
 
 // reportForm = reduxForm({
 //   form: "report"
