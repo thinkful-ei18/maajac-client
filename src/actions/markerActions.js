@@ -1,4 +1,4 @@
-import { API_BASE_URL } from '../config'
+import { API_BASE_URL } from '../config';
 
 export const GET_MARKER_SUCCESS = 'GET_MARKER_SUCCESS';
 export const getMarkerSuccess = markers => ({
@@ -14,7 +14,7 @@ export const getMarkerError = error => ({
 
 export const GET_MARKER_REQUEST = 'GET_MARKER_REQUEST';
 export const getMarkerRequest = () => ({
-  type: GET_MARKER_REQUEST,
+  type: GET_MARKER_REQUEST
 });
 
 export const NEW_MARKER_SUCCESS = 'NEW_MARKER_SUCCESS';
@@ -31,41 +31,41 @@ export const newMarkerError = error => ({
 
 export const NEW_MARKER_REQUEST = 'NEW_MARKER_REQUEST';
 export const newMarkerRequest = () => ({
-  type: NEW_MARKER_REQUEST,
+  type: NEW_MARKER_REQUEST
 });
 
-export const newMarker = (incidentType, location, date, userId, description) => (dispatch, getState) => {
-  // TODO: once auth is set
-  // const authToken = getState().auth.authToken;
-  dispatch(newMarkerRequest())
+export const newMarker = values => (dispatch, getState) => {
+  const { incidentType, location, date, time, description } = values;
+  const authToken = localStorage.getItem('authToken')
+    ? localStorage.getItem('authToken')
+    : getState().auth.authToken;
+  dispatch(newMarkerRequest());
   return fetch(`${API_BASE_URL}/new/marker`, {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
-      // Authorization: `Bearer ${authToken}`
+      Authorization: `Bearer ${authToken}`
     },
     body: JSON.stringify({
       incidentType,
       location,
       date,
-      userId,
-      description
+      description,
+      time
     })
   })
     .then(res => res.json())
     .then(({ data }) => {
-      dispatch(newMarkerSuccess(data))
-      getMarkers()
+      dispatch(newMarkerSuccess(data));
+      dispatch(getMarkers());
     })
     .catch(err => {
       dispatch(newMarkerError(err));
     });
 };
 
-
-
 export const getMarkers = () => (dispatch, getState) => {
-  dispatch(getMarkerRequest())
+  dispatch(getMarkerRequest());
   return fetch(`${API_BASE_URL}/markers`, {
     method: 'GET',
     headers: {
@@ -73,8 +73,8 @@ export const getMarkers = () => (dispatch, getState) => {
     }
   })
     .then(res => res.json())
-    .then((data) => dispatch(getMarkerSuccess(data)))
+    .then(data => dispatch(getMarkerSuccess(data)))
     .catch(err => {
       dispatch(getMarkerError(err));
     });
-}
+};
