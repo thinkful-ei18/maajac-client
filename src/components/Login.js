@@ -8,21 +8,13 @@ import { required, nonEmpty } from '../utils/validators';
 import { login } from '../actions/userActions';
 
 export class LoginForm extends Component {
+
 	onLogin(values) {
 		return this.props.dispatch(login(values.username, values.password));
 	}
 
 	render() {
-		const { handleSubmit, pristine, submitting, submitFailed } = this.props;
-
-    let errorMessage;
-    if (submitFailed) {
-      errorMessage = (
-        <div className="form-error" aria-live="polite">
-          {this.props.error}
-        </div>
-      );
-    }
+		const { handleSubmit, pristine, submitting, error } = this.props;
 
 		return (
 			<div className='login'>
@@ -33,7 +25,9 @@ export class LoginForm extends Component {
 						this.onLogin(values);
 					})}
 				>
-					{errorMessage}
+					<div className="form-error" aria-live="polite">
+          	{error}
+        	</div>
 
 					<label htmlFor="username">Username</label>
 					<Field
@@ -69,6 +63,7 @@ export class LoginForm extends Component {
 
 export const mapStateToProps = (state, props) => ({
 	loggedIn: state.auth.currentUser !== null,
+	error: state.auth.error !== null ? state.auth.error : ''
 });
 
 export default reduxForm({
