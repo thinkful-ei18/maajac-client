@@ -68,6 +68,7 @@ export class LoginForm extends Component {
 
 export const mapStateToProps = (state, props) => ({
 	loggedIn: state.auth.currentUser !== null,
+	error: state.auth.error
 });
 
 export default reduxForm({
