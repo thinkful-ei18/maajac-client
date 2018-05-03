@@ -1,24 +1,43 @@
 import React from "react";
-import { Field, reduxForm } from "redux-form";
+import { Field, reduxForm, focus } from "redux-form";
 import Input from "./input";
 import { required, nonEmpty, matches, length, isTrimmed } from "../utils/validators";
+import {register} from '../actions/userActions';
 
 const passwordLength = length({ min: 10, max: 72 })
 const matchesPassword = matches("password")
 
 export class RegistrationForm extends React.Component {
 
+	onSubmit(values){
+		return this.props.dispatch(register(values));
+	}
+
 	render() {
-    const { handleSubmit, pristine, submitting} = this.props;
+    const { handleSubmit, pristine, submitting, dispatch, error} = this.props;
 
 		return (
-			<form className="login-form" onSubmit={handleSubmit(values => console.log(values))}>
-				<label htmlFor="username" >Username</label>
+			<form className="register-form" onSubmit={handleSubmit(values => {
+				this.onSubmit(values);
+				})}>
+				<label htmlFor="username">Username</label>
         <Field component={Input}
 					type="text"
 					name="username"
 					placeholder="sally123"
 					validate={[required, nonEmpty, isTrimmed]} />
+				{/* <label htmlFor="username" >First Name</label>
+        <Field component={Input}
+					type="text"
+					name="firstName"
+					placeholder="Sally"
+					validate={[required, nonEmpty, isTrimmed]} />
+				<label htmlFor="username" >Last Name (Not Required)</label>
+        <Field component={Input}
+					type="text"
+					name="lastName"
+					placeholder="Student"
+					validate={[required, nonEmpty, isTrimmed]} /> */}
 				<label htmlFor="password">Password</label>
 				<Field
 					component={Input}
@@ -37,14 +56,15 @@ export class RegistrationForm extends React.Component {
 				<button className="form-primary-button" type="submit" disabled={pristine || submitting}>
 					Sign Up
 				</button>
-				<button className="form-login">
+				{/* <button className="form-login">
 					Already have an account? <span className="form-login-text">Log in</span>
-				</button>
+				</button> */}
 			</form>
 		)
 	}
 }
 
 export default reduxForm({
-	form: "registration"
+	form: "registration",
+	onSubmitFail: (errors, dispatch) => dispatch(focus("registration", Object.keys(errors)[0]))
 })(RegistrationForm)
