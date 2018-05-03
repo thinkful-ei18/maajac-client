@@ -18,10 +18,10 @@ export class Dashboard extends React.Component {
     // }
     const reports = [1, 2, 3];
     let userReports = reports.map(report => (
-      <div className="report-card" key={report.id}>
+      <div className="report-card" key={report}>
         user report
         <div>
-          <DeleteButton id={report.id} />
+          <DeleteButton id={report} />
         </div>
       </div>
     ));
@@ -37,7 +37,7 @@ export class Dashboard extends React.Component {
     return (
       <main>
         <h2>Dashboard</h2>
-        <Link to={'/'}>Link</Link>
+        <Link to={'/'}>Back to Map</Link>
         {userReports}
         {instructions}
       </main>
