@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { clearAuth } from '../actions/userActions'
 // import Menu from '../components/dropdownMenu';
 
 // styles
@@ -16,6 +17,7 @@ export class Navbar extends Component {
 
     this.showMenu = this.showMenu.bind(this);
     this.closeMenu = this.closeMenu.bind(this);
+    this.logout = this.logout.bind(this)
   }
 
   showMenu(event) {
@@ -30,6 +32,10 @@ export class Navbar extends Component {
     this.setState({ showMenu: false }, () => {
       document.removeEventListener('click', this.closeMenu);
     });
+  }
+
+  logout() {
+    this.props.dispatch(clearAuth());
   }
 
   render() {
@@ -56,7 +62,7 @@ export class Navbar extends Component {
                 <div className="dropdown-menu">
                   <NavLink to='/submit'>Submit new report</NavLink>
                   <button> Dummy link 1 </button>
-                  <button> Dummy link 2 </button>
+                  <button onClick={this.logout}> Logout </button>
                 </div>
               )
               : (
