@@ -15,14 +15,14 @@ export class GoogleMapWrapper extends React.PureComponent {
       indicatorPin: {
         lat: -34.397,
         lng: 150.644
-      }
+      },
+      popupIsOpen: false
     };
   }
 
   componentDidMount() {
     // Get markers from server
-    this.props.dispatch(getMarkers())
-
+    this.props.dispatch(getMarkers());
 
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -54,8 +54,13 @@ export class GoogleMapWrapper extends React.PureComponent {
     });
   }
 
-  render() {
+  onToggleOpen() {
+    this.setState({
+      popupIsOpen: !this.state.popupIsOpen
+    });
+  }
 
+  render() {
     return (
       <GoogleMapComponenet
         isMarkerShown={this.state.isMarkerShown}
@@ -64,7 +69,8 @@ export class GoogleMapWrapper extends React.PureComponent {
         onHandleClick={e => this.handleMapClick(e)}
         markers={this.props.markersFromServer}
         indicatorPin={this.state.indicatorPin}
-
+        isOpen={this.state.popupIsOpen}
+        onToggleOpen={() => this.onToggleOpen()}
       />
     );
   }
@@ -74,4 +80,4 @@ export const mapStateToProps = (state, props) => ({
   markersFromServer: state.markers.allMarkers ? state.markers.allMarkers : []
 });
 
-export default (connect(mapStateToProps)(GoogleMapWrapper));
+export default connect(mapStateToProps)(GoogleMapWrapper);
