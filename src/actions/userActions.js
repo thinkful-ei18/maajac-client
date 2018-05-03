@@ -34,16 +34,17 @@ export const register = user => dispatch => {
 		.then(res => res.json())
 		.then(() => {
 			const newUser = {username: user.username, password: user.password};
-			console.log('new user created:', newUser);
+			return console.log('new user created:', newUser);
 			// now log in the user!
 		})
 		.catch(err => {
+			console.log(err);
 			const { reason, message, location } = err
 			if (reason === "ValidationError") {
 				// Convert ValidationErrors into SubmissionErrors for Redux Form
 				return Promise.reject(
 					new SubmissionError({
-						[location]: message
+						location: message
 					})
 				)
 			}
