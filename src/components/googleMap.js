@@ -8,6 +8,7 @@ import {
   Marker,
   InfoWindow
 } from 'react-google-maps';
+import Incident from './IncidentMarker';
 import { styles } from './mapStyle';
 
 const GoogleMapComponent = compose(
@@ -29,19 +30,12 @@ const GoogleMapComponent = compose(
   >
     {props.isMarkerShown &&
       props.markers.map((marker, index) => {
-        return (
-          <Marker
-            key={index}
-            icon={marker.icon}
-            position={{ lat: marker.location.lat, lng: marker.location.lng }}
-            onClick={props.onMarkerClick}
-          />
-        );
+        return <Incident marker={marker} index={index} />;
       })}) )
     <Marker position={props.indicatorPin} onClick={props.onToggleOpen}>
       {props.isOpen && (
         <InfoWindow onCloseClick={props.onToggleOpen}>
-          <p>Hello from Canada</p>
+          <p>Incident Marker</p>
         </InfoWindow>
       )}
     </Marker>
