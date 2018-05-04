@@ -31,6 +31,7 @@ export class Dashboard extends React.Component {
 
     let userReports = reports.map(report => (
       <div className="report-card" key={report._id}>
+      {this.props.loggedIn ? '' : ( <Redirect to='/' />) }
         <h2>{report.incidentType}</h2>
         <h3>Date:{report.date}</h3>
         <p>

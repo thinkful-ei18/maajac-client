@@ -35,7 +35,7 @@ export const register = user => dispatch => {
     .then(() => dispatch(login(user.username, user.password)) )
     .catch(err => {
 			const { reason, message } = err;
-			
+
       if (reason === 'ValidationError') {
         return Promise.reject(
           new SubmissionError({
@@ -69,7 +69,7 @@ export const login = (username, password) => dispatch => {
       .catch(err => {
 				const { status } = err.error;
         const message = status === 422 ? err.message : 'Unable to login, please try again';
-        
+
         return Promise.reject(
           new SubmissionError({
               _error: message
