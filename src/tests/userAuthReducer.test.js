@@ -1,5 +1,5 @@
 import { userAuthReducer } from "../reducers/userAuthReducer";
-import { setAuthToken, clearAuth, authRequest, authSuccess, authError, registerError } from "../actions/userActions";
+import { setAuthToken, clearAuth, authRequest, authSuccess, authError, registerError, registerRequest, registerSuccess } from "../actions/userActions";
 
 describe('userAuthReducer reducer', () => {
   it('should return the intial state', () => {
@@ -77,6 +77,25 @@ describe('userAuthReducer reducer', () => {
       ...state,
       error: err,
       loading: false
+    })
+  })
+
+  it('should set loading to true on register request', () => {
+    let state;
+    state = userAuthReducer(state, registerRequest())
+    expect(state).toEqual({
+      ...state,
+      loading: true,
+    })
+  })
+
+  it('should set loading to false and error to false on register success', () => {
+    let state;
+    state = userAuthReducer(state, registerSuccess())
+    expect(state).toEqual({
+      ...state,
+      loading: false,
+      error: false
     })
   })
 })
