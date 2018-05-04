@@ -1,4 +1,4 @@
-import { getMarkerSuccess, GET_MARKER_SUCCESS, getMarkerError, GET_MARKER_ERROR, getMarkerRequest, GET_MARKER_REQUEST, newMarkerSuccess, NEW_MARKER_SUCCESS } from "../actions/markerActions";
+import { getMarkerSuccess, GET_MARKER_SUCCESS, getMarkerError, GET_MARKER_ERROR, getMarkerRequest, GET_MARKER_REQUEST, newMarkerSuccess, NEW_MARKER_SUCCESS, newMarkerError, NEW_MARKER_ERROR, newMarkerRequest, NEW_MARKER_REQUEST } from "../actions/markerActions";
 
 // GET /api/markers
 describe('GET markers actions', () => {
@@ -27,5 +27,15 @@ describe('POST marker actions', () => {
     const action = newMarkerSuccess(marker)
     expect(action.type).toEqual(NEW_MARKER_SUCCESS)
     expect(action.marker).toEqual(marker)
+  })
+  it('should return the newMarkerError and error', () => {
+    const err = 1234
+    const action = newMarkerError(err)
+    expect(action.type).toEqual(NEW_MARKER_ERROR)
+    expect(action.error).toEqual(err)
+  })
+  it('should return the newMarkerRequest', () => {
+    const action = newMarkerRequest()
+    expect(action.type).toEqual(NEW_MARKER_REQUEST)
   })
 })
