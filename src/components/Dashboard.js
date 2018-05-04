@@ -35,9 +35,9 @@ export class Dashboard extends React.Component {
       <div className="report-card" key={report._id}>
       {this.props.loggedIn ? '' : ( <Redirect to='/' />) }
         <h2 className="incident-type">{report.incidentType}</h2>
-        <h3 className="incident-date">Date:{report.date}</h3>
+        <h3 className="incident-date">Date: {report.date}</h3>
         {/* <p className="incident-location">
-          Location:{report.location.lat + report.location.lng}
+          Location: {report.location.lat + report.location.lng}
         </p> */}
         <div className="incident-description-title">Description:</div>
         <p className="incident-description">{report.description}</p>
@@ -59,7 +59,9 @@ export class Dashboard extends React.Component {
       <main>
         <h2>Dashboard</h2>
         <Link to={'/'}>Back to Map</Link>
-        {userReports}
+        <div className="user-reports">
+          {userReports}
+        </div>
         {instructions}
       </main>
     );
