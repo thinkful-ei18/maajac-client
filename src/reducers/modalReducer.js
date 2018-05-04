@@ -1,11 +1,11 @@
-import { OPEN_SIGN_UP, OPEN_LOGIN, OPEN_DIALOG, CLOSE_DIALOG} from "../actions/control";
+import { OPEN_SIGN_UP, OPEN_LOGIN, OPEN_DIALOG, CLOSE_DIALOG} from "../actions/modalActions";
 
 const initialState = {
 	currentTab: null,
 	dialog: false
 };
 
-export default function controlReducer(state = initialState, action) {
+export default function modalReducer(state = initialState, action) {
 	if (action.type === OPEN_SIGN_UP) {
 		return { ...state, currentTab: "signup" };
 	}
