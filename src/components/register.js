@@ -14,7 +14,7 @@ const matchesPassword = matches("password")
 export class RegistrationForm extends React.Component {
 	onSubmit(values){
 		return this.props.dispatch(register(values))
-		.then(() => this.props.dispatch(closeDialog()));;
+		.then(() => this.props.dispatch(closeDialog()));
 	}
 
 	handleLoginClick() {
