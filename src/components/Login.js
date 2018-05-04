@@ -62,6 +62,9 @@ export class LoginForm extends Component {
 					>
 						Log in
         </button>
+				<button className="form-register">
+					Don't have an account? <span className="form-register-text">Sign up</span>
+				</button>
 				</form>
 			</div>
 		);
