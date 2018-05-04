@@ -11,7 +11,6 @@ import {
   checkDate
 } from '../utils/validators';
 
-import './css/report.css';
 
 class reportForm extends Component {
   render() {
