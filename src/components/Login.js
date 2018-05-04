@@ -14,19 +14,26 @@ export class LoginForm extends Component {
 	}
 
 	render() {
-		const { handleSubmit, pristine, submitting, error } = this.props;
+		const { handleSubmit, pristine, submitting } = this.props;
+
+		let errorMessage;
+		if (this.props.error) {
+			errorMessage = (
+				<div className="form-error" aria-live="polite">
+					{this.props.error}
+				</div>
+			);
+		}
 
 		return (
 			<div className='login'>
 				{this.props.loggedIn ? (<Redirect to='/' />) : ''}
 				<form
 					className="login-form"
-					onSubmit={handleSubmit(values => {
-						this.onLogin(values);
-					})}
+					onSubmit={handleSubmit( values => this.onLogin(values) )}
 				>
 					<div className="form-error" aria-live="polite">
-          	{error}
+          	{errorMessage}
         	</div>
 
 					<label htmlFor="username">Username</label>
@@ -63,7 +70,6 @@ export class LoginForm extends Component {
 
 export const mapStateToProps = (state, props) => ({
 	loggedIn: state.auth.currentUser !== null,
-	error: state.auth.error !== null ? state.auth.error : ''
 });
 
 export default reduxForm({
