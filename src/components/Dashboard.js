@@ -1,21 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { getMarkersDashboard } from '../actions/markerActions';
 import { withRouter, Redirect } from 'react-router';
 // import { jwtFetch } from './actions/login_actions';
 import { DeleteButton } from './DeleteButton';
 
 export class Dashboard extends React.Component {
-  componentDidMount() {
+  componentDidMount(props) {
     // if (this.props.jwt && this.props.reports.length < 1) {
     //   this.props.dispatch(jwtFetch(this.props.jwt));
     // }
+
+    this.props.dispatch(getMarkersDashboard());
+    console.log(this.props.currentUser);
   }
 
   render() {
     // if (!this.props.jwt) {
     //   return <Redirect to="/signin" />;
     // }
+
     const reports = [1, 2, 3];
     let userReports = reports.map(report => (
       <div className="report-card" key={report}>
@@ -50,6 +55,12 @@ export class Dashboard extends React.Component {
 //   userReports: state.user.reports,
 // });
 
-export default (Dashboard = withRouter(Dashboard));
+export const mapStateToProps = state => ({
+  markersFromServer: state.markers.allMarkers ? state.markers.allMarkers : [],
+  loggedIn: state.auth.currentUser !== null,
+  currentUser: state.currentUser,
+});
+
+export default withRouter(connect(mapStateToProps)(Dashboard));
 
 // export default connect(mapStateToProps)(Dashboard);
