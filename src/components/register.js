@@ -1,6 +1,5 @@
 import React from "react";
 import { Field, reduxForm, focus } from "redux-form";
-import { connect } from 'react-redux'
 
 import Input from "./input";
 import { required, nonEmpty, matches, length, isTrimmed } from "../utils/validators";
@@ -16,15 +15,22 @@ export class RegistrationForm extends React.Component {
 	}
 
 	render() {
-		const { handleSubmit, pristine, submitting, error} = this.props;
+		const { handleSubmit, pristine, submitting } = this.props;
+
+		let errorMessage;
+		if (this.props.error) {
+			errorMessage = (
+				<div className="form-error" aria-live="polite">
+					{this.props.error}
+				</div>
+			);
+		}
 
 		return (
-			<form className="register-form" onSubmit={handleSubmit(values => {
-				this.onSubmit(values);
-				})}>
+			<form className="register-form" onSubmit={handleSubmit( values => this.onSubmit(values) )}>
 
 				<div className="form-error" aria-live="polite">
-					{error}
+					{errorMessage}
         </div>
 
 				<label htmlFor="username">Username</label>
@@ -71,11 +77,7 @@ export class RegistrationForm extends React.Component {
 	}
 }
 
-export const mapStateToProps = (state, props) => ({
-	error: state.auth.error !== null ? state.auth.error : ''
-});
-
 export default reduxForm({
 	form: "registration",
 	onSubmitFail: (errors, dispatch) => dispatch(focus("registration", Object.keys(errors)[0]))
-})(connect(mapStateToProps)(RegistrationForm))
+})(RegistrationForm)
