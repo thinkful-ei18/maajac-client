@@ -1,0 +1,72 @@
+/* ============================
+COLOR SCHEME
+============================ */
+
+#COLORS {
+  color: #2e3434;
+  color: #3b4141;
+  color: #2e3434;
+  color: #7bc087;
+  color: #9e9fa1;
+  color: #a0472f;
+}
+
+/* ============================
+MOBILE VIEW
+============================ */
+
+.user-reports {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.report-card {
+  width: 80%;
+  background-color: #9e9fa1;
+  margin: 10px auto;
+  padding: 10px;
+  height: 350px;
+}
+
+.incident-type,
+.incident-date,
+.incident-location,
+.incident-description-title,
+.incident-description {
+  padding: 5px 0;
+}
+
+.incident-description-title {
+  margin-top: 20px;
+}
+
+.delete-incident {
+  background-color: #a0472f;
+  width: 50%;
+  margin-top: 15px;
+  height: 25px;
+  color: #ffffff;
+}
+
+/* ============================ 
+MEDIA QUERIES
+============================*/
+
+/* tablet */
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1023px) and (-webkit-min-device-pixel-ratio: 1) {}
+
+/* desktop */
+
+@media only screen and (min-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+  .user-reports {
+    display: flex;
+    flex-direction: row;
+    width: 85%;
+    margin: 0 auto;
+  }
+  .report-card {
+    width: 250px;
+  }
+}

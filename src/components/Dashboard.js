@@ -8,6 +8,8 @@ import {
 import { withRouter, Redirect } from 'react-router';
 // import { jwtFetch } from './actions/login_actions';
 
+import './css/dashboard.css'
+
 export class Dashboard extends React.Component {
   componentDidMount(props) {
     // if (this.props.jwt && this.props.reports.length < 1) {
@@ -32,14 +34,14 @@ export class Dashboard extends React.Component {
     let userReports = reports.map(report => (
       <div className="report-card" key={report._id}>
       {this.props.loggedIn ? '' : ( <Redirect to='/' />) }
-        <h2>{report.incidentType}</h2>
-        <h3>Date:{report.date}</h3>
-        <p>
-          Location:{report.location.lat},{report.location.lng}
-        </p>
-        <div>Description:</div>
-        <p>{report.description}</p>
-        <button onClick={e => this.onClick(e)} id={report._id}>
+        <h2 className="incident-type">{report.incidentType}</h2>
+        <h3 className="incident-date">Date: {report.date}</h3>
+        {/* <p className="incident-location">
+          Location: {report.location.lat + report.location.lng}
+        </p> */}
+        <div className="incident-description-title">Description:</div>
+        <p className="incident-description">{report.description}</p>
+        <button onClick={e => this.onClick(e)} id={report._id} className="delete-incident">
           Delete
         </button>
       </div>
@@ -57,7 +59,9 @@ export class Dashboard extends React.Component {
       <main>
         <h2>Dashboard</h2>
         <Link to={'/'}>Back to Map</Link>
-        {userReports}
+        <div className="user-reports">
+          {userReports}
+        </div>
         {instructions}
       </main>
     );
