@@ -1,7 +1,8 @@
-form {
+.report form {
   /* these can be changed later! */
   width: 250px;
   border: 5px solid black;
+  display: none;
 }
 
 

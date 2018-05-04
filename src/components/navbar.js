@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { clearAuth } from '../actions/userActions'
+import { clearAuth } from '../actions/userActions';
 // import Menu from '../components/dropdownMenu';
 
 // styles
-import './css/navbar.css'
+import './css/navbar.css';
 
 export class Navbar extends Component {
   constructor() {
     super();
 
     this.state = {
-      showMenu: false,
+      showMenu: false
     };
 
     this.showMenu = this.showMenu.bind(this);
     this.closeMenu = this.closeMenu.bind(this);
-    this.logout = this.logout.bind(this)
+    this.logout = this.logout.bind(this);
   }
 
   showMenu(event) {
@@ -46,28 +46,29 @@ export class Navbar extends Component {
         <button onClick={this.showMenu}>
           Welcome, {this.props.currentUser.username}
         </button>
-      )
+      );
     } else {
-      loggedInNavbar = (<NavLink to='/login'>Login</NavLink>)
+      loggedInNavbar = (
+        <div>
+          <NavLink to="/login">Login</NavLink>
+          <NavLink to="/register">Sign Up</NavLink>
+        </div>
+      );
     }
     return (
       <div>
-        <nav className='navbar'>
-          <span className='home'><NavLink to='/'>App Title</NavLink></span>
+        <nav className="navbar">
+          <span className="home">
+            <NavLink to="/">App Title</NavLink>
+          </span>
 
           {loggedInNavbar}
-          {
-            this.state.showMenu
-              ? (
-                <div className="dropdown-menu">
-                  <NavLink to='/dashboard'>Dashboard</NavLink>
-                  <button onClick={this.logout}> Logout </button>
-                </div>
-              )
-              : (
-                null
-              )
-          }
+          {this.state.showMenu ? (
+            <div className="dropdown-menu">
+              <NavLink to="/dashboard">Dashboard</NavLink>
+              <button onClick={this.logout}> Logout </button>
+            </div>
+          ) : null}
         </nav>
       </div>
     );
@@ -79,4 +80,4 @@ export const mapStateToProps = (state, props) => ({
   currentUser: state.auth.currentUser ? state.auth.currentUser : ''
 });
 
-export default (connect(mapStateToProps)(Navbar));
+export default connect(mapStateToProps)(Navbar);

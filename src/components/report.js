@@ -18,7 +18,7 @@ class reportForm extends Component {
     const { handleSubmit, pristine, submitting, reset } = this.props;
 
     return (
-      <div>
+      <div className="report">
         <form
           id="incident-report"
           onSubmit={handleSubmit(values => {
