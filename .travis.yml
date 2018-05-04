@@ -8,6 +8,4 @@ script:
 env:
   - CI=true
 
-  branches:
-  only:
-  - master
+
