@@ -27,7 +27,7 @@ export class LoginForm extends Component {
 
 		return (
 			<div className='login'>
-				{this.props.loggedIn ? (<Redirect to='/dashboard' />) : ''}
+				{this.props.loggedIn ? (<Redirect to='/' />) : ''}
 				<form
 					className="login-form"
 					onSubmit={handleSubmit( values => this.onLogin(values) )}
