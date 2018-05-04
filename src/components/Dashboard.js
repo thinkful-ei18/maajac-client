@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getMarkersDashboard } from '../actions/markerActions';
+import {
+  getMarkersDashboard,
+  deleteMarkerDashboard,
+} from '../actions/markerActions';
 import { withRouter, Redirect } from 'react-router';
 // import { jwtFetch } from './actions/login_actions';
-import { DeleteButton } from './DeleteButton';
 
 export class Dashboard extends React.Component {
   componentDidMount(props) {
@@ -13,7 +15,11 @@ export class Dashboard extends React.Component {
     // }
 
     this.props.dispatch(getMarkersDashboard());
-    console.log(this.props.currentUser);
+  }
+  onClick(e) {
+    e.preventDefault();
+    console.log(e.target.id);
+    this.props.dispatch(deleteMarkerDashboard({ markerId: e.target.id }));
   }
 
   render() {
@@ -21,13 +27,20 @@ export class Dashboard extends React.Component {
     //   return <Redirect to="/signin" />;
     // }
 
-    const reports = [1, 2, 3];
+    const reports = this.props.markersFromServer;
+
     let userReports = reports.map(report => (
-      <div className="report-card" key={report}>
-        user report
-        <div>
-          <DeleteButton id={report} />
-        </div>
+      <div className="report-card" key={report._id}>
+        <h2>{report.incidentType}</h2>
+        <h3>Date:{report.date}</h3>
+        <p>
+          Location:{report.location.lat},{report.location.lng}
+        </p>
+        <div>Description:</div>
+        <p>{report.description}</p>
+        <button onClick={e => this.onClick(e)} id={report._id}>
+          Delete
+        </button>
       </div>
     ));
 

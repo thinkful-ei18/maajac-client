@@ -97,3 +97,21 @@ export const getMarkersDashboard = () => (dispatch, getState) => {
       dispatch(getMarkerError(err));
     });
 };
+
+export const deleteMarkerDashboard = marker => (dispatch, getState) => {
+  const authToken = localStorage.getItem('authToken')
+    ? localStorage.getItem('authToken')
+    : getState().auth.authToken;
+  fetch(`${API_BASE_URL}/markers/delete`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${authToken}`,
+    },
+    body: JSON.stringify(marker),
+  })
+    .then(() => dispatch(getMarkersDashboard()))
+    .catch(err => {
+      dispatch(getMarkerError(err));
+    });
+};
