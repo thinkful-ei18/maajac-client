@@ -4,7 +4,7 @@ import { NEW_MARKER_ERROR, NEW_MARKER_SUCCESS, NEW_MARKER_REQUEST, GET_MARKER_RE
 const initialState = {
   allMarkers: [],
   loading: false,
-  error: null,
+  error: false,
 };
 
 export const markerReducer = (state = initialState, action) => {
@@ -13,7 +13,7 @@ export const markerReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        error: null
+        error: false
       }
     case NEW_MARKER_ERROR:
       return {
