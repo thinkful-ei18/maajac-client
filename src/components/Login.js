@@ -6,12 +6,13 @@ import Input from './input';
 import { Redirect } from 'react-router-dom';
 import { required, nonEmpty } from '../utils/validators';
 import { login } from '../actions/userActions';
-import { openSignUp } from '../actions/modalActions';
+import { openSignUp, closeDialog } from '../actions/modalActions';
 
 export class LoginForm extends Component {
 
 	onLogin(values) {
-		return this.props.dispatch(login(values.username, values.password));
+		return this.props.dispatch(login(values.username, values.password))
+		.then(() => this.props.dispatch(closeDialog()));
 	}
 
 	handleSignup() {
