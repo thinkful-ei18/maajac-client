@@ -16,7 +16,6 @@ import './css/report.css';
 class reportForm extends Component {
   render() {
     const { handleSubmit, pristine, submitting, reset } = this.props;
-    console.log('user local:', this.props.location);
 
     return (
       <div>
@@ -24,7 +23,6 @@ class reportForm extends Component {
           id="incident-report"
           onSubmit={handleSubmit(values => {
             values.location = this.props.location;
-            console.log(values);
             this.props.dispatch(newMarker(values));
           })}
         >
@@ -93,9 +91,3 @@ reportForm = connect(mapStateToProps)(reportForm);
 export default reduxForm({
   form: 'report'
 })(reportForm);
-
-// reportForm = reduxForm({
-//   form: "report"
-// })(reportForm);
-
-// export default reportForm;
