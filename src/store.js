@@ -5,6 +5,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import markerReducer from './reducers/markerReducer';
 import reportReducer from './reducers/reportReducer';
 import userAuthReducer from './reducers/userAuthReducer';
+import modalReducer from './reducers/modalReducer';
 
 const store = createStore(
   combineReducers({
@@ -12,6 +13,7 @@ const store = createStore(
     markers: markerReducer,
     report: reportReducer,
     auth: userAuthReducer,
+    modal: modalReducer
   }),
   composeWithDevTools(applyMiddleware(thunk))
 );

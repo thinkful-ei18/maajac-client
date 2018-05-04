@@ -6,14 +6,18 @@ import { Redirect } from 'react-router-dom';
 import Input from "./input";
 import { required, nonEmpty, matches, length, isTrimmed } from "../utils/validators";
 import { register } from '../actions/userActions';
+import { openLogin } from '../actions/modalActions';
 
 const passwordLength = length({ min: 10, max: 72 })
 const matchesPassword = matches("password")
 
 export class RegistrationForm extends React.Component {
-
 	onSubmit(values){
 		return this.props.dispatch(register(values));
+	}
+
+	handleLoginClick() {
+		this.props.dispatch(openLogin());
 	}
 
 	render() {
@@ -72,9 +76,9 @@ export class RegistrationForm extends React.Component {
 				<button className="form-primary-button" type="submit" disabled={pristine || submitting}>
 					Sign Up
 				</button>
-				{/* <button className="form-login">
+				<button className="form-login" onClick={() => this.handleLoginClick()}>
 					Already have an account? <span className="form-login-text">Log in</span>
-				</button> */}
+				</button>
 			</form>
 		)
 	}

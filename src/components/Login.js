@@ -6,11 +6,16 @@ import Input from './input';
 import { Redirect } from 'react-router-dom';
 import { required, nonEmpty } from '../utils/validators';
 import { login } from '../actions/userActions';
+import { openSignUp } from '../actions/modalActions';
 
 export class LoginForm extends Component {
 
 	onLogin(values) {
 		return this.props.dispatch(login(values.username, values.password));
+	}
+
+	handleSignup() {
+		this.props.dispatch(openSignUp());
 	}
 
 	render() {
@@ -62,6 +67,9 @@ export class LoginForm extends Component {
 					>
 						Log in
         </button>
+				<button className="form-register" onClick={() => this.handleSignup()}>
+					Don't have an account? <span className="form-register-text">Sign up</span>
+				</button>
 				</form>
 			</div>
 		);
