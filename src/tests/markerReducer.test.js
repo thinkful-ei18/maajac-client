@@ -1,5 +1,5 @@
 import { markerReducer } from "../reducers/markerReducer";
-import { newMarkerSuccess, newMarkerError, newMarkerRequest, getMarkerError, getMarkerSuccess } from "../actions/markerActions";
+import { newMarkerSuccess, newMarkerError, newMarkerRequest, getMarkerError, getMarkerSuccess, getMarkerRequest } from "../actions/markerActions";
 
 describe('marker reducer', () => {
   it('should return the intial state', () => {
@@ -67,6 +67,16 @@ describe('marker reducer', () => {
       error: false,
       loading: false,
       allMarkers: markers
+    })
+  })
+
+  it('should change loading to true', () => {
+    let state;
+    state = markerReducer(state, getMarkerRequest())
+    expect(state).toEqual({
+      ...state,
+      error: false,
+      loading: true,
     })
   })
 })
