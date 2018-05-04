@@ -6,14 +6,15 @@ import { Redirect } from 'react-router-dom';
 import Input from "./input";
 import { required, nonEmpty, matches, length, isTrimmed } from "../utils/validators";
 import { register } from '../actions/userActions';
-import { openLogin } from '../actions/modalActions';
+import { openLogin, closeDialog } from '../actions/modalActions';
 
 const passwordLength = length({ min: 10, max: 72 })
 const matchesPassword = matches("password")
 
 export class RegistrationForm extends React.Component {
 	onSubmit(values){
-		return this.props.dispatch(register(values));
+		return this.props.dispatch(register(values))
+		.then(() => this.props.dispatch(closeDialog()));;
 	}
 
 	handleLoginClick() {
