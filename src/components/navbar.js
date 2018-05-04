@@ -1,24 +1,29 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { clearAuth } from '../actions/userActions'
-import {openSignUp, openLogin, openDialog, closeDialog} from '../actions/modalActions';
+import { clearAuth } from '../actions/userActions';
+import {
+  openSignUp,
+  openLogin,
+  openDialog,
+  closeDialog
+} from '../actions/modalActions';
 // import Menu from '../components/dropdownMenu';
 
 // styles
-import './css/navbar.css'
+import './css/navbar.css';
 
 export class Navbar extends Component {
   constructor() {
     super();
 
     this.state = {
-      showMenu: false,
+      showMenu: false
     };
 
     this.showMenu = this.showMenu.bind(this);
     this.closeMenu = this.closeMenu.bind(this);
-    this.logout = this.logout.bind(this)
+    this.logout = this.logout.bind(this);
   }
 
   showMenu(event) {
@@ -37,19 +42,19 @@ export class Navbar extends Component {
 
   logout() {
     this.props.dispatch(clearAuth());
-    this.props.dispatch(closeDialog())
+    this.props.dispatch(closeDialog());
   }
 
   signUp() {
-		// todo: signup data flow
-		this.props.dispatch(openDialog())
-		this.props.dispatch(openSignUp())
-	}
-	logIn(data) {
-		//todo: log in data flow
-		this.props.dispatch(openDialog())
-		this.props.dispatch(openLogin())
-	}
+    // todo: signup data flow
+    this.props.dispatch(openDialog());
+    this.props.dispatch(openSignUp());
+  }
+  logIn(data) {
+    //todo: log in data flow
+    this.props.dispatch(openDialog());
+    this.props.dispatch(openLogin());
+  }
 
   render() {
     let loggedInNavbar;
@@ -59,37 +64,36 @@ export class Navbar extends Component {
         <button onClick={this.showMenu}>
           Welcome, {this.props.currentUser.username}
         </button>
-      )
+      );
     } else {
       loggedInNavbar = (
         <div>
-        <button className="header-button" onClick={() => this.signUp()}>
-          Sign Up
-        </button>
-        <button className="header-primary-button" onClick={() => this.logIn()}>
-          Log In
-        </button>
-      </div>
-    )
+          <button className="header-button" onClick={() => this.signUp()}>
+            Sign Up
+          </button>
+          <button
+            className="header-primary-button"
+            onClick={() => this.logIn()}
+          >
+            Log In
+          </button>
+        </div>
+      );
     }
     return (
       <div>
-        <nav className='navbar'>
-          <span className='home'><NavLink to='/'>App Title</NavLink></span>
+        <nav className="navbar">
+          <span className="home">
+            <NavLink to="/">App Title</NavLink>
+          </span>
 
           {loggedInNavbar}
-          {
-            this.state.showMenu
-              ? (
-                <div className="dropdown-menu">
-                  <NavLink to='/dashboard'>Dashboard</NavLink>
-                  <button onClick={this.logout}> Logout </button>
-                </div>
-              )
-              : (
-                null
-              )
-          }
+          {this.state.showMenu ? (
+            <div className="dropdown-menu">
+              <NavLink to="/dashboard">Dashboard</NavLink>
+              <button onClick={this.logout}> Logout </button>
+            </div>
+          ) : null}
         </nav>
       </div>
     );
@@ -101,4 +105,4 @@ export const mapStateToProps = (state, props) => ({
   currentUser: state.auth.currentUser ? state.auth.currentUser : ''
 });
 
-export default (connect(mapStateToProps)(Navbar));
+export default connect(mapStateToProps)(Navbar);

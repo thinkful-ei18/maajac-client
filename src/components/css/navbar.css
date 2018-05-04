@@ -1,15 +1,20 @@
 .navbar {
-  height: 2.5rem;
-  background-color: blueviolet;
+  background-color: #2e3434;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: .5rem 2rem .5rem 2rem;
+  align-items: center;
+  height: 50px;
+  padding-right: 16px;
+  color: white;
+  padding-left: 16px;
+  font-family: 'Work Sans', sans-serif;
 
 }
 
 .home a {
-  font-size: 1.7rem;
+  font-size: 16px;
+  font-weight: 500;
   color: white;
   text-decoration: none;
 }
@@ -21,5 +26,12 @@
   display: flex;
   flex-direction: column;
   z-index: 2;
+}
+
+.navbar a {
+  font-size: 16px;
+  font-weight: 400;
+  color: white;
+  text-decoration: none;
 }
 
