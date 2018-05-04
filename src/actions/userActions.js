@@ -33,13 +33,11 @@ export const register = user => dispatch => {
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
     .then(() => {
-      const newUser = { username: user.username, password: user.password };
-      console.log(newUser);
-      // now log in the user!
+      dispatch(login(user.username, user.password));
     })
     .catch(err => {
 			const { reason, message } = err;
-			
+
       if (reason === 'ValidationError') {
       	dispatch(authError(message))
       }
