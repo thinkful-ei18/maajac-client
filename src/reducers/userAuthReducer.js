@@ -4,6 +4,9 @@ import {
   AUTH_REQUEST,
   AUTH_SUCCESS,
   AUTH_ERROR,
+  REGISTER_ERROR,
+  REGISTER_REQUEST,
+  REGISTER_SUCCESS,
 } from '../actions/userActions';
 
 const initialState = {
@@ -13,7 +16,7 @@ const initialState = {
   error: null,
 };
 
-export default function reducer(state = initialState, action) {
+export const userAuthReducer = (state = initialState, action) => {
   if (action.type === SET_AUTH_TOKEN) {
     return Object.assign({}, state, {
       authToken: action.authToken,
@@ -38,6 +41,23 @@ export default function reducer(state = initialState, action) {
       loading: false,
       error: action.error,
     });
+  } else if (action.type === REGISTER_ERROR) {
+    return Object.assign({}, state, {
+      loading: false,
+      error: action.error,
+    });
+  } else if (action.type === REGISTER_REQUEST) {
+    return Object.assign({}, state, {
+      loading: true,
+      error: false,
+    });
+  } else if (action.type === REGISTER_SUCCESS) {
+    return Object.assign({}, state, {
+      loading: false,
+      error: false
+    });
   }
   return state;
 }
+
+export default userAuthReducer

@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { clearAuth } from '../actions/userActions';
+import {
+  openSignUp,
+  openLogin,
+  openDialog,
+  closeDialog
+} from '../actions/modalActions';
 // import Menu from '../components/dropdownMenu';
 
 // styles
@@ -36,6 +42,18 @@ export class Navbar extends Component {
 
   logout() {
     this.props.dispatch(clearAuth());
+    this.props.dispatch(closeDialog());
+  }
+
+  signUp() {
+    // todo: signup data flow
+    this.props.dispatch(openDialog());
+    this.props.dispatch(openSignUp());
+  }
+  logIn(data) {
+    //todo: log in data flow
+    this.props.dispatch(openDialog());
+    this.props.dispatch(openLogin());
   }
 
   render() {
@@ -50,8 +68,15 @@ export class Navbar extends Component {
     } else {
       loggedInNavbar = (
         <div>
-          <NavLink to="/login">Login</NavLink>
-          <NavLink to="/register">Sign Up</NavLink>
+          <button className="header-button" onClick={() => this.signUp()}>
+            Sign Up
+          </button>
+          <button
+            className="header-primary-button"
+            onClick={() => this.logIn()}
+          >
+            Log In
+          </button>
         </div>
       );
     }
