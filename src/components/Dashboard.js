@@ -58,7 +58,7 @@ export class Dashboard extends React.Component {
 export const mapStateToProps = state => ({
   markersFromServer: state.markers.allMarkers ? state.markers.allMarkers : [],
   loggedIn: state.auth.currentUser !== null,
-  currentUser: state.currentUser,
+  currentUser: state.auth.currentUser ? state.auth.currentUser : '',
 });
 
 export default withRouter(connect(mapStateToProps)(Dashboard));

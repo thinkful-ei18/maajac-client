@@ -80,11 +80,15 @@ export const getMarkers = () => (dispatch, getState) => {
 };
 
 export const getMarkersDashboard = () => (dispatch, getState) => {
+  const authToken = localStorage.getItem('authToken')
+    ? localStorage.getItem('authToken')
+    : getState().auth.authToken;
   dispatch(getMarkerRequest());
   return fetch(`${API_BASE_URL}/markers/dashboard`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${authToken}`,
     },
   })
     .then(res => res.json())
