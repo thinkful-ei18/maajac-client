@@ -33,7 +33,7 @@ const GoogleMapComponent = compose(
           <Marker
             key={index}
             icon={marker.icon}
-            position={{ lat: marker.location[0], lng: marker.location[1] }}
+            position={{ lat: marker.location.lat, lng: marker.location.lng }}
             onClick={props.onMarkerClick}
           />
         );

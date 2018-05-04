@@ -38,14 +38,10 @@ export const register = user => dispatch => {
       // now log in the user!
     })
     .catch(err => {
-      const { reason, message, location } = err;
+			const { reason, message } = err;
+			
       if (reason === 'ValidationError') {
-        // Convert ValidationErrors into SubmissionErrors for Redux Form
-        return Promise.reject(
-          new SubmissionError({
-            [location]: message,
-          })
-        );
+      	dispatch(authError(message))
       }
     });
 };
@@ -71,19 +67,11 @@ export const login = (username, password) => dispatch => {
       .then(res => res.json())
       .then(({ authToken }) => storeAuthToken(authToken, dispatch))
       .catch(err => {
-        const { code } = err;
-        const message =
-          code === 401
-            ? 'Incorrect username or password'
-            : 'Unable to login, please try again';
-        dispatch(authError(err));
-        // Could not authenticate, so return a SubmissionError for Redux
-        // Form
-        return Promise.reject(
-          new SubmissionError({
-            _error: message,
-          })
-        );
+
+				const { status } = err.error;
+				const message = status === 422 ? err.message : 'Unable to login, please try again';
+
+				dispatch(authError(message))
       })
   );
 };

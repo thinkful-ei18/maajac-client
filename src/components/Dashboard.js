@@ -1,28 +1,46 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import {
+  getMarkersDashboard,
+  deleteMarkerDashboard,
+} from '../actions/markerActions';
 import { withRouter, Redirect } from 'react-router';
 // import { jwtFetch } from './actions/login_actions';
-import { DeleteButton } from './DeleteButton';
 
 export class Dashboard extends React.Component {
-  componentDidMount() {
+  componentDidMount(props) {
     // if (this.props.jwt && this.props.reports.length < 1) {
     //   this.props.dispatch(jwtFetch(this.props.jwt));
     // }
+
+    this.props.dispatch(getMarkersDashboard());
+  }
+  onClick(e) {
+    e.preventDefault();
+    console.log(e.target.id);
+    this.props.dispatch(deleteMarkerDashboard({ markerId: e.target.id }));
   }
 
   render() {
     // if (!this.props.jwt) {
     //   return <Redirect to="/signin" />;
     // }
-    const reports = [1, 2, 3];
+
+    const reports = this.props.markersFromServer;
+
     let userReports = reports.map(report => (
-      <div className="report-card" key={report}>
-        user report
-        <div>
-          <DeleteButton id={report} />
-        </div>
+      <div className="report-card" key={report._id}>
+        <h2>{report.incidentType}</h2>
+        <h3>Date:{report.date}</h3>
+        <p>
+          Location:{report.location.lat},{report.location.lng}
+        </p>
+        <div>Description:</div>
+        <p>{report.description}</p>
+        <button onClick={e => this.onClick(e)} id={report._id}>
+          Delete
+        </button>
       </div>
     ));
 
@@ -50,6 +68,12 @@ export class Dashboard extends React.Component {
 //   userReports: state.user.reports,
 // });
 
-export default (Dashboard = withRouter(Dashboard));
+export const mapStateToProps = state => ({
+  markersFromServer: state.markers.allMarkers ? state.markers.allMarkers : [],
+  loggedIn: state.auth.currentUser !== null,
+  currentUser: state.auth.currentUser ? state.auth.currentUser : '',
+});
+
+export default withRouter(connect(mapStateToProps)(Dashboard));
 
 // export default connect(mapStateToProps)(Dashboard);

@@ -44,7 +44,7 @@ export class Navbar extends Component {
     if (this.props.loggedIn) {
       loggedInNavbar = (
         <button onClick={this.showMenu}>
-          Welcome, User1
+          Welcome, {this.props.currentUser.username}
         </button>
       )
     } else {
@@ -60,8 +60,7 @@ export class Navbar extends Component {
             this.state.showMenu
               ? (
                 <div className="dropdown-menu">
-                  <NavLink to='/submit'>Submit new report</NavLink>
-                  <button> Dummy link 1 </button>
+                  <NavLink to='/dashboard'>Dashboard</NavLink>
                   <button onClick={this.logout}> Logout </button>
                 </div>
               )
@@ -77,6 +76,7 @@ export class Navbar extends Component {
 
 export const mapStateToProps = (state, props) => ({
   loggedIn: state.auth.currentUser !== null,
+  currentUser: state.auth.currentUser ? state.auth.currentUser : ''
 });
 
 export default (connect(mapStateToProps)(Navbar));
