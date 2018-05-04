@@ -72,9 +72,9 @@ export class RegistrationForm extends React.Component {
 				<button className="form-primary-button" type="submit" disabled={pristine || submitting}>
 					Sign Up
 				</button>
-				{/* <button className="form-login">
+				<button className="form-login">
 					Already have an account? <span className="form-login-text">Log in</span>
-				</button> */}
+				</button>
 			</form>
 		)
 	}
