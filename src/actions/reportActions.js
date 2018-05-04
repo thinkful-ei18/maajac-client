@@ -20,6 +20,5 @@ export const setUserLocationRequest = () => ({
 });
 
 export const setUserLocation = locationObj => (dispatch) => {
-  console.log('location received:', locationObj)
   dispatch(setUserLocationSuccess(locationObj))
 }
