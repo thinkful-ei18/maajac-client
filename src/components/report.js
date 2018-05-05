@@ -2,15 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { newMarker } from '../actions/markerActions';
-
+import './css/report.css';
 import Input from './input';
 import {
   required,
   nonEmpty,
   minLength120,
-  checkDate
+  checkDate,
 } from '../utils/validators';
-
 
 class reportForm extends Component {
   render() {
@@ -69,10 +68,14 @@ class reportForm extends Component {
             name="suspect"
             validate={[required, nonEmpty, minLength120]}
           /> */}
-          <button type="submit" onClick={reset}>
-            Clear Values
+          <button className="report-button" type="submit" onClick={reset}>
+            Clear
           </button>
-          <button type="submit" disabled={pristine || submitting}>
+          <button
+            className="report-button"
+            type="submit"
+            disabled={pristine || submitting}
+          >
             Submit
           </button>
         </form>
@@ -82,11 +85,11 @@ class reportForm extends Component {
 }
 
 const mapStateToProps = state => ({
-  location: state.report.userLocation
+  location: state.report.userLocation,
 });
 
 reportForm = connect(mapStateToProps)(reportForm);
 
 export default reduxForm({
-  form: 'report'
+  form: 'report',
 })(reportForm);
