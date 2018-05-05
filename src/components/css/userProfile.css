@@ -1,0 +1,75 @@
+/* ============================
+COLOR SCHEME
+============================ */
+
+#COLORS {
+  color: #2e3434;
+  color: #3b4141;
+  color: #7bc087;
+  color: #9e9fa1;
+  color: #a0472f;
+}
+
+/* ============================
+MOBILE VIEW
+============================ */
+
+.user-profile {
+  background-color: #3b4141;
+  display: flex;
+}
+
+.user-pic-div {}
+
+.profile-pic {
+  width: 130px;
+  padding: 10px;
+}
+
+.user-info-div {
+  align-self: center;
+}
+
+.user {
+  background-color: #2e3434;
+  width: 160px;
+  height: 35px;
+  margin: 10px;
+  color: #ffffff;
+  padding-top: 8px;
+  font-family: 'Work Sans', sans-serif;
+}
+
+/* ============================ 
+MEDIA QUERIES
+============================*/
+
+/* tablet */
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1023px) and (-webkit-min-device-pixel-ratio: 1) {}
+
+/* desktop */
+
+@media only screen and (min-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+  .user-profile {
+    width: 280px;
+    height: 100vh;
+    display: initial;
+  }
+  .user-pic-div {
+    margin: 30px;
+  }
+  .profile-pic {
+    width: 210px;
+  }
+  .user-info-div {
+    align-self: center;
+  }
+  .user {
+    margin: 20px auto;
+    width: 190px;
+    height: 50px;
+    padding-top: 15px;
+    font-size: 18px;
+  }
+}

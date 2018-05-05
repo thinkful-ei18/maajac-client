@@ -1,11 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router';
+
 import {
   getMarkersDashboard,
   deleteMarkerDashboard,
 } from '../actions/markerActions';
-import { withRouter, Redirect } from 'react-router';
+import UserProfile from './UserProfile';
 // import { jwtFetch } from './actions/login_actions';
 
 import './css/dashboard.css'
@@ -56,12 +58,13 @@ export class Dashboard extends React.Component {
       ) : null;
 
     return (
-      <main>
-        <h2>Dashboard</h2>
+      <main className="dashboard">
+        {/* <h2>Dashboard</h2> */}
+        <UserProfile />
         <Link to={'/'}>Back to Map</Link>
-        <div className="user-reports">
+        <section className="user-reports">
           {userReports}
-        </div>
+        </section>
         {instructions}
       </main>
     );
