@@ -1,26 +1,53 @@
-.report form {
-  /* these can be changed later! */
+.report {
+  background-color: #3b4141;
   width: 250px;
-  border: 5px solid black;
-  display: none;
 }
-
-
-.form-input {
-  display: inline-block;
-  padding: 15px 0px;
-  width: 100%;
+#type {
+  padding: 20px;
+  margin: 20px;
+  width: 80%;
+  background-color: #2e3434;
+  height: 30px;
+  color: #ffffff;
+  border: none;
 }
-
-/* #description, #suspect {
-} */
-
-.form-input label {
-  display: block;
+label {
+  position: relative;
+  top: 10px;
+  color: #ffffff;
 }
-
-.form-error, .form-warning {
-  padding: 15px 0px;
-  font-weight: bold;
-  color: red;
+#date {
+  padding: 20px;
+  margin: 20px;
+  width: 80%;
+  background-color: #2e3434;
+  height: 30px;
+  color: #ffffff;
+  border: none;
+}
+#time {
+  padding: 20px;
+  margin: 20px;
+  width: 80%;
+  background-color: #2e3434;
+  height: 30px;
+  color: #ffffff;
+  border: none;
+}
+#description {
+  padding: 20px;
+  margin: 20px;
+  width: 80%;
+  background-color: #2e3434;
+  height: 30px;
+  color: #ffffff;
+  border: none;
+}
+.report-button {
+  background-color: #7bc087;
+  height: 30px;
+  width: 80px;
+  border: none;
+  margin: 5px;
+  color: white;
 }
