@@ -6,7 +6,7 @@ import {
   openSignUp,
   openLogin,
   openDialog,
-  closeDialog
+  closeDialog,
 } from '../actions/modalActions';
 // import Menu from '../components/dropdownMenu';
 
@@ -18,7 +18,7 @@ export class Navbar extends Component {
     super();
 
     this.state = {
-      showMenu: false
+      showMenu: false,
     };
 
     this.showMenu = this.showMenu.bind(this);
@@ -61,20 +61,17 @@ export class Navbar extends Component {
 
     if (this.props.loggedIn) {
       loggedInNavbar = (
-        <button onClick={this.showMenu}>
+        <button className="report-button" onClick={this.showMenu}>
           Welcome, {this.props.currentUser.username}
         </button>
       );
     } else {
       loggedInNavbar = (
         <div>
-          <button className="header-button" onClick={() => this.signUp()}>
+          <button className="report-button" onClick={() => this.signUp()}>
             Sign Up
           </button>
-          <button
-            className="header-primary-button"
-            onClick={() => this.logIn()}
-          >
+          <button className="report-button" onClick={() => this.logIn()}>
             Log In
           </button>
         </div>
@@ -91,7 +88,10 @@ export class Navbar extends Component {
           {this.state.showMenu ? (
             <div className="dropdown-menu">
               <NavLink to="/dashboard">Dashboard</NavLink>
-              <button onClick={this.logout}> Logout </button>
+              <button className="report-button" onClick={this.logout}>
+                {' '}
+                Logout{' '}
+              </button>
             </div>
           ) : null}
         </nav>
@@ -102,7 +102,7 @@ export class Navbar extends Component {
 
 export const mapStateToProps = (state, props) => ({
   loggedIn: state.auth.currentUser !== null,
-  currentUser: state.auth.currentUser ? state.auth.currentUser : ''
+  currentUser: state.auth.currentUser ? state.auth.currentUser : '',
 });
 
 export default connect(mapStateToProps)(Navbar);
