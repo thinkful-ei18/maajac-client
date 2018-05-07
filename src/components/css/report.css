@@ -1,7 +1,7 @@
 .report {
   background-color: #3b4141;
   width: 100vw;
-  display: none
+  display: none;
 }
 
 #type {
@@ -14,7 +14,7 @@
   border: none;
 }
 
-label {
+.report label {
   position: relative;
   top: 10px;
   color: #ffffff;
@@ -59,6 +59,14 @@ label {
   color: white;
 }
 
+.report-button-large {
+  background-color: #7bc087;
+  height: 30px;
+  width: 150px;
+  border: none;
+  margin: 5px;
+  color: white;
+}
 /* tablet */
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1023px) and (-webkit-min-device-pixel-ratio: 1) {
@@ -76,11 +84,3 @@ label {
   }
 }
 
-.report-button-large {
-  background-color: #7bc087;
-  height: 30px;
-  width: 150px;
-  border: none;
-  margin: 5px;
-  color: white;
-}
