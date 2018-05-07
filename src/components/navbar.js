@@ -65,7 +65,7 @@ export class Navbar extends Component {
     if (this.props.loggedIn) {
       loggedInNavbar = (
         <button className="report-button-large" onClick={this.showMenu}>
-          Welcome, {this.props.currentUser.username} <i class="arrow down"></i>
+          Welcome, {this.props.currentUser.username} <i className="arrow down"></i>
         </button>
       );
     } else {
