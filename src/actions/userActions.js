@@ -1,7 +1,7 @@
 import { API_BASE_URL } from '../config';
 import { SubmissionError } from 'redux-form';
 import { normalizeResponseErrors } from '../utils/noramlize-errors';
-import { saveAuthToken, clearAuthToken } from '../local-storage';
+import { saveAuthToken, clearAuthToken, saveUserCredentials } from '../local-storage';
 import jwtDecode from 'jwt-decode'; // this is used on line 79 which is also commented out.
 
 /* REGISTER ACTIONS */
@@ -117,6 +117,7 @@ const storeAuthToken = (authToken, dispatch) => {
   dispatch(setAuthToken(authToken));
   dispatch(authSuccess(decodedToken.user));
   saveAuthToken(authToken);
+  saveUserCredentials(decodedToken.user);
 };
 
 export const refreshAuthToken = () => (dispatch, getState) => {
