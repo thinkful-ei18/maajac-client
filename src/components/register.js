@@ -2,7 +2,7 @@ import React from 'react';
 import { Field, reduxForm, focus } from 'redux-form';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import './css/login-signup.css';
+
 import Input from './input';
 import {
   required,
@@ -13,6 +13,8 @@ import {
 } from '../utils/validators';
 import { register } from '../actions/userActions';
 import { openLogin, closeDialog } from '../actions/modalActions';
+
+import './css/modal.css';
 
 const passwordLength = length({ min: 10, max: 72 });
 const matchesPassword = matches('password');
@@ -56,6 +58,7 @@ export class RegistrationForm extends React.Component {
           component={Input}
           type="text"
           name="username"
+          id="username"
           placeholder="sally123"
           validate={[required, nonEmpty, isTrimmed]}
         />
@@ -76,6 +79,7 @@ export class RegistrationForm extends React.Component {
           component={Input}
           type="password"
           name="password"
+          id="password"
           placeholder="••••••••"
           validate={[required, passwordLength, isTrimmed]}
         />
@@ -84,6 +88,7 @@ export class RegistrationForm extends React.Component {
           component={Input}
           type="password"
           name="passwordConfirm"
+          id="passwordConfirm"
           validate={[required, nonEmpty, matchesPassword]}
           placeholder="••••••••"
         />
