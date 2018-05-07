@@ -3,7 +3,8 @@ import GoogleMapComponenet from './googleMap';
 import { connect } from 'react-redux';
 
 import { getMarkers } from '../actions/markerActions';
-import { setUserLocation } from '../actions/reportActions'
+import { setUserLocation } from '../actions/reportActions';
+import { setDefaultLocation } from '../actions/defaultLocationActions';
 
 export class GoogleMapWrapper extends React.PureComponent {
   constructor(props) {
@@ -29,12 +30,13 @@ export class GoogleMapWrapper extends React.PureComponent {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         position => {
-          console.log(position);
+          const userlocation = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+          this.props.dispatch(setDefaultLocation({ userlocation }));
           this.setState({
-            location: {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            }
+            location: userlocation
           });
         },
         error => {
@@ -47,8 +49,8 @@ export class GoogleMapWrapper extends React.PureComponent {
   handleMapClick(event) {
     let lat = event.latLng.lat();
     let lng = event.latLng.lng();
-    console.log('lat:',lat);
-    console.log('lng', lng)
+    console.log('lat:', lat);
+    console.log('lng', lng);
     this.setState({
       indicatorPin: {
         lat,
@@ -56,7 +58,7 @@ export class GoogleMapWrapper extends React.PureComponent {
       }
     });
     // set the pin location in state
-    this.props.dispatch(setUserLocation({lat, lng}))
+    this.props.dispatch(setUserLocation({ lat, lng }));
   }
 
   onToggleOpen() {
@@ -70,7 +72,7 @@ export class GoogleMapWrapper extends React.PureComponent {
       <GoogleMapComponenet
         isMarkerShown={this.state.isMarkerShown}
         onMarkerClick={this.handleMarkerClick}
-        position={this.state.location}
+        position={this.props.defaultLocation}
         onHandleClick={e => this.handleMapClick(e)}
         markers={this.props.markersFromServer}
         indicatorPin={this.state.indicatorPin}
@@ -82,7 +84,8 @@ export class GoogleMapWrapper extends React.PureComponent {
 }
 
 export const mapStateToProps = (state, props) => ({
-  markersFromServer: state.markers.allMarkers ? state.markers.allMarkers : []
+  markersFromServer: state.markers.allMarkers ? state.markers.allMarkers : [],
+  defaultLocation: state.defaultLocation.location
 });
 
 export default connect(mapStateToProps)(GoogleMapWrapper);
