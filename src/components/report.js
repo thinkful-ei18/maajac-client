@@ -22,15 +22,13 @@ class reportForm extends Component {
           onSubmit={handleSubmit(values => {
             values.location = this.props.location;
             this.props.dispatch(newMarker(values));
-          })}
-        >
+          })}>
           <label htmlFor="incident-type">Incident Type</label>
           <Field
             component="select"
             id="type"
             name="incidentType"
-            required="required"
-          >
+            required="required">
             <option value="" />
             <option value="crime">Crime</option>
             <option value="theft">Theft</option>
@@ -76,8 +74,7 @@ class reportForm extends Component {
           <button
             className="report-button"
             type="submit"
-            disabled={pristine || submitting}
-          >
+            disabled={pristine || submitting}>
             Submit
           </button>
         </form>
