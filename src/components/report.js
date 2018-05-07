@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, reset } from 'redux-form';
 import { newMarker } from '../actions/markerActions';
 import './css/report.css';
 import Input from './input';
@@ -13,15 +13,17 @@ import {
 
 class reportForm extends Component {
   render() {
-    const { handleSubmit, pristine, submitting, reset } = this.props;
+    const { handleSubmit, pristine, submitting, reset, dispatch } = this.props;
 
     return (
       <div className="report">
         <form
+          name
           id="incident-report"
           onSubmit={handleSubmit(values => {
             values.location = this.props.location;
-            this.props.dispatch(newMarker(values));
+            dispatch(newMarker(values));
+            dispatch(reset('report'));
           })}>
           <label htmlFor="incident-type">Incident Type</label>
           <Field
