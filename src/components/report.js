@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Field, reduxForm, reset } from 'redux-form';
+import { Field, reduxForm, reset, SubmissionError } from 'redux-form';
 import { newMarker } from '../actions/markerActions';
 import './css/report.css';
 import Input from './input';
@@ -15,17 +15,36 @@ const descriptionLength = length({ min: 10, max: 120 });
 
 class reportForm extends Component {
   render() {
-    const { handleSubmit, pristine, submitting, reset, dispatch } = this.props;
+    const { handleSubmit, pristine, submitting, reset, dispatch, error } = this.props;
+
+    let errorMessage;
+    if (error) {
+      errorMessage = (
+        <div className="form-error" aria-live="polite">
+          {error}
+        </div>
+      );
+    }
 
     return (
       <div className="report">
+        <div className="form-error" aria-live="polite">
+            {errorMessage}
+          </div>
         <form
           name
           id="incident-report"
           onSubmit={handleSubmit(values => {
-            values.location = this.props.location;
-            dispatch(newMarker(values));
-            dispatch(reset('report'));
+            if (this.props.location === null) {
+              console.log('No location!!!!');
+              const err = new Error('Please choose a location');
+              err.status = 422;
+              throw new SubmissionError(err);
+            } else {
+              values.location = this.props.location;
+              dispatch(newMarker(values));
+              dispatch(reset('report'));
+            }
           })}>
           <label htmlFor="incident-type">Incident Type</label>
           <Field
