@@ -45,12 +45,7 @@ class reportForm extends Component {
             component="select"
             id="type"
             name="incidentType"
-<<<<<<< HEAD
             required="required">
-=======
-            required="required"
-            >
->>>>>>> 5b6a96b1a8b05d118f7baad4808f91519e2c3730
             <option value="" />
             <option value="crime">Crime</option>
             <option value="theft">Theft</option>
