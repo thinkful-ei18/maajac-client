@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink, Link } from 'react-router-dom';
 import { clearAuth } from '../actions/userActions';
+import { clearUserCredentials, clearAuthToken } from '../local-storage';
 import {
   openSignUp,
   openLogin,
@@ -41,6 +42,8 @@ export class Navbar extends Component {
   }
 
   logout() {
+    clearAuthToken();
+    clearUserCredentials();
     this.props.dispatch(clearAuth());
     this.props.dispatch(closeDialog());
   }

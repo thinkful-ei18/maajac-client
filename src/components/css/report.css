@@ -1,7 +1,9 @@
 .report {
   background-color: #3b4141;
   width: 250px;
+  color: #ffffff;
 }
+
 #type {
   padding: 20px;
   margin: 20px;
@@ -11,11 +13,13 @@
   color: #ffffff;
   border: none;
 }
+
 label {
   position: relative;
   top: 10px;
   color: #ffffff;
 }
+
 #date {
   padding: 20px;
   margin: 20px;
@@ -25,6 +29,7 @@ label {
   color: #ffffff;
   border: none;
 }
+
 #time {
   padding: 20px;
   margin: 20px;
@@ -34,6 +39,7 @@ label {
   color: #ffffff;
   border: none;
 }
+
 #description {
   padding: 20px;
   margin: 20px;
@@ -43,6 +49,7 @@ label {
   color: #ffffff;
   border: none;
 }
+
 .report-button {
   background-color: #7bc087;
   height: 30px;
@@ -50,6 +57,7 @@ label {
   border: none;
   margin: 5px;
   color: white;
+<<<<<<< HEAD
 }
 .report-button-large {
   background-color: #7bc087;
@@ -59,3 +67,6 @@ label {
   margin: 5px;
   color: white;
 }
+=======
+}
+>>>>>>> c77f9d9838313631125c2f874dea4817ab38a5de
