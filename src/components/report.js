@@ -4,12 +4,7 @@ import { Field, reduxForm, reset, SubmissionError } from 'redux-form';
 import { newMarker } from '../actions/markerActions';
 import './css/report.css';
 import Input from './input';
-import {
-  required,
-  nonEmpty,
-  length,
-  checkDate,
-} from '../utils/validators';
+import { required, nonEmpty, length, checkDate } from '../utils/validators';
 
 const descriptionLength = length({ min: 10, max: 120 });
 
@@ -32,9 +27,10 @@ class reportForm extends Component {
             {errorMessage}
           </div>
         <form
-          name
+          name={'report'}
           id="incident-report"
           onSubmit={handleSubmit(values => {
+<<<<<<< HEAD
             if (this.props.location === null) {
               console.log('No location!!!!');
               const err = new Error('Please choose a location');
@@ -46,12 +42,20 @@ class reportForm extends Component {
               dispatch(reset('report'));
             }
           })}>
+=======
+            values.location = this.props.location;
+            dispatch(newMarker(values));
+            dispatch(reset('report'));
+          })}
+        >
+>>>>>>> 1b3237417d390f130fe3cee4485cdef981db3945
           <label htmlFor="incident-type">Incident Type</label>
           <Field
             component="select"
             id="type"
             name="incidentType"
-            required="required">
+            required="required"
+          >
             <option value="" />
             <option value="crime">Crime</option>
             <option value="theft">Theft</option>
@@ -89,7 +93,8 @@ class reportForm extends Component {
           <button
             className="report-button"
             type="submit"
-            disabled={pristine || submitting}>
+            disabled={pristine || submitting}
+          >
             Submit
           </button>
         </form>
@@ -99,11 +104,11 @@ class reportForm extends Component {
 }
 
 const mapStateToProps = state => ({
-  location: state.report.userLocation,
+  location: state.report.userLocation
 });
 
 reportForm = connect(mapStateToProps)(reportForm);
 
 export default reduxForm({
-  form: 'report',
+  form: 'report'
 })(reportForm);
