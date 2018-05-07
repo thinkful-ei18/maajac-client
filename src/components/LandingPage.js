@@ -27,19 +27,22 @@ export class LandingPage extends Component {
       }
     }
 
+    const reportForm = this.props.currentUser ? <ReportForm /> : ''
+
     return (
       <div className="landing-page">
         <Dialog
-          title="App Name"
+          bodyClassName="modal"
+          title="safeR"
           modal={false}
           autoScrollBodyContent={true}
           open={this.props.dialog}
           onRequestClose={() => this.handleCloseDialog()}
         >
-          {modalForm}
+          { modalForm }
         </Dialog>
 
-        <ReportForm />
+        { reportForm }
         <GoogleMapWrapper />
       </div>
     );
