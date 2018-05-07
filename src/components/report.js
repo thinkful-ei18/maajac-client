@@ -30,7 +30,6 @@ class reportForm extends Component {
           name={'report'}
           id="incident-report"
           onSubmit={handleSubmit(values => {
-<<<<<<< HEAD
             if (this.props.location === null) {
               console.log('No location!!!!');
               const err = new Error('Please choose a location');
@@ -42,13 +41,6 @@ class reportForm extends Component {
               dispatch(reset('report'));
             }
           })}>
-=======
-            values.location = this.props.location;
-            dispatch(newMarker(values));
-            dispatch(reset('report'));
-          })}
-        >
->>>>>>> 1b3237417d390f130fe3cee4485cdef981db3945
           <label htmlFor="incident-type">Incident Type</label>
           <Field
             component="select"
