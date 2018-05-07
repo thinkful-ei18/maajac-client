@@ -38,12 +38,13 @@ export class LandingPage extends Component {
           modal={false}
           autoScrollBodyContent={true}
           open={this.props.dialog}
+          contentStyle={{ width: 300 }}
           onRequestClose={() => this.handleCloseDialog()}
         >
-          { modalForm }
+          {modalForm}
         </Dialog>
 
-        { reportForm }
+        {reportForm}
         <GoogleMapWrapper />
       </div>
     );

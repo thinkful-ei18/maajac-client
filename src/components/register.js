@@ -92,17 +92,19 @@ export class RegistrationForm extends React.Component {
           validate={[required, nonEmpty, matchesPassword]}
           placeholder="••••••••"
         />
-        <button
-          className="form-primary-button"
-          type="submit"
-          disabled={pristine || submitting}
-        >
-          Sign Up
+        <div className='button-group'>
+          <button
+            className="form-primary-button form-button"
+            type="submit"
+            disabled={pristine || submitting}
+          >
+            Sign Up
         </button>
-        <button className="form-login" onClick={() => this.handleLoginClick()}>
-          Already have an account?{' '}
-          <span className="form-login-text">Log in</span>
-        </button>
+          <button className="form-login form-button" onClick={() => this.handleLoginClick()}>
+            Already have an account?{' '}
+            <span className="form-login-text">Log in</span>
+          </button>
+        </div>
       </form>
     );
   }

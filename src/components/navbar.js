@@ -65,7 +65,7 @@ export class Navbar extends Component {
     if (this.props.loggedIn) {
       loggedInNavbar = (
         <button className="report-button-large" onClick={this.showMenu}>
-          Welcome, {this.props.currentUser.username}
+          Welcome, {this.props.currentUser.username} <i class="arrow down"></i>
         </button>
       );
     } else {
@@ -92,7 +92,8 @@ export class Navbar extends Component {
             <div className="dropdown-menu">
               <Link to="/">Map</Link>
               <Link to="/dashboard">Dashboard</Link>
-              <Link to="/" className='mobile-only'>Report</Link>
+              <Link to="/report" className='mobile-only'>Report</Link>
+              <Link to="/about">About</Link>
               <button className="navbar-link" onClick={this.logout}>
                 {' '}
                 Logout{' '}
