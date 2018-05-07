@@ -8,7 +8,6 @@ import {
   deleteMarkerDashboard,
 } from '../actions/markerActions';
 import UserProfile from './UserProfile';
-import { reload } from '../actions/userActions';
 // import { jwtFetch } from './actions/login_actions';
 
 import './css/dashboard.css'
@@ -19,9 +18,6 @@ export class Dashboard extends React.Component {
     // if (this.props.jwt && this.props.reports.length < 1) {
     //   this.props.dispatch(jwtFetch(this.props.jwt));
     // }
-
-
-
     this.props.dispatch(getMarkersDashboard());
   }
 
