@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { withRouter } from 'react-router';
 
 import {
@@ -36,7 +36,7 @@ export class Dashboard extends React.Component {
 
     let userReports = reports.map(report => (
       <div className="report-card" key={report._id}>
-      {/* {this.props.loggedIn ? '' : ( <Redirect to='/' />) } */}
+      {this.props.loggedIn ? '' : ( <Redirect to='/' />) }
         <h2 className="incident-type">{report.incidentType}</h2>
         <h3 className="incident-date">Date: {report.date}</h3>
         {/* <p className="incident-location">
