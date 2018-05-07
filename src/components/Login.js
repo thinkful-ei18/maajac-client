@@ -62,16 +62,17 @@ export class LoginForm extends Component {
             id="password"
             validate={[required, nonEmpty]}
           />
-
-          <button
-            className="form-primary-button"
-            disabled={pristine || submitting}
-          >
-            Log in
+          <div className='button-group'>
+            <button
+              className="form-primary-button form-button"
+              disabled={pristine || submitting}
+            >
+              Log in
           </button>
-          <button className="form-register" onClick={() => this.handleSignup()}>
-            <span className="form-register-text">Sign up</span>
-          </button>
+            <button className="form-register form-button" onClick={() => this.handleSignup()}>
+              <span className="form-register-text">Sign up</span>
+            </button>
+          </div>
         </form>
       </div>
     );

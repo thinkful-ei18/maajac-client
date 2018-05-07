@@ -54,6 +54,29 @@ label {
 
 .form-register-text {}
 
+.button-group {
+  display: flex;
+  flex-direction: row;
+}
+
+.form-button {
+  background-color: #7bc087;
+  height: 30px;
+  width: 160px;
+  border: none;
+  margin: 5px;
+  color: white;
+}
+
+.form-button:disabled {
+  background-color: #a0d8a9;
+  height: 30px;
+  width: 160px;
+  border: none;
+  margin: 5px;
+  color: rgb(226, 226, 226);
+}
+
 /* ============================ 
 MEDIA QUERIES
 ============================*/
