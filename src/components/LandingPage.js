@@ -26,7 +26,7 @@ export class LandingPage extends Component {
       }
     }
 
-    const reportForm = this.props.currentUser ? <ReportForm path={this.props.match.path}/> : ''
+    const reportForm = this.props.currentUser ? <ReportForm path={this.props.match.path} /> : ''
 
     return (
       <div className="landing-page">
@@ -43,7 +43,7 @@ export class LandingPage extends Component {
         </Dialog>
 
         { reportForm }
-        <GoogleMapWrapper />
+        <GoogleMapWrapper path={this.props.match.path} />
       </div>
     );
   }
