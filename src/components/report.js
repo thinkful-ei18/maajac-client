@@ -7,9 +7,11 @@ import Input from './input';
 import {
   required,
   nonEmpty,
-  minLength120,
+  length,
   checkDate,
 } from '../utils/validators';
+
+const descriptionLength = length({ min: 10, max: 120 });
 
 class reportForm extends Component {
   render() {
@@ -58,16 +60,8 @@ class reportForm extends Component {
             label="Description of Incident"
             type="text"
             name="description"
-            validate={[required, nonEmpty]}
+            validate={[required, nonEmpty, descriptionLength]}
           />
-          {/* <Field
-            component={Input}
-            id="suspect"
-            label="Description of Suspect"
-            type="text"
-            name="suspect"
-            validate={[required, nonEmpty, minLength120]}
-          /> */}
           <button className="report-button" type="submit" onClick={reset}>
             Clear
           </button>

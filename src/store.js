@@ -6,6 +6,8 @@ import markerReducer from './reducers/markerReducer';
 import reportReducer from './reducers/reportReducer';
 import userAuthReducer from './reducers/userAuthReducer';
 import modalReducer from './reducers/modalReducer';
+import {loadAuthToken} from './local-storage';
+import {setAuthToken, authSuccess} from './actions/userActions';
 
 const store = createStore(
   combineReducers({
@@ -17,5 +19,13 @@ const store = createStore(
   }),
   composeWithDevTools(applyMiddleware(thunk))
 );
+
+const authToken = loadAuthToken();
+const user = JSON.parse(localStorage.getItem('user'));
+
+if (authToken) {
+    store.dispatch(setAuthToken(authToken));
+    store.dispatch(authSuccess(user));
+}
 
 export default store;
