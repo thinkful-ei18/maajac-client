@@ -1,32 +1,34 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { withRouter, Redirect } from 'react-router';
+import { withRouter } from 'react-router';
 
 import {
   getMarkersDashboard,
   deleteMarkerDashboard,
 } from '../actions/markerActions';
 import UserProfile from './UserProfile';
+import { reload } from '../actions/userActions';
 // import { jwtFetch } from './actions/login_actions';
 
 import './css/dashboard.css'
 
 export class Dashboard extends React.Component {
+
   componentDidMount(props) {
     // if (this.props.jwt && this.props.reports.length < 1) {
     //   this.props.dispatch(jwtFetch(this.props.jwt));
     // }
 
     if (!this.props.loggedIn) {
-      this.findUser();
+      this.handleReload();
     }
 
     this.props.dispatch(getMarkersDashboard());
   }
 
-  findUser() {
-    console.log('LOG IN AGAIN!');
+  handleReload() {
+    this.props.dispatch(reload());
   }
 
   onClick(e) {
