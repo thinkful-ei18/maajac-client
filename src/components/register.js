@@ -93,13 +93,13 @@ export class RegistrationForm extends React.Component {
           placeholder="••••••••"
         />
         <button
-          className="form-primary-button"
+          className="form-primary-button report-button"
           type="submit"
           disabled={pristine || submitting}
         >
           Sign Up
         </button>
-        <button className="form-login" onClick={() => this.handleLoginClick()}>
+        <button className="form-login report-button" onClick={() => this.handleLoginClick()}>
           Already have an account?{' '}
           <span className="form-login-text">Log in</span>
         </button>
