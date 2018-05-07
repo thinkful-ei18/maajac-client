@@ -33,6 +33,8 @@ class reportForm extends Component {
           >
             <option value="" />
             <option value="crime">Crime</option>
+            <option value="theft">Theft</option>
+            <option value="roadconstruction">Road Construction</option>
             <option value="accident">Traffic Accident</option>
             <option value="other">Other</option>
           </Field>
