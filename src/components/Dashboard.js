@@ -20,15 +20,9 @@ export class Dashboard extends React.Component {
     //   this.props.dispatch(jwtFetch(this.props.jwt));
     // }
 
-    if (!this.props.loggedIn) {
-      this.handleReload();
-    }
+
 
     this.props.dispatch(getMarkersDashboard());
-  }
-
-  handleReload() {
-    this.props.dispatch(reload());
   }
 
   onClick(e) {
