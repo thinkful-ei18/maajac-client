@@ -28,8 +28,7 @@ class reportForm extends Component {
             component="select"
             id="type"
             name="incidentType"
-            required="required"
-          >
+            required="required">
             <option value="" />
             <option value="crime">Crime</option>
             <option value="theft">Theft</option>
@@ -44,7 +43,7 @@ class reportForm extends Component {
             type="date"
             name="date"
             validate={[required, nonEmpty, checkDate]}
-          />
+            />
           <Field
             component={Input}
             id="time"
