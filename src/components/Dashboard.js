@@ -38,6 +38,7 @@ export class Dashboard extends React.Component {
       <div className="report-card" key={report._id}>
       {this.props.loggedIn ? '' : ( <Redirect to='/' />) }
         <h2 className="incident-type">{report.incidentType}</h2>
+        <img src={report.icon} alt="incident type icon"/>
         <h3 className="incident-date">Date: {report.date}</h3>
         {/* <p className="incident-location">
           Location: {report.location.lat + report.location.lng}
@@ -60,7 +61,6 @@ export class Dashboard extends React.Component {
 
     return (
       <main className="dashboard">
-        {/* <h2>Dashboard</h2> */}
         <UserProfile />
         <Link to={'/'}>Back to Map</Link>
         <section className="user-reports">
@@ -86,4 +86,3 @@ export const mapStateToProps = state => ({
 });
 
 export default withRouter(connect(mapStateToProps)(Dashboard));
-
