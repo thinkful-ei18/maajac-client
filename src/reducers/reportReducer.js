@@ -1,7 +1,7 @@
 import { SET_USER_LOCATION_SUCCESS, SET_USER_LOCATION_ERROR, SET_USER_LOCATION_REQUEST } from '../actions/reportActions';
 
 const initialState = {
-  userLocation: {},
+  userLocation: null,
   loading: false,
   error: null,
 };
