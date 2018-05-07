@@ -3,7 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import './css/login-signup.css';
 import Input from './input';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 import { required, nonEmpty } from '../utils/validators';
 import { login } from '../actions/userActions';
 import { openSignUp, closeDialog } from '../actions/modalActions';
