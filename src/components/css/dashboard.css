@@ -42,7 +42,8 @@ MOBILE VIEW
 }
 
 .delete-incident {
-  background-color: #a0472f;
+  border: none;
+  background-color: #df1616;
   width: 50%;
   margin-top: 15px;
   height: 25px;
