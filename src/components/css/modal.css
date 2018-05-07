@@ -36,7 +36,7 @@ LOGIN / REGISTER
   border: 1px solid gray;
 }
 
-label {
+.register, .login label {
   color: #2e3434;
 }
 

@@ -14,15 +14,16 @@ class reportForm extends Component {
     const { handleSubmit, pristine, submitting, reset, dispatch } = this.props;
 
     let style;
-    if(this.props.path === "/") {
+    if (this.props.path === "/") {
       style = "report";
     }
-    else if (this.props.path === "/report"){
+    else if (this.props.path === "/report") {
       style = "mobile-only"
     }
 
     return (
       <div className={style}>
+
         <form
           name={'report'}
           id="incident-report"

@@ -92,7 +92,7 @@ export class Navbar extends Component {
             <div className="dropdown-menu">
               <Link to="/">Map</Link>
               <Link to="/dashboard">Dashboard</Link>
-              <Link to="/report" className='mobile-only'>Report</Link>
+              <Link to="/report" className='mobile-only-navbar'>Report</Link>
               <Link to="/about">About</Link>
               <button className="navbar-link" onClick={this.logout}>
                 {' '}

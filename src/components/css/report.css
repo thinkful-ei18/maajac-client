@@ -20,7 +20,7 @@
   border: none;
 }
 
-.report label {
+.report, .mobile-only label {
   position: relative;
   top: 10px;
   color: #ffffff;
@@ -85,6 +85,7 @@ MEDIA QUERIES
     width: 300px;
     display: block;
   }
+  
 }
 
 .report-button-large {
