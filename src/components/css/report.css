@@ -1,7 +1,8 @@
 .report {
   background-color: #3b4141;
-  width: 250px;
+  width: 100vw;
 }
+
 #type {
   padding: 20px;
   margin: 20px;
@@ -11,11 +12,13 @@
   color: #ffffff;
   border: none;
 }
+
 label {
   position: relative;
   top: 10px;
   color: #ffffff;
 }
+
 #date {
   padding: 20px;
   margin: 20px;
@@ -25,6 +28,7 @@ label {
   color: #ffffff;
   border: none;
 }
+
 #time {
   padding: 20px;
   margin: 20px;
@@ -34,6 +38,7 @@ label {
   color: #ffffff;
   border: none;
 }
+
 #description {
   padding: 20px;
   margin: 20px;
@@ -43,6 +48,7 @@ label {
   color: #ffffff;
   border: none;
 }
+
 .report-button {
   background-color: #7bc087;
   height: 30px;
@@ -50,4 +56,20 @@ label {
   border: none;
   margin: 5px;
   color: white;
+}
+
+/* ============================ 
+MEDIA QUERIES
+============================*/
+
+/* tablet */
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1023px) and (-webkit-min-device-pixel-ratio: 1) {}
+
+/* desktop */
+
+@media only screen and (min-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+  .report {
+    width: 300px;
+  }
 }
