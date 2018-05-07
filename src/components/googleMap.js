@@ -30,7 +30,7 @@ const GoogleMapComponent = compose(
   >
     {props.isMarkerShown &&
       props.markers.map((marker, index) => {
-        return <Incident marker={marker} index={index} />;
+        return <Incident marker={marker} key={index} />;
       })}) )
     <Marker position={props.indicatorPin} onClick={props.onToggleOpen}>
       {props.isOpen && (
