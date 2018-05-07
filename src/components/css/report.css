@@ -51,3 +51,11 @@ label {
   margin: 5px;
   color: white;
 }
+.report-button-large {
+  background-color: #7bc087;
+  height: 30px;
+  width: 150px;
+  border: none;
+  margin: 5px;
+  color: white;
+}
