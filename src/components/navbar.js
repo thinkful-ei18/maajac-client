@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { clearAuth } from '../actions/userActions';
+import { clearUserCredentials, clearAuthToken } from '../local-storage';
 import {
   openSignUp,
   openLogin,
@@ -41,6 +42,8 @@ export class Navbar extends Component {
   }
 
   logout() {
+    clearAuthToken();
+    clearUserCredentials();
     this.props.dispatch(clearAuth());
     this.props.dispatch(closeDialog());
   }
@@ -61,7 +64,7 @@ export class Navbar extends Component {
 
     if (this.props.loggedIn) {
       loggedInNavbar = (
-        <button className="report-button" onClick={this.showMenu}>
+        <button className="report-button-large" onClick={this.showMenu}>
           Welcome, {this.props.currentUser.username}
         </button>
       );
@@ -87,8 +90,10 @@ export class Navbar extends Component {
           {loggedInNavbar}
           {this.state.showMenu ? (
             <div className="dropdown-menu">
-              <NavLink to="/dashboard">Dashboard</NavLink>
-              <button className="report-button" onClick={this.logout}>
+              <Link to="/">Map</Link>
+              <Link to="/dashboard">Dashboard</Link>
+              <Link to="/" className='mobile-only'>Report</Link>
+              <button className="navbar-link" onClick={this.logout}>
                 {' '}
                 Logout{' '}
               </button>

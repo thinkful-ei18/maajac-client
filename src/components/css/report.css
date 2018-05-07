@@ -1,6 +1,7 @@
 .report {
   background-color: #3b4141;
   width: 100vw;
+  display: none
 }
 
 #type {
@@ -58,10 +59,6 @@ label {
   color: white;
 }
 
-/* ============================ 
-MEDIA QUERIES
-============================*/
-
 /* tablet */
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1023px) and (-webkit-min-device-pixel-ratio: 1) {}
@@ -72,4 +69,13 @@ MEDIA QUERIES
   .report {
     width: 300px;
   }
+}
+
+.report-button-large {
+  background-color: #7bc087;
+  height: 30px;
+  width: 150px;
+  border: none;
+  margin: 5px;
+  color: white;
 }

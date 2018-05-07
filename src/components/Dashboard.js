@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { withRouter, Redirect } from 'react-router';
+import { Link, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router';
 
 import {
   getMarkersDashboard,
@@ -13,13 +13,14 @@ import UserProfile from './UserProfile';
 import './css/dashboard.css'
 
 export class Dashboard extends React.Component {
+
   componentDidMount(props) {
     // if (this.props.jwt && this.props.reports.length < 1) {
     //   this.props.dispatch(jwtFetch(this.props.jwt));
     // }
-
     this.props.dispatch(getMarkersDashboard());
   }
+
   onClick(e) {
     e.preventDefault();
     console.log(e.target.id);
@@ -76,6 +77,8 @@ export class Dashboard extends React.Component {
 //   userReports: state.user.reports,
 // });
 
+// export default connect(mapStateToProps)(Dashboard);
+
 export const mapStateToProps = state => ({
   markersFromServer: state.markers.allMarkers ? state.markers.allMarkers : [],
   loggedIn: state.auth.currentUser !== null,
@@ -84,4 +87,3 @@ export const mapStateToProps = state => ({
 
 export default withRouter(connect(mapStateToProps)(Dashboard));
 
-// export default connect(mapStateToProps)(Dashboard);

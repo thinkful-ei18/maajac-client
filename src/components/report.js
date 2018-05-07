@@ -1,38 +1,42 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, reset } from 'redux-form';
 import { newMarker } from '../actions/markerActions';
 import './css/report.css';
 import Input from './input';
 import {
   required,
   nonEmpty,
-  minLength120,
+  length,
   checkDate,
 } from '../utils/validators';
 
+const descriptionLength = length({ min: 10, max: 120 });
+
 class reportForm extends Component {
   render() {
-    const { handleSubmit, pristine, submitting, reset } = this.props;
+    const { handleSubmit, pristine, submitting, reset, dispatch } = this.props;
 
     return (
       <div className="report">
         <form
+          name
           id="incident-report"
           onSubmit={handleSubmit(values => {
             values.location = this.props.location;
-            this.props.dispatch(newMarker(values));
-          })}
-        >
+            dispatch(newMarker(values));
+            dispatch(reset('report'));
+          })}>
           <label htmlFor="incident-type">Incident Type</label>
           <Field
             component="select"
             id="type"
             name="incidentType"
-            required="required"
-          >
+            required="required">
             <option value="" />
             <option value="crime">Crime</option>
+            <option value="theft">Theft</option>
+            <option value="roadconstruction">Road Construction</option>
             <option value="accident">Traffic Accident</option>
             <option value="other">Other</option>
           </Field>
@@ -58,24 +62,15 @@ class reportForm extends Component {
             label="Description of Incident"
             type="text"
             name="description"
-            validate={[required, nonEmpty]}
+            validate={[required, nonEmpty, descriptionLength]}
           />
-          {/* <Field
-            component={Input}
-            id="suspect"
-            label="Description of Suspect"
-            type="text"
-            name="suspect"
-            validate={[required, nonEmpty, minLength120]}
-          /> */}
           <button className="report-button" type="submit" onClick={reset}>
             Clear
           </button>
           <button
             className="report-button"
             type="submit"
-            disabled={pristine || submitting}
-          >
+            disabled={pristine || submitting}>
             Submit
           </button>
         </form>
