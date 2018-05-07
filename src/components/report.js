@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Field, reduxForm, reset, SubmissionError } from 'redux-form';
+import { Field, reduxForm, reset} from 'redux-form';
 import { newMarker } from '../actions/markerActions';
 import './css/report.css';
 import Input from './input';
@@ -10,36 +10,35 @@ const descriptionLength = length({ min: 10, max: 120 });
 
 class reportForm extends Component {
 
-  render() {
-    let errorMessage;
-    const { handleSubmit, pristine, submitting, reset, dispatch, error } = this.props;
+  constructor(props) {
+    super(props);
 
-    if (error) {
-      errorMessage = (
-        <div className="form-error" aria-live="polite">
-          {error}
-        </div>
-      );
-    }
+    this.state = {locationError: ''}
+  }
+
+  handleLocationError(error) {
+    this.setState({locationError: error});
+  }
+
+
+  render() {
+    const { handleSubmit, pristine, submitting, reset, dispatch } = this.props;
 
     return (
       <div className="report">
-        <div className="form-error" aria-live="polite">
-            {errorMessage}
-          </div>
         <form
           name={'report'}
           id="incident-report"
           onSubmit={handleSubmit(values => {
 
             if (this.props.location === null) {
-              alert('Please choose a location');
+              this.handleLocationError('Please choose a location by clicking on the map');
               return;
             }
 
-              values.location = this.props.location;
-              dispatch(newMarker(values));
-              dispatch(reset('report'));
+            values.location = this.props.location;
+            dispatch(newMarker(values));
+            dispatch(reset('report'));
           })}>
           <label htmlFor="incident-type">Incident Type</label>
           <Field
@@ -47,7 +46,7 @@ class reportForm extends Component {
             id="type"
             name="incidentType"
             required="required"
-          >
+            >
             <option value="" />
             <option value="crime">Crime</option>
             <option value="theft">Theft</option>
@@ -62,7 +61,7 @@ class reportForm extends Component {
             type="date"
             name="date"
             validate={[required, nonEmpty, checkDate]}
-          />
+            />
           <Field
             component={Input}
             id="time"
@@ -78,7 +77,8 @@ class reportForm extends Component {
             type="text"
             name="description"
             validate={[required, nonEmpty, descriptionLength]}
-          />
+            />
+          <p>{this.state.locationError}</p>
           <button className="report-button" type="submit" onClick={reset}>
             Clear
           </button>
@@ -86,7 +86,7 @@ class reportForm extends Component {
             className="report-button"
             type="submit"
             disabled={pristine || submitting}
-          >
+            >
             Submit
           </button>
         </form>
