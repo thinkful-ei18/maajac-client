@@ -52,10 +52,10 @@ export class Dashboard extends React.Component {
 
     let instructions =
       1 > reports.length ? (
-        <span className="instructions">
+        <p className="instructions">
           To create a report, click the create report button above. If the
           button is hidden, tap the menu button to expand available options.
-        </span>
+        </p>
       ) : null;
 
     return (

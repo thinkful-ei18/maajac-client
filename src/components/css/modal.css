@@ -15,7 +15,8 @@ LOGIN / REGISTER
 ============================ */
 
 /* .modal {
-  background-color: #2e3434;
+  width: 80%;
+  max-width: 300px;
 } */
 
 .form-error {
@@ -23,11 +24,9 @@ LOGIN / REGISTER
   margin-bottom: 15px;
 }
 
-.login {
-}
+.login {}
 
-.login-form {
-}
+.login-form {}
 
 .form-input {
   margin: 15px 0;
@@ -35,7 +34,6 @@ LOGIN / REGISTER
 
 .form-input input {
   border: 1px solid gray;
-
 }
 
 label {

@@ -8,8 +8,6 @@ import { closeDialog } from '../actions/modalActions';
 import LoginForm from '../components/Login';
 import RegistrationForm from '../components/register';
 
-//Modal is tough to style. It needs styles.
-
 import './css/landingPage.css';
 
 export class LandingPage extends Component {
@@ -37,14 +35,14 @@ export class LandingPage extends Component {
           title="safeR"
           modal={false}
           autoScrollBodyContent={true}
-          open={this.props.dialog}
           contentStyle={{ width: 300 }}
+          open={this.props.dialog}
           onRequestClose={() => this.handleCloseDialog()}
         >
-          {modalForm}
+          { modalForm }
         </Dialog>
 
-        {reportForm}
+        { reportForm }
         <GoogleMapWrapper />
       </div>
     );
