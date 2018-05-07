@@ -9,10 +9,11 @@ import { required, nonEmpty, length, checkDate } from '../utils/validators';
 const descriptionLength = length({ min: 10, max: 120 });
 
 class reportForm extends Component {
+
   render() {
+    let errorMessage;
     const { handleSubmit, pristine, submitting, reset, dispatch, error } = this.props;
 
-    let errorMessage;
     if (error) {
       errorMessage = (
         <div className="form-error" aria-live="polite">
@@ -30,16 +31,15 @@ class reportForm extends Component {
           name={'report'}
           id="incident-report"
           onSubmit={handleSubmit(values => {
+
             if (this.props.location === null) {
-              console.log('No location!!!!');
-              const err = new Error('Please choose a location');
-              err.status = 422;
-              throw new SubmissionError(err);
-            } else {
+              alert('Please choose a location');
+              return;
+            }
+
               values.location = this.props.location;
               dispatch(newMarker(values));
               dispatch(reset('report'));
-            }
           })}>
           <label htmlFor="incident-type">Incident Type</label>
           <Field
