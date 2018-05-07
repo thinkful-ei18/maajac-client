@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Dialog from 'material-ui/Dialog';
+
 import GoogleMapWrapper from './GoogleMapWrapper';
 import ReportForm from './report';
-import Dialog from 'material-ui/Dialog';
 import { closeDialog } from '../actions/modalActions';
 import LoginForm from '../components/Login';
 import RegistrationForm from '../components/register';
@@ -13,11 +14,11 @@ import './css/landingPage.css';
 
 export class LandingPage extends Component {
   handleCloseDialog() {
-    console.log('closing dialog...');
     this.props.dispatch(closeDialog());
   }
 
   render() {
+
     let modalForm;
     if (this.props.currentTab) {
       if (this.props.currentTab === 'signup') {
@@ -27,7 +28,7 @@ export class LandingPage extends Component {
       }
     }
 
-    const reportForm = this.props.currentUser ? <ReportForm /> : ''
+    const reportForm = this.props.currentUser ? <ReportForm path={this.props.match.path}/> : ''
 
     return (
       <div className="landing-page">
@@ -56,3 +57,4 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(LandingPage);
+

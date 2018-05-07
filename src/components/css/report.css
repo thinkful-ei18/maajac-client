@@ -1,7 +1,11 @@
 .report {
   background-color: #3b4141;
   width: 100vw;
-  display: none
+  display: none;
+}
+
+.mobile-only {
+  display: inherit
 }
 
 #type {
@@ -68,6 +72,7 @@ label {
 @media only screen and (min-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
   .report {
     width: 300px;
+    display: inherit;
   }
 }
 

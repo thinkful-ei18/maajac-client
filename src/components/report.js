@@ -14,11 +14,20 @@ import {
 const descriptionLength = length({ min: 10, max: 120 });
 
 class reportForm extends Component {
+
   render() {
     const { handleSubmit, pristine, submitting, reset, dispatch } = this.props;
 
+    let style;
+    if(this.props.path === "/") {
+      style = "report";
+    }
+    else if (this.props.path === "/report"){
+      style = "mobile-only"
+    }
+
     return (
-      <div className="report">
+      <div className={style}>
         <form
           name
           id="incident-report"
@@ -88,3 +97,8 @@ reportForm = connect(mapStateToProps)(reportForm);
 export default reduxForm({
   form: 'report',
 })(reportForm);
+
+/*
+Resources:
+ - https://goshakkk.name/different-mobile-desktop-tablet-layouts-react/
+*/
