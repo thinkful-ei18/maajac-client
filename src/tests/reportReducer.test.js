@@ -6,7 +6,7 @@ describe('report reducer', () => {
   it('should return the intial state', () => {
     const state = reportReducer(undefined, { type: '@@TEST' });
     expect(state).toEqual({
-      userLocation: {},
+      userLocation: null,
       loading: false,
       error: null,
     })
