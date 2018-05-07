@@ -18,8 +18,17 @@ export class Dashboard extends React.Component {
     //   this.props.dispatch(jwtFetch(this.props.jwt));
     // }
 
+    if (!this.props.loggedIn) {
+      this.findUser();
+    }
+
     this.props.dispatch(getMarkersDashboard());
   }
+
+  findUser() {
+    console.log('LOG IN AGAIN!');
+  }
+
   onClick(e) {
     e.preventDefault();
     console.log(e.target.id);
@@ -35,7 +44,7 @@ export class Dashboard extends React.Component {
 
     let userReports = reports.map(report => (
       <div className="report-card" key={report._id}>
-      {this.props.loggedIn ? '' : ( <Redirect to='/' />) }
+      {/* {this.props.loggedIn ? '' : ( <Redirect to='/' />) } */}
         <h2 className="incident-type">{report.incidentType}</h2>
         <h3 className="incident-date">Date: {report.date}</h3>
         {/* <p className="incident-location">
@@ -76,6 +85,8 @@ export class Dashboard extends React.Component {
 //   userReports: state.user.reports,
 // });
 
+// export default connect(mapStateToProps)(Dashboard);
+
 export const mapStateToProps = state => ({
   markersFromServer: state.markers.allMarkers ? state.markers.allMarkers : [],
   loggedIn: state.auth.currentUser !== null,
@@ -84,4 +95,3 @@ export const mapStateToProps = state => ({
 
 export default withRouter(connect(mapStateToProps)(Dashboard));
 
-// export default connect(mapStateToProps)(Dashboard);
