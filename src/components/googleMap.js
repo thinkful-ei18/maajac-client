@@ -11,6 +11,7 @@ import {
 import Incident from './IncidentMarker';
 import { styles } from './mapStyle';
 import image from '../images/map-marker.svg';
+import thief from '../images/thief.svg';
 
 const GoogleMapComponent = compose(
   withProps({
@@ -37,7 +38,7 @@ const GoogleMapComponent = compose(
       position={props.indicatorPin}
       icon={{
         url: image,
-        scaledSize: new maps.Size(40, 60)
+        scaledSize: { width: 31, height: 43 }
       }}
       onClick={props.onToggleOpen}
     >

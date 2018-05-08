@@ -1,6 +1,6 @@
 import React from 'react';
-
 import { Marker, InfoWindow } from 'react-google-maps';
+import thief from '../images/thief.svg';
 
 export default class IncidentMarker extends React.Component {
   constructor(props) {
@@ -18,7 +18,13 @@ export default class IncidentMarker extends React.Component {
     return (
       <Marker
         key={this.props.index}
-        icon={this.props.marker.icon}
+        icon={{
+          url:
+            this.props.marker.incidentType === 'theft'
+              ? thief
+              : this.props.marker.icon,
+          scaledSize: { width: 31, height: 43 }
+        }}
         position={{
           lat: this.props.marker.location.lat,
           lng: this.props.marker.location.lng
