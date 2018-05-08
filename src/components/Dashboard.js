@@ -62,7 +62,6 @@ export class Dashboard extends React.Component {
     return (
       <main className="dashboard">
         <UserProfile />
-        <Link to={'/'}>Back to Map</Link>
         <section className="user-reports">
           {userReports}
         </section>
