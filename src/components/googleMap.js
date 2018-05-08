@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { compose, withProps, withHandlers } from 'recompose';
 import {
   withScriptjs,
@@ -21,10 +20,9 @@ const GoogleMapComponent = compose(
     mapElement: <div style={{ height: `100%` }} />
   }),
   withHandlers({
-    onMarkerClustererClick: () => (markerClusterer) => {
+    onClusterMouseOver: () => (markerClusterer) => {
       const clickedMarkers = markerClusterer.getMarkers()
-      console.log(`Current clicked markers length: ${clickedMarkers.length}`)
-      console.log(clickedMarkers)
+      console.log('hi')
     },
   }),
   withScriptjs,
@@ -36,31 +34,34 @@ const GoogleMapComponent = compose(
     onClick={props.onHandleClick}
     defaultOptions={{ styles }}
   >
-    {props.isMarkerShown &&
-      props.markers.map((marker, index) => {
-        return <Incident marker={marker} key={index} />;
-      })
-    }
 
+    {/* Marker that user drops */}
+    <Marker position={props.indicatorPin} onClick={props.onToggleOpen}>
+      {props.isOpen && (
+        <InfoWindow onCloseClick={props.onToggleOpen}>
+          <p>Incident Marker</p>
+        </InfoWindow>
+      )}
+    </Marker>
+    {/* Marker cluster */}
     <MarkerClusterer
       onClick={props.onMarkerClustererClick}
       averageCenter
-      // enableRetinaIcons
-      gridSize={90} // change for size of cluster area
+      enableRetinaIcons
+      gridSize={30} // change for size of cluster area
+      maxZoom={15} // change how far map zooms when clicking cluster
+      defaultMinimumClusterSize={2} // mimimum cluster size
+      onMouseOver={props.onClusterMouseOver}
     >
-      <Marker position={props.indicatorPin} onClick={props.onToggleOpen}>
-        {props.isOpen && (
-          <InfoWindow onCloseClick={props.onToggleOpen}>
-            <p>Incident Marker</p>
-          </InfoWindow>
-        )}
-      </Marker>
+      {/* Populated clusters */}
+      {props.isMarkerShown &&
+        props.markers.map((marker, index) => {
+          return <Incident marker={marker} key={index} />;
+        })
+      }
     </MarkerClusterer>
   </GoogleMap>
 );
 
-export const mapStateToProps = (state, props) => ({
-  markersFromServer: state.markers.allMarkers ? state.markers.allMarkers : []
-});
 
-export default connect(mapStateToProps)(GoogleMapComponent);
+export default GoogleMapComponent;
