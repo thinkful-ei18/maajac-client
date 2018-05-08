@@ -67,6 +67,7 @@ export class GoogleMapWrapper extends React.PureComponent {
     });
   }
 
+
   render() {
     return (
       <GoogleMapComponenet
