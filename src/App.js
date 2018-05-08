@@ -6,6 +6,7 @@ import RegistrationForm from './components/register';
 import LoginForm from './components/Login';
 import Navbar from './components/navbar';
 import Dashboard from './components/Dashboard';
+import About from './components/About';
 
 import './App.css';
 
@@ -19,6 +20,7 @@ class App extends Component {
         <Route exact path="/login" component={LoginForm} />
         <Route exact path="/report" component={LandingPage} />
         <Route exact path="/dashboard" component={Dashboard} />
+        <Route exact path="/about" component={About}/>
       </div>
     );
   }

@@ -17,6 +17,10 @@
   color: white;
   text-decoration: none;
 }
+.home .logo{
+  font-size: 30px;
+  font-family: 'Acme', sans-serif;
+}
 
 .dropdown-menu {
   position: absolute;

@@ -1,3 +1,7 @@
+.reg-label{
+ position: relative;
+ top: 10px;
+}
 .report {
   background-color: #3b4141;
   width: 100vw;
@@ -22,7 +26,6 @@
 
 .report, .mobile-only label {
   position: relative;
-  top: 10px;
   color: #ffffff;
 }
 

@@ -13,11 +13,14 @@ COLOR SCHEME
 /* ============================
 MOBILE VIEW
 ============================ */
-
+.body-component-dashboard{
+  background: #3b4141;
+}
 .user-reports {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  height: 100%;
 }
 
 .report-card {
