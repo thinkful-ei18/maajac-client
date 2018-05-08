@@ -11,9 +11,11 @@ import {
 
 import Incident from './IncidentMarker';
 import { styles } from './mapStyle';
+
 const { MarkerClusterer } = require("react-google-maps/lib/components/addons/MarkerClusterer");
 
-
+import image from '../images/map-marker.svg';
+import thief from '../images/thief.svg';
 
 
 const GoogleMapComponent = compose(
@@ -36,15 +38,23 @@ const GoogleMapComponent = compose(
     defaultOptions={{ styles }}
   >
 
-
     {/* Marker that user drops */}
-    <Marker position={props.indicatorPin} onClick={props.onToggleOpen}>
+  <Marker
+      position={props.indicatorPin}
+      icon={{
+        url: image,
+        scaledSize: { width: 31, height: 43 }
+      }}
+      onClick={props.onToggleOpen}
+    >
+
       {props.isOpen && (
         <InfoWindow onCloseClick={props.onToggleOpen}>
           <p>Incident Marker</p>
         </InfoWindow>
       )}
     </Marker>
+    
     {/* Marker cluster */}
     <MarkerClusterer
       onClick={props.onMarkerClustererClick}
@@ -54,12 +64,13 @@ const GoogleMapComponent = compose(
       maxZoom={15} // change how far map zooms when clicking cluster
       defaultMinimumClusterSize={2} // mimimum cluster size
     >
-      {/* Populated clusters */}
+      {/* Populated markers */}
       {props.isMarkerShown &&
         props.markers.map((marker, index) => {
           return <Incident marker={marker} key={index} />;
         })
       }
+
     </MarkerClusterer>
   </GoogleMap>
 );
