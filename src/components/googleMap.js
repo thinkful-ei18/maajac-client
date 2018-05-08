@@ -1,23 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { compose, withProps } from 'recompose';
-import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
+import {
+  withScriptjs,
+  withGoogleMap,
+  GoogleMap,
+  Marker,
+  InfoWindow
+} from 'react-google-maps';
 import Incident from './IncidentMarker';
 import { styles } from './mapStyle';
 import image from '../images/map-marker.svg';
 import thief from '../images/thief.svg';
 
 const GoogleMapComponent = compose(
-	withProps({
-		googleMapURL: 'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places',
-		loadingElement: <div style={{ height: `100%` }} />,
-		containerElement: <div style={{ height: `100vh`, width: `100vw` }} />,
-		mapElement: <div style={{ height: `100%` }} />,
-	}),
-	withScriptjs,
-	withGoogleMap
+  withProps({
+    googleMapURL:
+      'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places',
+    loadingElement: <div style={{ height: `100%` }} />,
+    containerElement: <div style={{ height: `100vh`, width: `100vw` }} />,
+    mapElement: <div style={{ height: `100%` }} />
+  }),
+  withScriptjs,
+  withGoogleMap
 )(props => (
-<<<<<<< HEAD
   <GoogleMap
     defaultZoom={12}
     center={props.position}
@@ -43,21 +49,6 @@ const GoogleMapComponent = compose(
       )}
     </Marker>
   </GoogleMap>
-=======
-	<GoogleMap defaultZoom={12} center={props.position} onClick={props.onHandleClick} defaultOptions={{ styles }}>
-		{props.isMarkerShown &&
-			props.markers.map((marker, index) => {
-				return <Incident marker={marker} key={index} />;
-			})}) )
-		<Marker position={props.indicatorPin} onClick={props.onToggleOpen}>
-			{props.isOpen && (
-				<InfoWindow onCloseClick={props.onToggleOpen}>
-					<p>Incident Marker</p>
-				</InfoWindow>
-			)}
-		</Marker>
-	</GoogleMap>
->>>>>>> 75a4efcece5e89f6b22043253014da26e8495e55
 ));
 
 // export const mapStateToProps = (state, props) => ({
