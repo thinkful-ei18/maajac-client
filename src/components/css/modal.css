@@ -1,0 +1,88 @@
+/* ============================
+COLOR SCHEME
+============================ */
+
+#COLORS {
+  color: #2e3434;
+  color: #3b4141;
+  color: #7bc087;
+  color: #9e9fa1;
+  color: #a0472f;
+}
+
+/* ============================
+LOGIN / REGISTER
+============================ */
+
+/* .modal {
+  width: 80%;
+  max-width: 300px;
+} */
+
+.form-error {
+  color: #a0472f;
+  margin-bottom: 15px;
+}
+
+.login {}
+
+.login-form {}
+
+.form-input {
+  margin: 15px 0;
+}
+
+.form-input input {
+  border: 1px solid gray;
+}
+
+.register, .login label {
+  color: #2e3434;
+}
+
+#username,
+#password,
+#passwordConfirm {
+  border-radius: 2px;
+  width: 100%;
+  height: 25px;
+}
+
+.form-register {}
+
+.form-register-text {}
+
+.button-group {
+  display: flex;
+  flex-direction: row;
+}
+
+.form-button {
+  background-color: #7bc087;
+  height: 30px;
+  width: 160px;
+  border: none;
+  margin: 5px;
+  color: white;
+}
+
+.form-button:disabled {
+  background-color: #a0d8a9;
+  height: 30px;
+  width: 160px;
+  border: none;
+  margin: 5px;
+  color: rgb(226, 226, 226);
+}
+
+/* ============================ 
+MEDIA QUERIES
+============================*/
+
+/* tablet */
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1023px) and (-webkit-min-device-pixel-ratio: 1) {}
+
+/* desktop */
+
+@media only screen and (min-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {}

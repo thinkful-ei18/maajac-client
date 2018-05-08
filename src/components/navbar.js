@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { clearAuth } from '../actions/userActions';
 import { clearUserCredentials, clearAuthToken } from '../local-storage';
 import {
@@ -64,8 +64,8 @@ export class Navbar extends Component {
 
     if (this.props.loggedIn) {
       loggedInNavbar = (
-        <button className="report-button" onClick={this.showMenu}>
-          Welcome, {this.props.currentUser.username}
+        <button className="report-button-large" onClick={this.showMenu}>
+          Welcome, {this.props.currentUser.username} <i className="arrow down"></i>
         </button>
       );
     } else {
@@ -90,8 +90,11 @@ export class Navbar extends Component {
           {loggedInNavbar}
           {this.state.showMenu ? (
             <div className="dropdown-menu">
-              <NavLink to="/dashboard">Dashboard</NavLink>
-              <button className="report-button" onClick={this.logout}>
+              <Link to="/">Map</Link>
+              <Link to="/dashboard">Dashboard</Link>
+              <Link to="/report" className='mobile-only-navbar'>Report</Link>
+              <Link to="/about">About</Link>
+              <button className="navbar-link" onClick={this.logout}>
                 {' '}
                 Logout{' '}
               </button>

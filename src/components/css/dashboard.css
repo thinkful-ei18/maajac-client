@@ -50,6 +50,12 @@ MOBILE VIEW
   color: #ffffff;
 }
 
+.instructions {
+  width: 80%;
+  font-family: 'Work Sans', sans-serif;
+  margin: 10px auto;
+}
+
 /* ============================ 
 MEDIA QUERIES
 ============================*/

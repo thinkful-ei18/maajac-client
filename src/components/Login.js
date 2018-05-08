@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import './css/login-signup.css';
 import Input from './input';
 // import { Redirect } from 'react-router-dom';
 import { required, nonEmpty } from '../utils/validators';
 import { login } from '../actions/userActions';
 import { openSignUp, closeDialog } from '../actions/modalActions';
+
+import './css/modal.css';
 
 export class LoginForm extends Component {
   onLogin(values) {
@@ -61,16 +62,17 @@ export class LoginForm extends Component {
             id="password"
             validate={[required, nonEmpty]}
           />
-
-          <button
-            className="form-primary-button"
-            disabled={pristine || submitting}
-          >
-            Log in
+          <div className='button-group'>
+            <button
+              className="form-primary-button form-button"
+              disabled={pristine || submitting}
+            >
+              Log in
           </button>
-          <button className="form-register" onClick={() => this.handleSignup()}>
-            <span className="form-register-text">Sign up</span>
-          </button>
+            <button className="form-register form-button" onClick={() => this.handleSignup()}>
+              <span className="form-register-text">Sign up</span>
+            </button>
+          </div>
         </form>
       </div>
     );
