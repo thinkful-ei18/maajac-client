@@ -49,7 +49,7 @@ class reportForm extends Component {
             dispatch(newMarker(values));
             dispatch(reset('report'));
           })}>
-          <label htmlFor="incident-type">Incident Type</label>
+          <label className="reg-label" htmlFor="incident-type">Incident Type</label>
           <Field
             component="select"
             id="type"

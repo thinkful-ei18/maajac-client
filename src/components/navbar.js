@@ -84,7 +84,7 @@ export class Navbar extends Component {
       <div>
         <nav className="navbar">
           <span className="home">
-            <NavLink to="/">App Title</NavLink>
+            <NavLink className="logo" to="/">safeR</NavLink>
           </span>
 
           {loggedInNavbar}
