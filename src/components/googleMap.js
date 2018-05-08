@@ -10,6 +10,8 @@ import {
 } from 'react-google-maps';
 import Incident from './IncidentMarker';
 import { styles } from './mapStyle';
+import image from '../images/map-marker.svg';
+import thief from '../images/thief.svg';
 
 const GoogleMapComponent = compose(
   withProps({
@@ -32,7 +34,14 @@ const GoogleMapComponent = compose(
       props.markers.map((marker, index) => {
         return <Incident marker={marker} key={index} />;
       })}) )
-    <Marker position={props.indicatorPin} onClick={props.onToggleOpen}>
+    <Marker
+      position={props.indicatorPin}
+      icon={{
+        url: image,
+        scaledSize: { width: 31, height: 43 }
+      }}
+      onClick={props.onToggleOpen}
+    >
       {props.isOpen && (
         <InfoWindow onCloseClick={props.onToggleOpen}>
           <p>Incident Marker</p>
