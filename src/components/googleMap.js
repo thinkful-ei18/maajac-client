@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { compose, withProps, withHandlers } from 'recompose';
+import { compose, withProps } from 'recompose';
 import {
   withScriptjs,
   withGoogleMap,
@@ -7,33 +8,34 @@ import {
   Marker,
   InfoWindow
 } from 'react-google-maps';
+
 import Incident from './IncidentMarker';
 import { styles } from './mapStyle';
 const { MarkerClusterer } = require("react-google-maps/lib/components/addons/MarkerClusterer");
+
+
+
 
 const GoogleMapComponent = compose(
   withProps({
     googleMapURL:
       'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places',
     loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: <div style={{ height: `100vh`, width: `100vw` }} />,
-    mapElement: <div style={{ height: `100%` }} />
-  }),
-  withHandlers({
-    onClusterMouseOver: () => (markerClusterer) => {
-      const clickedMarkers = markerClusterer.getMarkers()
-      console.log('hi')
-    },
+    containerElement: <div style={{ height: `100%`, width: `100vw` }} />,
+    mapElement: <div style={{ height: `93vh` }} />
   }),
   withScriptjs,
   withGoogleMap
 )(props =>
   <GoogleMap
+    ref={props.onMapMounted}
+    onBoundsChanged={props.onBoundsChanged}
     defaultZoom={12}
     center={props.position}
     onClick={props.onHandleClick}
     defaultOptions={{ styles }}
   >
+
 
     {/* Marker that user drops */}
     <Marker position={props.indicatorPin} onClick={props.onToggleOpen}>
@@ -51,7 +53,6 @@ const GoogleMapComponent = compose(
       gridSize={30} // change for size of cluster area
       maxZoom={15} // change how far map zooms when clicking cluster
       defaultMinimumClusterSize={2} // mimimum cluster size
-      onMouseOver={props.onClusterMouseOver}
     >
       {/* Populated clusters */}
       {props.isMarkerShown &&
