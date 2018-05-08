@@ -12,10 +12,9 @@ import {
 import Incident from './IncidentMarker';
 import { styles } from './mapStyle';
 
-const { MarkerClusterer } = require("react-google-maps/lib/components/addons/MarkerClusterer");
-
 import image from '../images/map-marker.svg';
-import thief from '../images/thief.svg';
+
+const { MarkerClusterer } = require("react-google-maps/lib/components/addons/MarkerClusterer");
 
 
 const GoogleMapComponent = compose(
@@ -39,7 +38,7 @@ const GoogleMapComponent = compose(
   >
 
     {/* Marker that user drops */}
-  <Marker
+    <Marker
       position={props.indicatorPin}
       icon={{
         url: image,
@@ -54,7 +53,7 @@ const GoogleMapComponent = compose(
         </InfoWindow>
       )}
     </Marker>
-    
+
     {/* Marker cluster */}
     <MarkerClusterer
       onClick={props.onMarkerClustererClick}
