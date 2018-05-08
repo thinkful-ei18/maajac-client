@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { compose, withProps } from 'recompose';
+import { compose, withProps, withHandlers } from 'recompose';
 import {
   withScriptjs,
   withGoogleMap,
@@ -10,6 +10,7 @@ import {
 } from 'react-google-maps';
 import Incident from './IncidentMarker';
 import { styles } from './mapStyle';
+const { MarkerClusterer } = require("react-google-maps/lib/components/addons/MarkerClusterer");
 
 const GoogleMapComponent = compose(
   withProps({
@@ -19,9 +20,16 @@ const GoogleMapComponent = compose(
     containerElement: <div style={{ height: `100vh`, width: `100vw` }} />,
     mapElement: <div style={{ height: `100%` }} />
   }),
+  withHandlers({
+    onMarkerClustererClick: () => (markerClusterer) => {
+      const clickedMarkers = markerClusterer.getMarkers()
+      console.log(`Current clicked markers length: ${clickedMarkers.length}`)
+      console.log(clickedMarkers)
+    },
+  }),
   withScriptjs,
   withGoogleMap
-)(props => (
+)(props =>
   <GoogleMap
     defaultZoom={12}
     center={props.position}
@@ -31,16 +39,25 @@ const GoogleMapComponent = compose(
     {props.isMarkerShown &&
       props.markers.map((marker, index) => {
         return <Incident marker={marker} key={index} />;
-      })}) )
-    <Marker position={props.indicatorPin} onClick={props.onToggleOpen}>
-      {props.isOpen && (
-        <InfoWindow onCloseClick={props.onToggleOpen}>
-          <p>Incident Marker</p>
-        </InfoWindow>
-      )}
-    </Marker>
+      })
+    }
+
+    <MarkerClusterer
+      onClick={props.onMarkerClustererClick}
+      averageCenter
+      // enableRetinaIcons
+      gridSize={90} // change for size of cluster area
+    >
+      <Marker position={props.indicatorPin} onClick={props.onToggleOpen}>
+        {props.isOpen && (
+          <InfoWindow onCloseClick={props.onToggleOpen}>
+            <p>Incident Marker</p>
+          </InfoWindow>
+        )}
+      </Marker>
+    </MarkerClusterer>
   </GoogleMap>
-));
+);
 
 export const mapStateToProps = (state, props) => ({
   markersFromServer: state.markers.allMarkers ? state.markers.allMarkers : []
