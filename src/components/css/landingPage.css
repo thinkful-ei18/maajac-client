@@ -1,12 +1,20 @@
+.landing-page {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
 /* ============================ 
 MEDIA QUERIES
 ============================*/
 
-@media only screen and (min-device-width: 768px) and (max-device-width: 1023px) and (-webkit-min-device-pixel-ratio: 1) {
-}
+/* tablet */
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1023px) and (-webkit-min-device-pixel-ratio: 1) {}
+
+/* desktop */
 
 @media only screen and (min-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
   .landing-page {
-    display: flex;
+    flex-direction: row;
   }
 }

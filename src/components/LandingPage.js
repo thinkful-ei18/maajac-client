@@ -1,23 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Dialog from 'material-ui/Dialog';
+
 import GoogleMapWrapper from './GoogleMapWrapper';
 import ReportForm from './report';
-import Dialog from 'material-ui/Dialog';
 import { closeDialog } from '../actions/modalActions';
 import LoginForm from '../components/Login';
 import RegistrationForm from '../components/register';
-
-//Modal is tough to style. It needs styles.
 
 import './css/landingPage.css';
 
 export class LandingPage extends Component {
   handleCloseDialog() {
-    console.log('closing dialog...');
     this.props.dispatch(closeDialog());
   }
 
   render() {
+
     let modalForm;
     if (this.props.currentTab) {
       if (this.props.currentTab === 'signup') {
@@ -27,20 +26,24 @@ export class LandingPage extends Component {
       }
     }
 
+    const reportForm = this.props.currentUser ? <ReportForm path={this.props.match.path} /> : ''
+
     return (
       <div className="landing-page">
         <Dialog
-          title="App Name"
+          bodyClassName="modal"
+          title="safeR"
           modal={false}
           autoScrollBodyContent={true}
+          contentStyle={{ width: 300 }}
           open={this.props.dialog}
           onRequestClose={() => this.handleCloseDialog()}
         >
-          {modalForm}
+          { modalForm }
         </Dialog>
 
-        <ReportForm />
-        <GoogleMapWrapper />
+        { reportForm }
+        <GoogleMapWrapper path={this.props.match.path} />
       </div>
     );
   }
@@ -53,3 +56,4 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(LandingPage);
+

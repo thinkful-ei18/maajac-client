@@ -4,9 +4,9 @@ import { Route } from 'react-router-dom';
 import LandingPage from './components/LandingPage';
 import RegistrationForm from './components/register';
 import LoginForm from './components/Login';
-import ReportForm from './components/report';
 import Navbar from './components/navbar';
 import Dashboard from './components/Dashboard';
+import About from './components/About';
 
 import './App.css';
 
@@ -18,8 +18,9 @@ class App extends Component {
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/register" component={RegistrationForm} />
         <Route exact path="/login" component={LoginForm} />
-        <Route exact path="/report" component={ReportForm} />
+        <Route exact path="/report" component={LandingPage} />
         <Route exact path="/dashboard" component={Dashboard} />
+        <Route exact path="/about" component={About}/>
       </div>
     );
   }

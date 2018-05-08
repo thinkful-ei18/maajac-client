@@ -1,7 +1,17 @@
+.reg-label{
+ position: relative;
+ top: 10px;
+}
 .report {
   background-color: #3b4141;
-  width: 250px;
-  color: #ffffff;
+  width: 100vw;
+  display: none;
+}
+
+.mobile-only {
+  background-color: #3b4141;
+  width: 100vw;
+  display: inherit
 }
 
 #type {
@@ -14,9 +24,8 @@
   border: none;
 }
 
-label {
+.report, .mobile-only label {
   position: relative;
-  top: 10px;
   color: #ffffff;
 }
 
@@ -54,6 +63,38 @@ label {
   background-color: #7bc087;
   height: 30px;
   width: 80px;
+  border: none;
+  margin: 5px;
+  color: white;
+}
+
+/* ============================ 
+MEDIA QUERIES
+============================*/
+
+/* tablet */
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1023px) and (-webkit-min-device-pixel-ratio: 1) {
+  .report {
+    display: block
+  }
+}
+
+/* desktop */
+
+@media only screen and (min-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+  .report,
+  .mobile-only {
+    width: 300px;
+    display: block;
+  }
+  
+}
+
+.report-button-large {
+  background-color: #7bc087;
+  height: 30px;
+  width: 150px;
   border: none;
   margin: 5px;
   color: white;

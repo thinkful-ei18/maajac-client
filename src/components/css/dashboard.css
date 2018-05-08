@@ -13,11 +13,14 @@ COLOR SCHEME
 /* ============================
 MOBILE VIEW
 ============================ */
-
+.body-component-dashboard{
+  background: #3b4141;
+}
 .user-reports {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  height: 100%;
 }
 
 .report-card {
@@ -42,11 +45,18 @@ MOBILE VIEW
 }
 
 .delete-incident {
+  border: none;
   background-color: #a0472f;
   width: 50%;
   margin-top: 15px;
   height: 25px;
   color: #ffffff;
+}
+
+.instructions {
+  width: 80%;
+  font-family: 'Work Sans', sans-serif;
+  margin: 10px auto;
 }
 
 /* ============================ 

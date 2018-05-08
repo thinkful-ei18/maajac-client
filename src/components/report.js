@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Field, reduxForm, reset} from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import { newMarker } from '../actions/markerActions';
 import './css/report.css';
 import Input from './input';
@@ -24,8 +24,17 @@ class reportForm extends Component {
   render() {
     const { handleSubmit, pristine, submitting, reset, dispatch } = this.props;
 
+    let style;
+    if (this.props.path === "/") {
+      style = "report";
+    }
+    else if (this.props.path === "/report") {
+      style = "mobile-only"
+    }
+
     return (
-      <div className="report">
+      <div className={style}>
+
         <form
           name={'report'}
           id="incident-report"
@@ -40,7 +49,7 @@ class reportForm extends Component {
             dispatch(newMarker(values));
             dispatch(reset('report'));
           })}>
-          <label htmlFor="incident-type">Incident Type</label>
+          <label className="reg-label" htmlFor="incident-type">Incident Type</label>
           <Field
             component="select"
             id="type"
@@ -103,3 +112,8 @@ reportForm = connect(mapStateToProps)(reportForm);
 export default reduxForm({
   form: 'report'
 })(reportForm);
+
+/*
+Resources:
+ - https://goshakkk.name/different-mobile-desktop-tablet-layouts-react/
+*/

@@ -18,6 +18,8 @@ export class Dashboard extends React.Component {
     // if (this.props.jwt && this.props.reports.length < 1) {
     //   this.props.dispatch(jwtFetch(this.props.jwt));
     // }
+    //changes background image to picture only for this component
+    document.body.className="body-component-dashboard";
     this.props.dispatch(getMarkersDashboard());
   }
 
@@ -53,17 +55,15 @@ export class Dashboard extends React.Component {
 
     let instructions =
       1 > reports.length ? (
-        <span className="instructions">
+        <p className="instructions">
           To create a report, click the create report button above. If the
           button is hidden, tap the menu button to expand available options.
-        </span>
+        </p>
       ) : null;
 
     return (
       <main className="dashboard">
-        {/* <h2>Dashboard</h2> */}
         <UserProfile />
-        <Link to={'/'}>Back to Map</Link>
         <section className="user-reports">
           {userReports}
         </section>
