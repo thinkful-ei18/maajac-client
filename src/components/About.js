@@ -1,7 +1,13 @@
 import React from 'react';
 import './css/about.css';
 
-export default function About(){
+export default class About extends React.Component{
+    componentDidMount(){
+        //changes background image to picture only for this component
+        document.body.className="body-component-about"
+    }
+
+    render(){
     return(
         <div className="about">
             <h1>About safeR</h1>
@@ -13,5 +19,6 @@ export default function About(){
         </div>
 
     );
+}
 
 }

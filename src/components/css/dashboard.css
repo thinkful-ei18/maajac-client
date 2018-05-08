@@ -13,6 +13,9 @@ COLOR SCHEME
 /* ============================
 MOBILE VIEW
 ============================ */
+.body-component-dashboard{
+  background: whitesmoke;
+}
 .user-reports {
   display: flex;
   flex-direction: column;
