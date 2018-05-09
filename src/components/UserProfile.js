@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Dialog from 'material-ui/Dialog';
 
 import './css/userProfile.css';
-import { profileOpenDialog } from '../actions/modalActions';
+import { profileOpenDialog, profileCloseDialog } from '../actions/modalActions';
 
 
 export class UserProfile extends Component {
@@ -13,6 +13,9 @@ export class UserProfile extends Component {
     this.props.dispatch(profileOpenDialog());
   }
 
+  handleCloseDialog() {
+    this.props.dispatch(profileCloseDialog());
+  }
   render() {
     return (
       <section className='user-profile'>
@@ -31,10 +34,10 @@ export class UserProfile extends Component {
           modal={false}
           autoScrollBodyContent={true}
           contentStyle={{ width: 300 }}
-          open={this.props.dialog}
+          open={this.props.ppModal}
           onRequestClose={() => this.handleCloseDialog()}
         >
-          <p>hi</p>
+          <button onClick={() => this.handleCloseDialog()}>Cancel</button>
         </Dialog>
       </section>
     )
@@ -44,7 +47,7 @@ export class UserProfile extends Component {
 export const mapStateToProps = (state, props) => ({
   // loggedIn: state.auth.currentUser !== null,
   currentUser: state.auth.currentUser ? state.auth.currentUser : '',
-  dialog: state.modal.ppModal
+  ppModal: state.modal.ppModal
 });
 
 export default connect(mapStateToProps)(UserProfile);
