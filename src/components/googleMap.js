@@ -1,5 +1,5 @@
-import _ from 'lodash';
 import React from 'react';
+import _ from 'lodash';
 import { compose, withProps, lifecycle } from 'recompose';
 import {
   withScriptjs,
@@ -8,17 +8,15 @@ import {
   Marker,
   InfoWindow
 } from 'react-google-maps';
-
-import { SearchBox } from 'react-google-maps/lib/components/places/SearchBox';
-
 import Incident from './IncidentMarker';
 import { styles } from './mapStyle';
-
 import image from '../images/map-marker.svg';
-
+import SearchBox from 'react-google-maps/lib/components/places/SearchBox';
 const {
   MarkerClusterer
 } = require('react-google-maps/lib/components/addons/MarkerClusterer');
+
+const google = window.google;
 
 const GoogleMapComponent = compose(
   withProps({
@@ -85,20 +83,19 @@ const GoogleMapComponent = compose(
 )(props => (
   <GoogleMap
     ref={props.onMapMounted}
+    defaultZoom={15}
+    center={props.center}
     onBoundsChanged={props.onBoundsChanged}
-    defaultZoom={12}
-    center={props.position}
-    onClick={props.onHandleClick}
-    defaultOptions={{ styles }}
   >
     <SearchBox
       ref={props.onSearchBoxMounted}
-      controlPosition={1}
+      bounds={props.bounds}
+      controlPosition={google.maps.ControlPosition.TOP_LEFT}
       onPlacesChanged={props.onPlacesChanged}
     >
       <input
         type="text"
-        placeholder="Search"
+        placeholder="Customized your placeholder"
         style={{
           boxSizing: `border-box`,
           border: `1px solid transparent`,
@@ -114,37 +111,9 @@ const GoogleMapComponent = compose(
         }}
       />
     </SearchBox>
-    {/* Marker that user drops */}
-    <Marker
-      position={props.indicatorPin}
-      icon={{
-        url: image,
-        scaledSize: { width: 31, height: 43 }
-      }}
-      onClick={props.onToggleOpen}
-    >
-      {props.isOpen && (
-        <InfoWindow onCloseClick={props.onToggleOpen}>
-          <p>Incident Marker</p>
-        </InfoWindow>
-      )}
-    </Marker>
-
-    {/* Marker cluster */}
-    <MarkerClusterer
-      onClick={props.onMarkerClustererClick}
-      averageCenter
-      enableRetinaIcons
-      gridSize={30} // change for size of cluster area
-      maxZoom={15} // change how far map zooms when clicking cluster
-      defaultMinimumClusterSize={2} // mimimum cluster size
-    >
-      {/* Populated markers */}
-      {props.isMarkerShown &&
-        props.markers.map((marker, index) => {
-          return <Incident marker={marker} key={index} />;
-        })}
-    </MarkerClusterer>
+    {props.markers.map((marker, index) => (
+      <Marker key={index} position={marker.position} />
+    ))}
   </GoogleMap>
 ));
 
