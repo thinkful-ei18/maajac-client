@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export const OPEN_SIGN_UP = "OPEN_SIGN_UP"
 export const openSignUp = () => ({
 	type: OPEN_SIGN_UP
@@ -31,16 +33,19 @@ export const profileCloseDialog = () => ({
 })
 
 export const postProfileImage = (image) => (dispatch, getState) => {
-	return fetch('http://res.cloudinary.com/dpg5znpau/image/upload', {
+
+	var formData = new FormData();
+	formData.append("upload_preset", 'btqsteza-unsigned');
+	formData.append("file", image);
+
+	axios({
+		url: 'https://api.cloudinary.com/v1_1/dpg5znpau/upload',
 		method: 'POST',
 		headers: {
-			'upload_preset': 'btqsteza-unsigned',
-			'file': image
-		}
-	})
-		.then(res => console.log(res.json()))
-		.catch(err => {
-			console.log(err)
-		})
-
+			'Content-Type': 'application/x-www-form-urlencoded'
+		},
+		data: formData
+	}).then((res) => {
+		console.log(res)
+	}).catch(err => console.log(err))
 }

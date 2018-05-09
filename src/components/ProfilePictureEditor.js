@@ -1,7 +1,9 @@
 import React from 'react'
+import { connect } from 'react-redux';
 import AvatarEditor from 'react-avatar-editor';
 import Dropzone from 'react-dropzone';
 import { postProfileImage } from '../actions/modalActions';
+
 // import request from 'superagent';
 
 // const CLOUDINARY_UPLOAD_PRESET = 'btqsteza-unsigned';
@@ -12,46 +14,39 @@ class MyEditor extends React.Component {
     super(props);
 
     this.state = {
-      image: 'http://www.catster.com/wp-content/uploads/2017/08/A-fluffy-cat-looking-funny-surprised-or-concerned.jpg',
-      uploadedFileClodinaryUrl: ''
+      image: require('../images/Profile_avatar_placeholder_large.png'),
+      uploadedFileClodinaryUrl: [],
+      selectedFile: null
     }
   }
-  // handleImageUpload(file) {
-  //   let upload =
-  //     request
-  //       .post('url', 'http://res.cloudinary.com/dpg5znpau/')
-  //       .field('upload_preset', 'btqsteza-unsigned')
-  //       .field('file', file);
 
-  //   upload.end((err, response) => {
-  //     if (err) {
-  //       console.error(err);
-  //     }
-
-  //     if (response.body.secure_url !== '') {
-  //       this.setState({
-  //         uploadedFileCloudinaryUrl: response.body.secure_url
-  //       });
-  //       console.log(this.uploadedFileClodinaryUrl)
-  //     }
-  //   });
-  // }
 
   // handle image drop
   handleDrop = dropped => {
-    this.setState({ image: dropped[0] })
+    this.setState({ uploadedFileClodinaryUrl: dropped[0] })
+    console.log(this.state.uploadedFileClodinaryUrl)
   }
 
   // handle capture canvas and handleImageUpload()
   onClickSave = () => {
+    console.log(this.state.image)
     if (this.editor) {
       // This returns a HTMLCanvasElement, it can be made into a data URL or a blob,
       // drawn on another canvas, or added to the DOM.
-      const canvas = this.editor.getImage()
-      this.props.dispatch(postProfileImage(this.image))
+      const canvasScaled = this.editor.getImageScaledToCanvas()
+
+      this.props.dispatch(postProfileImage(this.state.uploadedFileClodinaryUrl.preview))
       console.log('saved')
-      console.log(canvas)
+      console.log(canvasScaled)
     }
+  }
+  fileChangedHandler = (event) => {
+    this.setState({ selectedFile: event.target.files[0] })
+  }
+
+  uploadHandler = () => {
+    console.log(this.state.selectedFile)
+    this.props.dispatch(postProfileImage(this.state.selectedFile))
   }
 
   setEditorRef = (editor) => this.editor = editor
@@ -72,9 +67,14 @@ class MyEditor extends React.Component {
           image={this.state.image}
           ref={this.setEditorRef} />
         <button onClick={() => this.onClickSave()}>Save</button>
+        <input type="file" onChange={this.fileChangedHandler}></input>
+        <button onClick={this.uploadHandler}>Upload!</button>
       </Dropzone>
     )
   }
 }
 
-export default MyEditor
+const mapStateToProps = state => ({
+});
+
+export default connect(mapStateToProps)(MyEditor);
