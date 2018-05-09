@@ -6,10 +6,8 @@ import {
   Marker,
   InfoWindow
 } from 'react-google-maps';
-import SearchBox from 'react-google-maps/lib/components/places/SearchBox';
 import MarkerClusterer from 'react-google-maps/lib/components/addons/MarkerClusterer';
 import Incident from './IncidentMarker';
-import Search from './SearchBox';
 import { styles } from './mapStyle';
 import image from '../images/map-marker.svg';
 
@@ -46,7 +44,6 @@ const GoogleMapComponent = props => {
       defaultOptions={{ styles }}
     >
       {/* Marker that user drops */}
-      <Search />
 
       <Marker
         position={props.indicatorPin}
@@ -64,20 +61,6 @@ const GoogleMapComponent = props => {
       </Marker>
 
       {/* Marker cluster */}
-      <MarkerClusterer
-        onClick={props.onMarkerClustererClick}
-        averageCenter
-        enableRetinaIcons
-        gridSize={30} // change for size of cluster area
-        maxZoom={15} // change how far map zooms when clicking cluster
-        defaultMinimumClusterSize={2} // mimimum cluster size
-      >
-        {/* Populated markers */}
-        {props.isMarkerShown &&
-          props.markers.map((marker, index) => {
-            return <Incident marker={marker} key={index} />;
-          })}
-      </MarkerClusterer>
     </GoogleMapsWrapper>
   );
 };

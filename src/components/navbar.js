@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink, Link } from 'react-router-dom';
+import Search from './SearchBox';
 import { clearAuth } from '../actions/userActions';
 import { clearUserCredentials, clearAuthToken } from '../local-storage';
 import {
   openSignUp,
   openLogin,
   openDialog,
-  closeDialog,
+  closeDialog
 } from '../actions/modalActions';
 // import Menu from '../components/dropdownMenu';
 
 // styles
+
 import './css/navbar.css';
 
 export class Navbar extends Component {
@@ -19,7 +21,7 @@ export class Navbar extends Component {
     super();
 
     this.state = {
-      showMenu: false,
+      showMenu: false
     };
 
     this.showMenu = this.showMenu.bind(this);
@@ -65,7 +67,8 @@ export class Navbar extends Component {
     if (this.props.loggedIn) {
       loggedInNavbar = (
         <button className="report-button-large" onClick={this.showMenu}>
-          Welcome, {this.props.currentUser.username} <i className="arrow down"></i>
+          Welcome, {this.props.currentUser.username}{' '}
+          <i className="arrow down" />
         </button>
       );
     } else {
@@ -84,15 +87,19 @@ export class Navbar extends Component {
       <div>
         <nav className="navbar">
           <span className="home">
-            <NavLink className="logo" to="/">safeR</NavLink>
+            <NavLink className="logo" to="/">
+              safeR
+            </NavLink>
           </span>
-
+          <Search />
           {loggedInNavbar}
           {this.state.showMenu ? (
             <div className="dropdown-menu">
               <Link to="/">Map</Link>
               <Link to="/dashboard">Dashboard</Link>
-              <Link to="/report" className='mobile-only-navbar'>Report</Link>
+              <Link to="/report" className="mobile-only-navbar">
+                Report
+              </Link>
               <Link to="/about">About</Link>
               <button className="navbar-link" onClick={this.logout}>
                 {' '}
@@ -108,7 +115,7 @@ export class Navbar extends Component {
 
 export const mapStateToProps = (state, props) => ({
   loggedIn: state.auth.currentUser !== null,
-  currentUser: state.auth.currentUser ? state.auth.currentUser : '',
+  currentUser: state.auth.currentUser ? state.auth.currentUser : ''
 });
 
 export default connect(mapStateToProps)(Navbar);
