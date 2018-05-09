@@ -29,3 +29,18 @@ export const PROFILE_CLOSE_DIALOG = "PROFILE_CLOSE_DIALOG"
 export const profileCloseDialog = () => ({
 	type: PROFILE_CLOSE_DIALOG
 })
+
+export const postProfileImage = (image) => (dispatch, getState) => {
+	return fetch('http://res.cloudinary.com/dpg5znpau/image/upload', {
+		method: 'POST',
+		headers: {
+			'upload_preset': 'btqsteza-unsigned',
+			'file': image
+		}
+	})
+		.then(res => console.log(res.json()))
+		.catch(err => {
+			console.log(err)
+		})
+
+}
