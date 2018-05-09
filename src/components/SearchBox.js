@@ -4,60 +4,24 @@ const _ = require('lodash');
 const google = window.google;
 
 export default class Search extends React.Component {
-  componentDidMount() {
-    const refs = {};
-
-    this.setState({
-      bounds: null,
+  constructor(props) {
+    super(props);
+    this.state = {
       center: {
         lat: 41.9,
-        lng: -87.624
-      },
-      markers: [],
-      onMapMounted: ref => {
-        refs.map = ref;
-      },
-      onBoundsChanged: () => {
-        this.setState({
-          bounds: refs.map.getBounds(),
-          center: refs.map.getCenter()
-        });
-      },
-      onSearchBoxMounted: ref => {
-        refs.searchBox = ref;
-      },
-      onPlacesChanged: () => {
-        const places = refs.searchBox.getPlaces();
-        const bounds = new google.maps.LatLngBounds();
-
-        places.forEach(place => {
-          if (place.geometry.viewport) {
-            bounds.union(place.geometry.viewport);
-          } else {
-            bounds.extend(place.geometry.location);
-          }
-        });
-        const nextMarkers = places.map(place => ({
-          position: place.geometry.location
-        }));
-        const nextCenter = _.get(nextMarkers, '0.position', this.state.center);
-
-        this.setState({
-          center: nextCenter,
-          markers: nextMarkers
-        });
-        // refs.map.fitBounds(bounds);
+        lng: -87.624,
+        text: ''
       }
-    });
+    };
   }
+
   render() {
-    console.log(this.state.center);
     return (
       <SearchBox
         ref={this.onSearchBoxMounted}
         bounds={this.bounds}
         controlPosition={5}
-        onPlacesChanged={this.onPlacesChanged}
+        onPlacesChanged={val => console.log(val)}
       >
         <input
           type="text"
