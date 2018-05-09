@@ -5,7 +5,7 @@ import PlacesAutocomplete, {
   getLatLng
 } from 'react-places-autocomplete';
 
-import { setDefaultLocation } from '../actions/defaultLocationActions';
+import { setSearchLocation } from '../actions/defaultLocationActions';
 
 const google = window.google;
 
@@ -22,7 +22,7 @@ class LocationSearchInput extends React.Component {
   handleSelect = address => {
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
-      .then(latLng => console.log(latLng))
+      .then(latLng => this.props.dispatch(setSearchLocation(latLng)))
       .catch(error => console.error('Error', error));
   };
 
