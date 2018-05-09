@@ -4,6 +4,7 @@ import Dialog from 'material-ui/Dialog';
 
 import './css/userProfile.css';
 import { profileOpenDialog, profileCloseDialog } from '../actions/modalActions';
+import MyEditor from './ProfilePictureEditor';
 
 
 export class UserProfile extends Component {
@@ -33,11 +34,16 @@ export class UserProfile extends Component {
           title="Profile Picture"
           modal={false}
           autoScrollBodyContent={true}
-          contentStyle={{ width: 300 }}
+          // autoDetectWindowHeight={true}
+          contentStyle={{ height: 800 }}
+          bodyStyle={{ textAlign: 'center', height: '900px', paddingTop: '25px', paddingBottom: '100px' }}
           open={this.props.ppModal}
           onRequestClose={() => this.handleCloseDialog()}
         >
+          {/* Modal body */}
+          <MyEditor />
           <button onClick={() => this.handleCloseDialog()}>Cancel</button>
+          {/* End modal body */}
         </Dialog>
       </section>
     )
