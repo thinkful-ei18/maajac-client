@@ -1,11 +1,6 @@
 import React from 'react';
 import { Marker, InfoWindow } from 'react-google-maps';
-// import thief from '../images/burglar.svg';
-// import accident from '../images/accident.svg';
-// import crime from '../images/flasher.svg';
-// import other from '../images/warning.svg';
-// import traffic from '../images/traffic.svg';
-// import construction from '../images/steamroller.svg';
+
 
 export default class IncidentMarker extends React.Component {
   constructor(props) {
@@ -28,8 +23,6 @@ export default class IncidentMarker extends React.Component {
       return 'http://res.cloudinary.com/dw6hemcpj/image/upload/v1525883156/map_icon_crime.png';
     } else if (type === 'other') {
       return 'http://res.cloudinary.com/dw6hemcpj/image/upload/v1525883157/map_icon_other.png';
-    } else if (type === 'traffic') {
-      return 'http://res.cloudinary.com/dw6hemcpj/image/upload/v1525883156/map_icon_traffic_construction.png';
     } else if (type === 'roadconstruction') {
       return 'http://res.cloudinary.com/dw6hemcpj/image/upload/v1525883156/map_icon_traffic_construction.png';
     }

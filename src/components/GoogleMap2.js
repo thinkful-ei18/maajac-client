@@ -65,7 +65,6 @@ const GoogleMapComponent = props => {
           maxZoom={15} // change how far map zooms when clicking cluster
           defaultMinimumClusterSize={2} // mimimum cluster size
         >
-
           {/* Populated markers */}
           {props.isMarkerShown &&
             props.markers.map((marker, index) => {
@@ -75,13 +74,13 @@ const GoogleMapComponent = props => {
         </MarkerClusterer>
 
 			</GoogleMapsWrapper>
-  )
-}
+)
 
+}
 
 export default GoogleMapComponent;
 
-/**
+/*
  Resources:
   - https://github.com/tomchentw/react-google-maps/issues/636
  */
