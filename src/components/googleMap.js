@@ -61,6 +61,20 @@ const GoogleMapComponent = props => {
       </Marker>
 
       {/* Marker cluster */}
+      <MarkerClusterer
+        onClick={props.onMarkerClustererClick}
+        averageCenter
+        enableRetinaIcons
+        gridSize={30} // change for size of cluster area
+        maxZoom={15} // change how far map zooms when clicking cluster
+        defaultMinimumClusterSize={2} // mimimum cluster size
+      >
+        {/* Populated markers */}
+        {props.isMarkerShown &&
+          props.markers.map((marker, index) => {
+            return <Incident marker={marker} key={index} />;
+          })}
+      </MarkerClusterer>
     </GoogleMapsWrapper>
   );
 };
