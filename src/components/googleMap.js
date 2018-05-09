@@ -74,5 +74,4 @@ const GoogleMapComponent = compose(
   </GoogleMap>
 );
 
-
 export default GoogleMapComponent;
