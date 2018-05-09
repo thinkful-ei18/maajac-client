@@ -1,4 +1,7 @@
-import { DEFAULT_LOCATION } from '../actions/defaultLocationActions';
+import {
+  DEFAULT_LOCATION,
+  SEARCH_LOCATION
+} from '../actions/defaultLocationActions';
 
 const initialState = {
   location: {
@@ -14,7 +17,11 @@ export const defaultLocationReducer = (state = initialState, action) => {
         ...state,
         location: action.location.userlocation
       };
-
+    case SEARCH_LOCATION:
+      return {
+        ...state,
+        location: action.location
+      };
     default: {
       return state;
     }
