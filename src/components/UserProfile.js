@@ -22,7 +22,7 @@ export class UserProfile extends Component {
       <section className='user-profile'>
 
         <div className='user-pic-div'>
-          <img src={require('../images/avatar.png')} alt='profile-pic' className='profile-pic' />
+          <img src={this.props.profilePicture} alt='profile-pic' className='profile-pic' />
         </div>
         <button className='report-button-large' onClick={() => this.ppUploadModal()}>Upload profile picture</button>
         <div className='user-info-div'>
@@ -53,7 +53,8 @@ export class UserProfile extends Component {
 export const mapStateToProps = (state, props) => ({
   // loggedIn: state.auth.currentUser !== null,
   currentUser: state.auth.currentUser ? state.auth.currentUser : '',
-  ppModal: state.modal.ppModal
+  ppModal: state.modal.ppModal,
+  profilePicture: state.auth.profilePicture
 });
 
 export default connect(mapStateToProps)(UserProfile);

@@ -15,17 +15,17 @@ class MyEditor extends React.Component {
 
     this.state = {
       image: require('../images/Profile_avatar_placeholder_large.png'),
-      uploadedFileClodinaryUrl: [],
+      // uploadedFileClodinaryUrl: [],
       selectedFile: null
     }
   }
 
 
   // handle image drop
-  handleDrop = dropped => {
-    this.setState({ uploadedFileClodinaryUrl: dropped[0] })
-    console.log(this.state.uploadedFileClodinaryUrl)
-  }
+  // handleDrop = dropped => {
+  //   this.setState({ uploadedFileClodinaryUrl: dropped[0] })
+  //   console.log(this.state.uploadedFileClodinaryUrl)
+  // }
 
   // handle capture canvas and handleImageUpload()
   onClickSave = () => {
@@ -35,7 +35,7 @@ class MyEditor extends React.Component {
       // drawn on another canvas, or added to the DOM.
       const canvasScaled = this.editor.getImageScaledToCanvas()
 
-      this.props.dispatch(postProfileImage(this.state.uploadedFileClodinaryUrl.preview))
+      this.props.dispatch(postProfileImage(this.state.selectedFile))
       console.log('saved')
       console.log(canvasScaled)
     }
@@ -53,23 +53,25 @@ class MyEditor extends React.Component {
 
   render() {
     return (
-      <Dropzone
-        onDrop={this.handleDrop}
-        multiple={false}
-        disableClick
-        accept="image/jpg,image/png"
-        style={{ width: '250px', height: '250px' }}
-      >
-        <p>Drop an image to change your profile picture</p>
+      // <Dropzone
+      //   onDrop={this.handleDrop}
+      //   multiple={false}
+      //   disableClick
+      //   accept="image/jpg,image/png"
+      //   style={{ width: '250px', height: '250px' }}
+      // >
+      //   <p>Drop an image to change your profile picture</p>
+      <div>
         <AvatarEditor
           width={250}
           height={250}
-          image={this.state.image}
+          image={this.state.selectedFile}
           ref={this.setEditorRef} />
         <button onClick={() => this.onClickSave()}>Save</button>
         <input type="file" onChange={this.fileChangedHandler}></input>
         <button onClick={this.uploadHandler}>Upload!</button>
-      </Dropzone>
+        {/* </Dropzone> */}
+      </div>
     )
   }
 }

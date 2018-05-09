@@ -8,12 +8,14 @@ import {
   REGISTER_REQUEST,
   REGISTER_SUCCESS,
 } from '../actions/userActions';
+import { PROFILE_SUCCESS } from '../actions/modalActions';
 
 const initialState = {
   authToken: null, // authToken !== null does not mean it has been validated
   currentUser: null,
   loading: false,
   error: null,
+  profilePicture: require('../images/Profile_avatar_placeholder_large.png')
 };
 
 export const userAuthReducer = (state = initialState, action) => {
@@ -56,6 +58,10 @@ export const userAuthReducer = (state = initialState, action) => {
       loading: false,
       error: false
     });
+  } else if (action.type === PROFILE_SUCCESS) {
+    return Object.assign({}, state, {
+      profilePicture: action.imageURL
+    })
   }
   return state;
 }

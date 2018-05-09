@@ -32,12 +32,18 @@ export const profileCloseDialog = () => ({
 	type: PROFILE_CLOSE_DIALOG
 })
 
+export const PROFILE_SUCCESS = "PROFILE_SUCCESS"
+export const profileSuccess = (imageURL) => ({
+	type: PROFILE_CLOSE_DIALOG,
+	imageURL
+})
+
 export const postProfileImage = (image) => (dispatch, getState) => {
 
 	var formData = new FormData();
 	formData.append("upload_preset", 'btqsteza-unsigned');
 	formData.append("file", image);
-
+	// TODO: change the user profile picture
 	axios({
 		url: 'https://api.cloudinary.com/v1_1/dpg5znpau/upload',
 		method: 'POST',
@@ -45,7 +51,9 @@ export const postProfileImage = (image) => (dispatch, getState) => {
 			'Content-Type': 'application/x-www-form-urlencoded'
 		},
 		data: formData
+
 	}).then((res) => {
-		console.log(res)
+		dispatch(profileSuccess(res.data.secure_url))
+		console.log(res.data.secure_url)
 	}).catch(err => console.log(err))
 }
