@@ -2,11 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux';
 import AvatarEditor from 'react-avatar-editor';
 import { postProfileImage } from '../actions/modalActions';
-
-// import request from 'superagent';
-
-// const CLOUDINARY_UPLOAD_PRESET = 'btqsteza-unsigned';
-// const CLOUDINARY_UPLOAD_URL = 'http://res.cloudinary.com/dpg5znpau/image/upload'; // http://res.cloudinary.com/dpg5znpau/image/upload/sample.jpg
+import '../components/css/profileEditor.css'
 
 class MyEditor extends React.Component {
   constructor(props) {
@@ -14,7 +10,6 @@ class MyEditor extends React.Component {
 
     this.state = {
       image: require('../images/Profile_avatar_placeholder_large.png'),
-      // uploadedFileClodinaryUrl: [],
       selectedFile: null
     }
   }
@@ -44,7 +39,7 @@ class MyEditor extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='profileEditor'>
         <AvatarEditor
           width={250}
           height={250}

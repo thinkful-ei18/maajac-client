@@ -36,7 +36,7 @@ export class UserProfile extends Component {
           autoScrollBodyContent={true}
           // autoDetectWindowHeight={true}
           contentStyle={{ height: 800 }}
-          bodyStyle={{ textAlign: 'center', height: '900px', paddingTop: '25px', paddingBottom: '100px' }}
+          bodyStyle={{ textAlign: 'center', height: '400px', paddingTop: '25px', paddingBottom: '50px' }}
           open={this.props.ppModal}
           onRequestClose={() => this.handleCloseDialog()}
         >
@@ -54,7 +54,7 @@ export const mapStateToProps = (state, props) => ({
   // loggedIn: state.auth.currentUser !== null,
   currentUser: state.auth.currentUser ? state.auth.currentUser : '',
   ppModal: state.modal.ppModal,
-  profilePicture: state.auth.currentUser.profilePicture || require('../images/Profile_avatar_placeholder_large.png')
+  profilePicture: state.auth.currentUser.profilePicture ? state.auth.currentUser.profilePicture : require('../images/Profile_avatar_placeholder_large.png')
 });
 
 export default connect(mapStateToProps)(UserProfile);
