@@ -5,25 +5,85 @@ import { connect } from 'react-redux';
 import './css/about.css';
 
 class About extends React.Component {
-	// componentDidMount() {
-	// 	//changes background image to picture only for this component
-	// 	document.body.className = 'body-component-about';
-	// }
 
 	render() {
 		if (!this.props.currentUser) {
 			return <Redirect to='/map'/>;
 		}
+
 		return (
-			<div className="about">
-				<h1>About safeR</h1>
-				<p>
-					Our app is community driven. safeR was made to improve community awareness of incident and events in
-					the local area. Neigborhood apps are social network oriented. We wanted to create something the
-					community can use to report and identify certain patterns in their area. Safety is our #1 Priority,
-					user intgrety and identies will always be anonymous
-				</p>
-			</div>
+			<main role='main' className='about'>
+				<section className='about-the-app'>
+					<h4 className='about-h4'>The App</h4>
+					<p className='about-paragraph'>
+						safeR is a community driven and led app created for the purpose of improving community awareness 
+						of local incidents and events. 
+					</p>
+				</section>
+				
+				<section className='about-the-team'>
+					<h4 className='about-h4'>The Team</h4>
+					<div className='team-member'>
+						<p className='member-name'>Alisha Evans</p>
+						<a 
+							className='member-portfolio-link' 
+							href='http://www.alishaantoinette.com/' 
+							target='_blank'
+							rel="noopener noreferrer"
+						>
+						http://www.alishaantoinette.com
+						</a>
+					</div>
+
+					<div className='team-member'>
+						<p className='member-name'>Christina Moore</p>
+						<a 
+							className='member-portfolio-link' 
+							href='http://www.christinamakes.com/' 
+							target='_blank'
+							rel="noopener noreferrer"
+						>
+						http://www.christinamakes.com/
+						</a>
+					</div>
+
+					<div className='team-member'>
+						<p className='member-name'>Ali Ahmad</p>
+						<a 
+							className='member-portfolio-link' 
+							href='https://aliahmad-code.github.io/' 
+							target='_blank'
+							rel="noopener noreferrer"
+						>
+						https://aliahmad-code.github.io/
+						</a>
+					</div>
+
+					<div className='team-member'>
+						<p className='member-name'>Muaath Alaraj</p>
+						<a 
+							className='member-portfolio-link' 
+							href='https://github.com/Mistermo716' 
+							target='_blank'
+							rel="noopener noreferrer"
+						>
+						https://github.com/Mistermo716
+						</a>
+					</div>
+
+					<div className='team-member'>
+						<p className='member-name'>Adrian Ross</p>
+						<a 
+							className='member-portfolio-link' 
+							href='https://github.com/adriantoddross' 
+							target='_blank'
+							rel="noopener noreferrer"
+						>
+						https://github.com/adriantoddross
+						</a>
+					</div>
+				</section>
+			</main>
 		);
 	}
 }
