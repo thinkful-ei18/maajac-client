@@ -39,13 +39,27 @@ export const profileSuccess = (imageURL) => ({
 	imageURL
 })
 
+export const POST_PROFILE_TO_USER_SUCCESS = "POST_PROFILE_TO_USER_SUCCESS"
+export const postProfileToUserSuccess = (authToken) => ({
+	type: POST_PROFILE_TO_USER_SUCCESS,
+	authToken
+})
+
 export const postProfileToUser = (ppImage) => (dispatch, getState) => {
-	return fetch(`${API_BASE_URL}/profilePicture?ppUpload=${ppImage}`, {
+	console.log('here')
+	return fetch(`${API_BASE_URL}/users`, {
 		method: 'PUT',
 		headers: {
 			'Content-Type': 'application/json'
+		},
+		body: {
+			profilePicture: ppImage
 		}
-			.then(res => res.json())
+			.then(res => {
+				console.log(res, 'post to user')
+				dispatch(postProfileToUserSuccess(res))
+				res.json()
+			})
 			.then(data => console.log(data))
 	})
 }
@@ -62,10 +76,10 @@ export const postProfileImage = (image) => (dispatch, getState) => {
 			'Content-Type': 'application/x-www-form-urlencoded'
 		},
 		data: formData
-
 	}).then((res) => {
 		// TODO: PUT profile picture in user
-		dispatch(profileSuccess(res.data.secure_url))
+		// dispatch(profileSuccess(res.data.secure_url))
+		console.log('here')
 		postProfileToUser(res.data.secure_url)
 		console.log(res.data.secure_url)
 	}).catch(err => console.log(err))

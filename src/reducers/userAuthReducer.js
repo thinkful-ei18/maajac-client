@@ -8,14 +8,14 @@ import {
   REGISTER_REQUEST,
   REGISTER_SUCCESS,
 } from '../actions/userActions';
-import { PROFILE_SUCCESS } from '../actions/modalActions';
+import { PROFILE_SUCCESS, POST_PROFILE_TO_USER_SUCCESS } from '../actions/modalActions';
 
 const initialState = {
   authToken: null, // authToken !== null does not mean it has been validated
   currentUser: null,
   loading: false,
   error: null,
-  profilePicture: require('../images/Profile_avatar_placeholder_large.png')
+  // profilePicture: 'https://res.cloudinary.com/dpg5znpau/image/upload/v1525965717/profile/wr38a74sjyzmipfkteja.png'
 };
 
 export const userAuthReducer = (state = initialState, action) => {
@@ -58,10 +58,15 @@ export const userAuthReducer = (state = initialState, action) => {
       loading: false,
       error: false
     });
-  } else if (action.type === PROFILE_SUCCESS) {
+    // } else if (action.type === PROFILE_SUCCESS) {
+    //   console.log(action, 'pp action')
+    //   return Object.assign({}, state, {
+    //     profilePicture: action.imageURL
+    //   })
+  } else if (action.type === POST_PROFILE_TO_USER_SUCCESS) {
     console.log(action, 'pp action')
     return Object.assign({}, state, {
-      profilePicture: action.imageURL
+      currentUser: action.authToken
     })
   }
   return state;
