@@ -42,11 +42,13 @@ export default class IncidentMarker extends React.Component {
       >
         {this.state.isOpen && (
           <InfoWindow onCloseClick={() => this.onToggleOpen()}>
-            <div>
-              <p>{this.props.marker.incidentType}</p>
-              <p>{this.props.marker.description}</p>
-              <p>{this.props.marker.time}</p>
-              <p>{this.props.marker.date}</p>
+            <div className='marker-info'>
+              <h1>{this.props.marker.incidentType}</h1>
+              <p>
+                <span className='marker-desc'>{this.props.marker.description}</span>
+                <br/><span className='marker-time'>{this.props.marker.time}</span>
+                <br/><span className='marker-date'>{this.props.marker.date}</span>
+              </p>
             </div>
           </InfoWindow>
         )}
