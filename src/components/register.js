@@ -47,7 +47,7 @@ export class RegistrationForm extends React.Component {
         className="modal-form"
         onSubmit={handleSubmit(values => this.onSubmit(values))}
       >
-        {this.props.loggedIn ? <Redirect to="/" /> : ''}
+        {this.props.loggedIn ? <Redirect to="/map" /> : ''}
 
         <div className="form-error" aria-live="polite">
           {errorMessage}
