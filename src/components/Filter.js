@@ -9,7 +9,7 @@ class Filter extends React.Component {
 		return (
 			<select onChange={e => this.onFilter(e)} className="filter">
 				{' '}
-				<option value="" />
+				<option value="" >Incident Type: All</option>
 				<option value="Crime">Crime</option>
 				<option value="Theft">Theft</option>
 				<option value="Road-Construction">Road Construction</option>
