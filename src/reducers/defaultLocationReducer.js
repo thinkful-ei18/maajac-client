@@ -5,8 +5,8 @@ import {
 
 const initialState = {
   location: {
-    lat: -34.397,
-    lng: 150.644
+    lat: 40.650002,
+    lng: -73.94997
   }
 };
 
