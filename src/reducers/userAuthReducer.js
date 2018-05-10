@@ -8,6 +8,7 @@ import {
   REGISTER_REQUEST,
   REGISTER_SUCCESS,
 } from '../actions/userActions';
+import { POST_PROFILE_TO_USER_SUCCESS } from '../actions/modalActions';
 
 const initialState = {
   authToken: null, // authToken !== null does not mean it has been validated
@@ -32,6 +33,7 @@ export const userAuthReducer = (state = initialState, action) => {
       error: null,
     });
   } else if (action.type === AUTH_SUCCESS) {
+    console.log('action', action)
     return Object.assign({}, state, {
       loading: false,
       currentUser: action.currentUser,
@@ -56,6 +58,12 @@ export const userAuthReducer = (state = initialState, action) => {
       loading: false,
       error: false
     });
+  } else if (action.type === POST_PROFILE_TO_USER_SUCCESS) {
+    return Object.assign({}, state, {
+      currentUser: Object.assign({}, state.currentUser, {
+        profilePicture: action.image
+      })
+    })
   }
   return state;
 }

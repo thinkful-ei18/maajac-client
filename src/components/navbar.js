@@ -13,104 +13,109 @@ import { openSignUp, openLogin, openDialog, closeDialog } from '../actions/modal
 import './css/navbar.css';
 
 export class Navbar extends Component {
-	constructor() {
-		super();
+  constructor() {
+    super();
 
-		this.state = {
-			showMenu: false,
-		};
+    this.state = {
+      showMenu: false,
+    };
 
-		this.showMenu = this.showMenu.bind(this);
-		this.closeMenu = this.closeMenu.bind(this);
-		this.logout = this.logout.bind(this);
-	}
+    this.showMenu = this.showMenu.bind(this);
+    this.closeMenu = this.closeMenu.bind(this);
+    this.logout = this.logout.bind(this);
+  }
 
-	showMenu(event) {
-		event.preventDefault();
+  showMenu(event) {
+    event.preventDefault();
 
-		this.setState({ showMenu: true }, () => {
-			document.addEventListener('click', this.closeMenu);
-		});
-	}
+    this.setState({ showMenu: true }, () => {
+      document.addEventListener('click', this.closeMenu);
+    });
+  }
 
-	closeMenu() {
-		this.setState({ showMenu: false }, () => {
-			document.removeEventListener('click', this.closeMenu);
-		});
-	}
+  closeMenu() {
+    this.setState({ showMenu: false }, () => {
+      document.removeEventListener('click', this.closeMenu);
+    });
+  }
 
-	logout() {
-		clearAuthToken();
-		clearUserCredentials();
-		this.props.dispatch(clearAuth());
-		this.props.dispatch(closeDialog());
-	}
+  logout() {
+    clearAuthToken();
+    clearUserCredentials();
+    this.props.dispatch(clearAuth());
+    this.props.dispatch(closeDialog());
+  }
 
-	signUp() {
-		// todo: signup data flow
-		this.props.dispatch(openDialog());
-		this.props.dispatch(openSignUp());
-	}
-	logIn(data) {
-		//todo: log in data flow
-		this.props.dispatch(openDialog());
-		this.props.dispatch(openLogin());
-	}
+  signUp() {
+    // todo: signup data flow
+    this.props.dispatch(openDialog());
+    this.props.dispatch(openSignUp());
+  }
+  logIn(data) {
+    //todo: log in data flow
+    this.props.dispatch(openDialog());
+    this.props.dispatch(openLogin());
+  }
 
-	render() {
-		let loggedInNavbar;
+  render() {
+    let loggedInNavbar;
 
-		if (this.props.loggedIn) {
-			loggedInNavbar = (
-				<button className="report-button-large" onClick={this.showMenu}>
-					Welcome, {this.props.currentUser.username} <i className="arrow down" />
-				</button>
-			);
-		} else {
-			loggedInNavbar = (
-				<div>
-					<button className="report-button" onClick={() => this.signUp()}>
-						Sign Up
+    if (this.props.loggedIn) {
+      loggedInNavbar = (
+        <button className="report-button-large" onClick={this.showMenu}>
+          <div className='navbar-flex'>
+            Welcome, {this.props.currentUser.username}
+            <img src={this.props.profilePic} alt='user profile icon' className='small-profile-nav'></img>
+            <i className="arrow down" />
+          </div>
+        </button>
+      );
+    } else {
+      loggedInNavbar = (
+        <div>
+          <button className="report-button" onClick={() => this.signUp()}>
+            Sign Up
 					</button>
-					<button className="report-button" onClick={() => this.logIn()}>
-						Log In
+          <button className="report-button" onClick={() => this.logIn()}>
+            Log In
 					</button>
-				</div>
-			);
-		}
-		return (
-			<div>
-				<nav className="navbar">
-					<span className="home">
-						<NavLink className="logo" to="/">
-							safeR
+        </div>
+      );
+    }
+    return (
+      <div>
+        <nav className="navbar">
+          <span className="home">
+            <NavLink className="logo" to="/">
+              safeR
 						</NavLink>
-					</span>
-					<Search /> <Filter />
-					{loggedInNavbar}
-					{this.state.showMenu ? (
-						<div className="dropdown-menu">
-							<Link to="/">Map</Link>
-							<Link to="/dashboard">Dashboard</Link>
-							<Link to="/report" className="mobile-only-navbar">
-								Report
+          </span>
+          <Search /> <Filter />
+          {loggedInNavbar}
+          {this.state.showMenu ? (
+            <div className="dropdown-menu">
+              <Link to="/">Map</Link>
+              <Link to="/dashboard">Dashboard</Link>
+              <Link to="/report" className="mobile-only-navbar">
+                Report
 							</Link>
-							<Link to="/about">About</Link>
-							<button className="navbar-link" onClick={this.logout}>
-								{' '}
-								Logout{' '}
-							</button>
-						</div>
-					) : null}
-				</nav>
-			</div>
-		);
-	}
+              <Link to="/about">About</Link>
+              <button className="navbar-link" onClick={this.logout}>
+                {' '}
+                Logout{' '}
+              </button>
+            </div>
+          ) : null}
+        </nav>
+      </div>
+    );
+  }
 }
 
 export const mapStateToProps = (state, props) => ({
-	loggedIn: state.auth.currentUser !== null,
-	currentUser: state.auth.currentUser ? state.auth.currentUser : '',
+  loggedIn: state.auth.currentUser !== null,
+  currentUser: state.auth.currentUser ? state.auth.currentUser : '',
+  profilePicture: state.auth.currentUser.profilePicture ? state.auth.currentUser.profilePicture : 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'
 });
 
 export default connect(mapStateToProps)(Navbar);
