@@ -8,6 +8,16 @@ export const defaultLocation = location => ({
   location
 });
 
+export const SEARCH_LOCATION = 'SEARCH_LOCATION';
+export const searchLocation = location => ({
+  type: SEARCH_LOCATION,
+  location
+});
+
 export const setDefaultLocation = locationObj => dispatch => {
   dispatch(defaultLocation(locationObj));
+};
+
+export const setSearchLocation = locationObj => dispatch => {
+  dispatch(searchLocation(locationObj));
 };

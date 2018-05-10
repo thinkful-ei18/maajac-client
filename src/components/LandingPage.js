@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Dialog from 'material-ui/Dialog';
-import Filter from './Filter';
 import GoogleMapWrapper from './GoogleMapWrapper';
 import ReportForm from './report';
 import { closeDialog } from '../actions/modalActions';
@@ -42,7 +41,6 @@ export class LandingPage extends Component {
 				</Dialog>
 
 				{reportForm}
-				<Filter />
 
 				<GoogleMapWrapper path={this.props.match.path} />
 			</div>
