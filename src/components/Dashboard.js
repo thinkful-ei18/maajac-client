@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { withRouter } from 'react-router';
+import RequiresLogin from './Requires-Login'
 
 import {
   getMarkersDashboard,
@@ -38,9 +39,10 @@ export class Dashboard extends React.Component {
 
     let userReports = reports.map(report => (
       <div className="report-card" key={report._id}>
-      {this.props.loggedIn ? '' : ( <Redirect to='/map' />) }
+        {/* {console.log(this.props.loggedIn)} */}
+        {/* {this.props.loggedIn ? '' : (<Redirect to='/map' />)} */}
         <h2 className="incident-type">{report.incidentType}</h2>
-        <img alt={`Report icon for ${report.incidentType}`} src={report.icon}/>
+        <img alt={`Report icon for ${report.incidentType}`} src={report.icon} />
         <h3 className="incident-date">Date: {report.date}</h3>
         {/* <p className="incident-location">
           Location: {report.location.lat + report.location.lng}
@@ -86,4 +88,5 @@ export const mapStateToProps = state => ({
   currentUser: state.auth.currentUser ? state.auth.currentUser : '',
 });
 
-export default withRouter(connect(mapStateToProps)(Dashboard));
+export default RequiresLogin()(connect(mapStateToProps)(Dashboard));
+// export default RequiresLogin()withRouter(connect(mapStateToProps)(Dashboard));
