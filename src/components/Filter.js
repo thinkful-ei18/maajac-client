@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { filterMarkers } from '../actions/markerActions';
-
 class Filter extends React.Component {
 	onFilter(e) {
 		this.props.dispatch(filterMarkers(e.currentTarget.value));
