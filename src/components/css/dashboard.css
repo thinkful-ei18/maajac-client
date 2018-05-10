@@ -3,32 +3,36 @@ COLOR SCHEME
 ============================ */
 
 #COLORS {
-  color: #2e3434;
-  color: #3b4141;
-  color: #7bc087;
-  color: #9e9fa1;
-  color: #a0472f;
+	color: #2e3434;
+	color: #3b4141;
+	color: #7bc087;
+	color: #9e9fa1;
+	color: #a0472f;
 }
 
 /* ============================
 MOBILE VIEW
 ============================ */
-.body-component-dashboard{
-  background: #3b4141;
+.report-icon {
+	width: 20%;
+	height: auto;
+}
+.body-component-dashboard {
+	background: #3b4141;
 }
 .user-reports {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  height: 100%;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	height: 100%;
 }
 
 .report-card {
-  width: 80%;
-  background-color: #9e9fa1;
-  margin: 10px auto;
-  padding: 10px;
-  height: 350px;
+	width: 80%;
+	background-color: #9e9fa1;
+	margin: 10px auto;
+	padding: 10px;
+	height: 350px;
 }
 
 .incident-type,
@@ -36,27 +40,27 @@ MOBILE VIEW
 .incident-location,
 .incident-description-title,
 .incident-description {
-  padding: 5px 0;
-  font-family: 'Work Sans', sans-serif;
+	padding: 5px 0;
+	font-family: 'Work Sans', sans-serif;
 }
 
 .incident-description-title {
-  margin-top: 20px;
+	margin-top: 20px;
 }
 
 .delete-incident {
-  border: none;
-  background-color: #a0472f;
-  width: 50%;
-  margin-top: 15px;
-  height: 25px;
-  color: #ffffff;
+	border: none;
+	background-color: #a0472f;
+	width: 50%;
+	margin-top: 15px;
+	height: 25px;
+	color: #ffffff;
 }
 
 .instructions {
-  width: 80%;
-  font-family: 'Work Sans', sans-serif;
-  margin: 10px auto;
+	width: 80%;
+	font-family: 'Work Sans', sans-serif;
+	margin: 10px auto;
 }
 
 /* ============================ 
@@ -65,22 +69,23 @@ MEDIA QUERIES
 
 /* tablet */
 
-@media only screen and (min-device-width: 768px) and (max-device-width: 1023px) and (-webkit-min-device-pixel-ratio: 1) {}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1023px) and (-webkit-min-device-pixel-ratio: 1) {
+}
 
 /* desktop */
 
 @media only screen and (min-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
-  .dashboard {
-    display: flex;
-  }
-  .user-reports {
-    display: flex;
-    flex-direction: row;
-    width: 85%;
-    margin: 0 auto;
-    padding-top: 25px;
-  }
-  .report-card {
-    width: 250px;
-  }
+	.dashboard {
+		display: flex;
+	}
+	.user-reports {
+		display: flex;
+		flex-direction: row;
+		width: 85%;
+		margin: 0 auto;
+		padding-top: 25px;
+	}
+	.report-card {
+		width: 250px;
+	}
 }
