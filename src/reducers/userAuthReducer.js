@@ -59,6 +59,7 @@ export const userAuthReducer = (state = initialState, action) => {
       error: false
     });
   } else if (action.type === PROFILE_SUCCESS) {
+    console.log(action, 'pp action')
     return Object.assign({}, state, {
       profilePicture: action.imageURL
     })

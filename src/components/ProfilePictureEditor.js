@@ -67,7 +67,6 @@ class MyEditor extends React.Component {
           height={250}
           image={this.state.selectedFile}
           ref={this.setEditorRef} />
-        <button onClick={() => this.onClickSave()}>Save</button>
         <input type="file" onChange={this.fileChangedHandler}></input>
         <button onClick={this.uploadHandler}>Upload!</button>
         {/* </Dropzone> */}

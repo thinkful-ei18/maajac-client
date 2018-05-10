@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { API_BASE_URL } from '../config';
 
 export const OPEN_SIGN_UP = "OPEN_SIGN_UP"
 export const openSignUp = () => ({
@@ -34,16 +35,26 @@ export const profileCloseDialog = () => ({
 
 export const PROFILE_SUCCESS = "PROFILE_SUCCESS"
 export const profileSuccess = (imageURL) => ({
-	type: PROFILE_CLOSE_DIALOG,
+	type: PROFILE_SUCCESS,
 	imageURL
 })
 
-export const postProfileImage = (image) => (dispatch, getState) => {
+export const postProfileToUser = (ppImage) => (dispatch, getState) => {
+	return fetch(`${API_BASE_URL}/profilePicture?ppUpload=${ppImage}`, {
+		method: 'PUT',
+		headers: {
+			'Content-Type': 'application/json'
+		}
+			.then(res => res.json())
+			.then(data => console.log(data))
+	})
+}
 
+export const postProfileImage = (image) => (dispatch, getState) => {
 	var formData = new FormData();
 	formData.append("upload_preset", 'btqsteza-unsigned');
 	formData.append("file", image);
-	// TODO: change the user profile picture
+
 	axios({
 		url: 'https://api.cloudinary.com/v1_1/dpg5znpau/upload',
 		method: 'POST',
@@ -53,7 +64,9 @@ export const postProfileImage = (image) => (dispatch, getState) => {
 		data: formData
 
 	}).then((res) => {
+		// TODO: PUT profile picture in user
 		dispatch(profileSuccess(res.data.secure_url))
+		postProfileToUser(res.data.secure_url)
 		console.log(res.data.secure_url)
 	}).catch(err => console.log(err))
 }
