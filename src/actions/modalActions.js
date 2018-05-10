@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { API_BASE_URL } from '../config';
+import { loadAuthToken, saveUserCredentials } from '../local-storage';
 
 export const OPEN_SIGN_UP = "OPEN_SIGN_UP"
 export const openSignUp = () => ({
@@ -67,6 +68,15 @@ export const postProfileToUser = (ppImage) => (dispatch, getState) => {
 		.then(res => {
 			console.log(res, 'post to user')
 			dispatch(postProfileToUserSuccess(ppImage))
+
+			const user = JSON.parse(localStorage.getItem('user'));
+			console.log(user.profilePicture)
+			const newUser = {
+				...user,
+				profilePicture: ppImage
+			}
+			console.log(user)
+			saveUserCredentials(newUser)
 			// update user in local storage
 			// pull out of ls, change key for pp, back to ls
 		})

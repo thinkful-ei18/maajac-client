@@ -24,7 +24,7 @@ const store = createStore(
 
 const authToken = loadAuthToken();
 const user = JSON.parse(localStorage.getItem('user'));
-console.log('authToken', user)
+
 if (authToken) {
   store.dispatch(setAuthToken(authToken));
   store.dispatch(authSuccess(user));
