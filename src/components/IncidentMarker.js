@@ -1,5 +1,6 @@
 import React from 'react';
 import { Marker, InfoWindow } from 'react-google-maps';
+import './css/marker.css';
 
 export default class IncidentMarker extends React.Component {
   constructor(props) {
@@ -43,7 +44,7 @@ export default class IncidentMarker extends React.Component {
         {this.state.isOpen && (
           <InfoWindow onCloseClick={() => this.onToggleOpen()}>
             <div className='marker-info'>
-              <h1>{this.props.marker.incidentType}</h1>
+              <h1 className='marker-header'>{this.props.marker.incidentType}</h1>
               <p>
                 <span className='marker-desc'>{this.props.marker.description}</span>
                 <br/><span className='marker-time'>{this.props.marker.time}</span>
