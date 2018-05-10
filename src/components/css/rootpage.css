@@ -1,0 +1,155 @@
+.rootpage {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  /* margin-top: 35px; */
+}
+
+.tagline-header {
+  padding: 0 25px;
+  width: 100%;
+}
+
+.tagline-title {
+  font-weight: bold;
+  font-size: 28px;
+  padding-top: 20px;
+  padding-bottom: 5px;
+}
+
+.tagline-desc {
+  font-size: 22px;
+  padding-bottom: 20px;
+  color: #3b4141;
+}
+
+.landing-container {
+  position: relative;
+  background-color: #3b4141;
+  color: white;
+  height: 300px;
+  width: 100%;
+  margin-bottom: 35px;
+  border-bottom: 10px solid #7bc087;
+}
+
+.landing-signup {
+  position: absolute;
+  bottom: 0;
+  background-color: #3b4141;
+  height: 35%;
+  padding: 15px;
+  width: 100%;
+}
+
+.landing-title {
+  display: block;
+  padding-bottom: 15px;
+}
+
+.feature-container {
+  display: flex;
+  flex-direction: column;
+  padding: 0 25px;
+}
+
+.feature {
+  border-bottom: 1px solid #7bc087;
+  flex: 1;
+  margin-bottom: 25px;
+}
+
+.feature h3 {
+  font-size: 22px;
+  padding-bottom: 10px;
+}
+
+.feature p {
+  padding-bottom: 10px;
+  color: #3b4141;
+}
+
+.feature img {
+  height: auto;
+  margin-bottom: 10px;
+  max-width: 35%;
+}
+
+.footer {
+  background-color: #3b4141;
+  color: white;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 10px;
+  padding: 25px 0px;
+  width: 100%;
+}
+
+.footer h4 {
+  border-bottom: 1px solid white;
+  font-weight: bold;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+}
+
+.footer a:hover {
+  color: #7bc087;
+  font-weight: bold;
+}
+
+.footer-credits li {
+  flex: 1;
+  padding: 7px 0px;
+}
+
+.footer-credits>li>a {
+  color: white;
+  text-decoration: none;
+}
+
+.github-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.github-link {
+  color: white;
+  text-decoration: none;
+  padding: 7px 0px;
+}
+
+/* ============================ 
+MEDIA QUERIES
+============================*/
+
+@media only screen and (min-width: 768px) {
+  /* For tablet/desktop: */
+  .tagline-header {
+    margin: 0px 5vw;
+  }
+  .feature-container {
+    flex-direction: row;
+    margin: 0px 5vw;
+  }
+  .feature {
+    border: none;
+    margin: 25px;
+  }
+  .landing-signup {
+    height: 20%;
+  }
+  .landing-container {
+    background-image: url('../../images/phone.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+  }
+  .footer {
+    justify-content: left;
+  }
+  .footer-credits {
+    margin: 0 100px 0px 30px;
+    ;
+  }
+  .github-container {}
+}

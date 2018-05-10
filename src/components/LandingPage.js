@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Dialog from 'material-ui/Dialog';
+import { Redirect } from 'react-router-dom';
+
 import GoogleMapWrapper from './GoogleMapWrapper';
 import ReportForm from './report';
 import { closeDialog } from '../actions/modalActions';
@@ -15,6 +17,10 @@ export class LandingPage extends Component {
 	}
 
 	render() {
+		if (!this.props.currentUser && this.props.match.path === '/report') {
+			return <Redirect to='/map'/>;
+		}
+
 		let modalForm;
 		if (this.props.currentTab) {
 			if (this.props.currentTab === 'signup') {
