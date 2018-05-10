@@ -40,30 +40,39 @@ export const profileSuccess = (imageURL) => ({
 })
 
 export const POST_PROFILE_TO_USER_SUCCESS = "POST_PROFILE_TO_USER_SUCCESS"
-export const postProfileToUserSuccess = (authToken) => ({
+export const postProfileToUserSuccess = (image) => ({
 	type: POST_PROFILE_TO_USER_SUCCESS,
-	authToken
+	image
 })
 
 // helper
-const postProfileToUser = (ppImage) => (dispatch, getState) => {
+export const postProfileToUser = (ppImage) => (dispatch, getState) => {
 	console.log('post here')
-	return fetch(`${API_BASE_URL}/users`, {
+	const authToken = localStorage.getItem('authToken')
+	// ? localStorage.getItem('authToken')
+	// : getState().auth.authToken;
+	console.log(getState())
+	console.log(ppImage);
+	return fetch(`${API_BASE_URL}/users/profilePicture`, {
 		method: 'PUT',
 		headers: {
-			'Content-Type': 'application/json'
+			'Content-Type': 'application/json',
+			Authorization: `Bearer ${authToken}`,
 		},
-		body: {
-			profilePicture: ppImage
-		}
-			.then(res => {
-				console.log(res, 'post to user')
-				dispatch(postProfileToUserSuccess(res))
-				res.json()
-			})
-			.then(data => console.log(data))
+		body: JSON.stringify({
+			ppUpload: ppImage
+		})
 	})
+		.then(res => res.json())
+		.then(res => {
+			console.log(res, 'post to user')
+			dispatch(postProfileToUserSuccess(ppImage))
+			// update user in local storage
+			// pull out of ls, change key for pp, back to ls
+		})
+		.then(data => console.log(data))
 }
+
 
 export const postProfileImage = (image) => (dispatch, getState) => {
 	var formData = new FormData();
@@ -77,7 +86,10 @@ export const postProfileImage = (image) => (dispatch, getState) => {
 			'Content-Type': 'application/x-www-form-urlencoded'
 		},
 		data: formData
-	}).then(res => postProfileToUser(res.data.secure_url)
-	)
+	})
+		.then(res => {
+			console.log(res.data.secure_url)
+			dispatch(postProfileToUser(res.data.secure_url))
+		})
 		.catch(err => console.log(err))
 }
