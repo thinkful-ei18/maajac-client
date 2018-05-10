@@ -45,8 +45,9 @@ export const postProfileToUserSuccess = (authToken) => ({
 	authToken
 })
 
-export const postProfileToUser = (ppImage) => (dispatch, getState) => {
-	console.log('here')
+// helper
+const postProfileToUser = (ppImage) => (dispatch, getState) => {
+	console.log('post here')
 	return fetch(`${API_BASE_URL}/users`, {
 		method: 'PUT',
 		headers: {
@@ -76,11 +77,7 @@ export const postProfileImage = (image) => (dispatch, getState) => {
 			'Content-Type': 'application/x-www-form-urlencoded'
 		},
 		data: formData
-	}).then((res) => {
-		// TODO: PUT profile picture in user
-		// dispatch(profileSuccess(res.data.secure_url))
-		console.log('here')
-		postProfileToUser(res.data.secure_url)
-		console.log(res.data.secure_url)
-	}).catch(err => console.log(err))
+	}).then(res => postProfileToUser(res.data.secure_url)
+	)
+		.catch(err => console.log(err))
 }
