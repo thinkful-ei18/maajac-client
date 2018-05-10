@@ -21,7 +21,7 @@ const GoogleMapsWrapper = withScriptjs(
 
 // details of the map
 const GoogleMapComponent = props => {
-	let height = '100vh';
+	let height = 'calc(100vh - 50px)';
 	if (props.path === '/report') {
 		height = '35vh';
 	}
