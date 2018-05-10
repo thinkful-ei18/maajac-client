@@ -34,7 +34,7 @@
 	flex-direction: column;
 	z-index: 2;
 	background-color: #7bc087;
-	width: 150px;
+	width: 170px;
 }
 
 .navbar a:first-of-type {
@@ -75,10 +75,23 @@ i {
 .report-button-large {
 	background-color: #7bc087;
 	height: 30px;
-	width: 150px;
+	width: 170px;
 	border: none;
 	margin: 5px;
 	color: white;
+}
+
+.small-profile-nav {
+	margin: 0px 5px 0px 5px;
+	width: 20px;
+	border-radius: 100px
+}
+
+.navbar-flex {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
 }
 /* ============================ 
 MEDIA QUERIES
