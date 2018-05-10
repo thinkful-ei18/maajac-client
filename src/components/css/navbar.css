@@ -106,14 +106,14 @@ MEDIA QUERIES
 		display: block;
 		margin: 0px 5px 0px 5px;
 		width: 20px;
-		border-radius: 100px
+		border-radius: 100px;
 	}
 
 	.dropdown-menu {
-		width: 170px;
+		width: 190px;
 	}
 
 	.report-button-large {
-		width: 170px;
+		width: 190px;
 	}
 }

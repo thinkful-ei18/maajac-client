@@ -65,7 +65,7 @@ export class Navbar extends Component {
         <button className="report-button-large" onClick={this.showMenu}>
           <div className='navbar-flex'>
             Welcome, {this.props.currentUser.username}
-            <img src={this.props.profilePic} alt='user profile picture' className='small-profile-nav'></img>
+            <img src={this.props.profilePic} alt='user profile icon' className='small-profile-nav'></img>
             <i className="arrow down" />
           </div>
         </button>
