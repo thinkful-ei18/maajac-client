@@ -60,6 +60,7 @@ export default class IncidentMarker extends React.Component {
         {this.state.isOpen && (
           <InfoWindow onCloseClick={() => this.onToggleOpen()}>
             <div className='marker-info'>
+              <img src={this.markerImage(this.props.marker.incidentType)} alt=""/>
               <h1 className='marker-header'>{this.props.marker.incidentType}</h1>
               <p>
                 <span className='marker-desc'>{this.props.marker.description}</span>
