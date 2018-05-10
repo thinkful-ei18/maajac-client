@@ -1,0 +1,21 @@
+.marker-info {
+
+}
+
+.marker-header {
+  border-bottom: 1px solid gray;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.marker-desc {
+
+}
+
+.marker-timer {
+  display: inline-block;
+}
+
+.marker-date {
+  display: inline-block;
+}
