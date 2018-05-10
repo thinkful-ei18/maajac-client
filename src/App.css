@@ -39,6 +39,23 @@
 }
 
 @media only screen and (min-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) {
+	.filter {
+		position: absolute;
+		left: 125px;
+		margin: 0px;
+		background-color: #3b4141;
+		border: none;
+		height: 30px;
+		width: 125px;
+		color: white;
+	}
+	.location-search-input {
+		position: relative;
+		height: 30px;
+		background-color: #3b4141;
+		border: none;
+		color: white;
+	}
 }
 
 @media only screen and (min-device-width: 0px) and (max-device-width: 650px) and (-webkit-min-device-pixel-ratio: 1) {
