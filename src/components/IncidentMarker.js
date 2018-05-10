@@ -47,8 +47,8 @@ export default class IncidentMarker extends React.Component {
               <h1 className='marker-header'>{this.props.marker.incidentType}</h1>
               <p>
                 <span className='marker-desc'>{this.props.marker.description}</span>
-                <br/><span className='marker-time'>{this.props.marker.time}</span>
                 <br/><span className='marker-date'>{this.props.marker.date}</span>
+                <span className='marker-time'>{this.props.marker.time}</span>
               </p>
             </div>
           </InfoWindow>
