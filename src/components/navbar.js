@@ -65,7 +65,7 @@ export class Navbar extends Component {
         <button className="report-button-large" onClick={this.showMenu}>
           <div className='navbar-flex'>
             Welcome, {this.props.currentUser.username}
-            <img src={this.props.profilePic} alt='user profile icon' className='small-profile-nav'></img>
+            <img src={this.props.profilePicture} alt='user profile icon' className='small-profile-nav'></img>
             <i className="arrow down" />
           </div>
         </button>
@@ -115,7 +115,7 @@ export class Navbar extends Component {
 export const mapStateToProps = (state, props) => ({
   loggedIn: state.auth.currentUser !== null,
   currentUser: state.auth.currentUser ? state.auth.currentUser : '',
-  profilePicture: state.auth.currentUser.profilePicture ? state.auth.currentUser.profilePicture : 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'
+  profilePicture: state.auth.currentUser !== null ? state.auth.currentUser.profilePicture : 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'
 });
 
 export default connect(mapStateToProps)(Navbar);
