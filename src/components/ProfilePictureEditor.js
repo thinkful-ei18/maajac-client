@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import AvatarEditor from 'react-avatar-editor';
-import Dropzone from 'react-dropzone';
 import { postProfileImage } from '../actions/modalActions';
 
 // import request from 'superagent';
@@ -20,14 +19,6 @@ class MyEditor extends React.Component {
     }
   }
 
-
-  // handle image drop
-  // handleDrop = dropped => {
-  //   this.setState({ uploadedFileClodinaryUrl: dropped[0] })
-  //   console.log(this.state.uploadedFileClodinaryUrl)
-  // }
-
-  // handle capture canvas and handleImageUpload()
   onClickSave = () => {
     console.log(this.state.image)
     if (this.editor) {
@@ -53,14 +44,6 @@ class MyEditor extends React.Component {
 
   render() {
     return (
-      // <Dropzone
-      //   onDrop={this.handleDrop}
-      //   multiple={false}
-      //   disableClick
-      //   accept="image/jpg,image/png"
-      //   style={{ width: '250px', height: '250px' }}
-      // >
-      //   <p>Drop an image to change your profile picture</p>
       <div>
         <AvatarEditor
           width={250}
@@ -69,7 +52,6 @@ class MyEditor extends React.Component {
           ref={this.setEditorRef} />
         <input type="file" onChange={this.fileChangedHandler}></input>
         <button onClick={this.uploadHandler}>Upload!</button>
-        {/* </Dropzone> */}
       </div>
     )
   }
