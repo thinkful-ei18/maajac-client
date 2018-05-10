@@ -11,15 +11,17 @@ import anonymousUserImage from '../images/user-15.svg';
 import writingImage from '../images/user-10.svg';
 import { closeDialog } from '../actions/modalActions';
 
+import './css/rootpage.css';
+
 class RootPage extends Component {
   handleCloseDialog() {
     this.props.dispatch(closeDialog());
   }
 
   render() {
-    // if (this.props.currentUser) {
-    //   return <Redirect to="/landingpage" />;
-    // }
+    if (this.props.currentUser) {
+      return <Redirect to="/map" />;
+    }
     const linkStyle = {
       color: 'white',
       display: 'block',
