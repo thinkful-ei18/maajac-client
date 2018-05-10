@@ -1,21 +1,34 @@
 .marker-info {
+  color:  #3b4141;
+}
 
+.marker-info p {
+  text-align: left;
+}
+
+.marker-info img {
+  height: auto;
+  width: 75px;
 }
 
 .marker-header {
-  border-bottom: 1px solid gray;
   font-weight: bold;
-  margin-bottom: 5px;
+  font-size: 22px;
+  margin: 5px 0px 15px 0px;
 }
 
 .marker-desc {
-
+  font-size: 16px;
+  text-align: left;
 }
 
-.marker-timer {
+.marker-time, .marker-date {
   display: inline-block;
+  font-weight: bold;
+  font-size: 12px;
+  margin: 5px 5px 0px 0px;
 }
 
-.marker-date {
-  display: inline-block;
+@media only screen and (min-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+
 }
