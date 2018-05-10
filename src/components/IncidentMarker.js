@@ -1,7 +1,6 @@
 import React from 'react';
 import { Marker, InfoWindow } from 'react-google-maps';
 
-
 export default class IncidentMarker extends React.Component {
   constructor(props) {
     super(props);
@@ -15,15 +14,15 @@ export default class IncidentMarker extends React.Component {
     });
   }
   markerImage(type) {
-    if (type === 'theft') {
+    if (type === 'Theft') {
       return 'http://res.cloudinary.com/dw6hemcpj/image/upload/v1525883157/map_icon_theft.png';
-    } else if (type === 'accident') {
+    } else if (type === 'Accident') {
       return 'http://res.cloudinary.com/dw6hemcpj/image/upload/v1525883156/map_icon_accident.png';
-    } else if (type === 'crime') {
+    } else if (type === 'Crime') {
       return 'http://res.cloudinary.com/dw6hemcpj/image/upload/v1525883156/map_icon_crime.png';
-    } else if (type === 'other') {
+    } else if (type === 'Other') {
       return 'http://res.cloudinary.com/dw6hemcpj/image/upload/v1525883157/map_icon_other.png';
-    } else if (type === 'roadconstruction') {
+    } else if (type === 'Road-Construction') {
       return 'http://res.cloudinary.com/dw6hemcpj/image/upload/v1525883156/map_icon_traffic_construction.png';
     }
   }
