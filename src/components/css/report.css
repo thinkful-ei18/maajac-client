@@ -1,71 +1,118 @@
-.reg-label{
- position: relative;
- top: 10px;
+.tabs {
+	padding: 0px;
+	margin: 0px;
+}
+.tabs li {
+	float: left;
+}
+.tabs li > input {
+	display: none;
+}
+.tabs li > label {
+	display: inline-block;
+	width: 100px;
+	border: 1px solid #3b4141;
+	height: 30px;
+	background: #7bc087;
+	padding: 5px 20px;
+	text-align: center;
+}
+.tabs .tab-content {
+	display: none;
+	position: absolute;
+	left: 0;
+}
+.tabs li > input:checked + label {
+	background: #7bc087d5;
+}
+.tabs li > input:checked ~ .tab-content {
+	display: block;
+}
+.reg-label {
+	position: relative;
+	margin: 20px;
+	display: block;
 }
 .report {
-  background-color: #3b4141;
-  width: 100vw;
-  display: none;
+	background-color: #3b4141;
+	width: 300px;
 }
 
 .mobile-only {
-  background-color: #3b4141;
-  width: 100vw;
-  display: inherit
+	background-color: #3b4141;
+	width: 100vw;
+	display: inherit;
 }
 
 #type {
-  padding: 20px;
-  margin: 20px;
-  width: 80%;
-  background-color: #2e3434;
-  height: 30px;
-  color: #ffffff;
-  border: none;
+	padding: 0px;
+	margin: 0px;
+	width: 90%;
+	background-color: #2e3434;
+	height: 30px;
+	color: #ffffff;
+	border: none;
 }
 
-.report, .mobile-only label {
-  position: relative;
-  color: #ffffff;
+.report,
+.mobile-only label {
+	color: #ffffff;
 }
 
 #date {
-  padding: 20px;
-  margin: 20px;
-  width: 80%;
-  background-color: #2e3434;
-  height: 30px;
-  color: #ffffff;
-  border: none;
+	padding: 0px;
+	margin: 0px;
+	width: 90%;
+	background-color: #2e3434;
+	height: 30px;
+	color: #ffffff;
+	border: none;
 }
 
 #time {
-  padding: 20px;
-  margin: 20px;
-  width: 80%;
-  background-color: #2e3434;
-  height: 30px;
-  color: #ffffff;
-  border: none;
+	padding: 0px;
+	margin: 0px;
+	width: 90%;
+	background-color: #2e3434;
+	height: 30px;
+	color: #ffffff;
+	border: none;
 }
 
 #description {
-  padding: 20px;
-  margin: 20px;
-  width: 80%;
-  background-color: #2e3434;
-  height: 30px;
-  color: #ffffff;
-  border: none;
+	padding: 0px;
+	margin: 0px;
+	width: 90%;
+	background-color: #2e3434;
+	height: 30px;
+	color: #ffffff;
+	border: none;
 }
 
 .report-button {
-  background-color: #7bc087;
-  height: 30px;
-  width: 80px;
-  border: none;
-  margin: 5px;
-  color: white;
+	background-color: #7bc087;
+	height: 30px;
+	width: 80px;
+	border: none;
+	margin: 5px;
+	color: white;
+}
+
+.filter {
+	margin: 10px;
+	background: #2e3434;
+	border: none;
+	color: white;
+	height: 30px;
+	width: 120%;
+}
+.location-search-input {
+	margin: 10px;
+	background: #2e3434;
+	border: none;
+	color: white;
+	width: 120%;
+	height: 30px;
 }
 
 /* ============================ 
@@ -75,27 +122,26 @@ MEDIA QUERIES
 /* tablet */
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1023px) and (-webkit-min-device-pixel-ratio: 1) {
-  .report {
-    display: block
-  }
+	.report {
+		display: block;
+	}
 }
 
 /* desktop */
 
 @media only screen and (min-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
-  .report,
-  .mobile-only {
-    width: 300px;
-    display: block;
-  }
-  
+	.report,
+	.mobile-only {
+		width: 300px;
+		display: block;
+	}
 }
 
 .report-button-large {
-  background-color: #7bc087;
-  height: 30px;
-  width: 150px;
-  border: none;
-  margin: 5px;
-  color: white;
+	background-color: #7bc087;
+	height: 30px;
+	width: 150px;
+	border: none;
+	margin: 5px;
+	color: white;
 }

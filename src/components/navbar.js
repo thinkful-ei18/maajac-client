@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink, Link } from 'react-router-dom';
 import { clearAuth } from '../actions/userActions';
-import Filter from './Filter';
-import Search from './SearchBox';
 import { clearUserCredentials, clearAuthToken } from '../local-storage';
 import { openSignUp, openLogin, openDialog, closeDialog } from '../actions/modalActions';
 // import Menu from '../components/dropdownMenu';
@@ -86,7 +84,6 @@ export class Navbar extends Component {
 							safeR
 						</NavLink>
 					</span>
-					<Search /> <Filter />
 					{loggedInNavbar}
 					{this.state.showMenu ? (
 						<div className="dropdown-menu">
