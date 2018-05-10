@@ -54,7 +54,7 @@ export const mapStateToProps = (state, props) => ({
   // loggedIn: state.auth.currentUser !== null,
   currentUser: state.auth.currentUser ? state.auth.currentUser : '',
   ppModal: state.modal.ppModal,
-  profilePicture: state.auth.currentUser.profilePicture ? state.auth.currentUser.profilePicture : 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'
+  profilePicture: state.auth.currentUser !== null ? state.auth.currentUser.profilePicture : 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'
 });
 
 export default connect(mapStateToProps)(UserProfile);
