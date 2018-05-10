@@ -19,7 +19,7 @@ export class Dashboard extends React.Component {
     //   this.props.dispatch(jwtFetch(this.props.jwt));
     // }
     //changes background image to picture only for this component
-    document.body.className="body-component-dashboard";
+    // document.body.className="body-component-dashboard";
     this.props.dispatch(getMarkersDashboard());
   }
 
@@ -38,7 +38,7 @@ export class Dashboard extends React.Component {
 
     let userReports = reports.map(report => (
       <div className="report-card" key={report._id}>
-      {this.props.loggedIn ? '' : ( <Redirect to='/' />) }
+      {this.props.loggedIn ? '' : ( <Redirect to='/map' />) }
         <h2 className="incident-type">{report.incidentType}</h2>
         <img alt={`Report icon for ${report.incidentType}`} src={report.icon}/>
         <h3 className="incident-date">Date: {report.date}</h3>

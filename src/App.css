@@ -5,6 +5,11 @@
 	color: #9e9fa1;
 	color: #a0472f;
 }
+
+* {
+	box-sizing: border-box;
+}
+
 .App {
 	text-align: center;
 }
@@ -38,8 +43,7 @@
 	}
 }
 
-@media only screen and (min-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) {
-}
+@media only screen and (min-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) {}
 
 @media only screen and (min-device-width: 0px) and (max-device-width: 650px) and (-webkit-min-device-pixel-ratio: 1) {
 	.container-under {

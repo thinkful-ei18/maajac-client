@@ -1,13 +1,19 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+
 import './css/about.css';
 
-export default class About extends React.Component {
-	componentDidMount() {
-		//changes background image to picture only for this component
-		document.body.className = 'body-component-about';
-	}
+class About extends React.Component {
+	// componentDidMount() {
+	// 	//changes background image to picture only for this component
+	// 	document.body.className = 'body-component-about';
+	// }
 
 	render() {
+		if (!this.props.currentUser) {
+			return <Redirect to='/map'/>;
+		}
 		return (
 			<div className="about">
 				<h1>About safeR</h1>
@@ -21,3 +27,9 @@ export default class About extends React.Component {
 		);
 	}
 }
+
+export const mapStateToProps = state => ({
+  currentUser: state.auth.currentUser ? state.auth.currentUser : 0,
+});
+
+export default connect(mapStateToProps)(About);
