@@ -3,6 +3,7 @@
 	background-image: url(birdseye.jpg);
 	background-size: auto;
 }
+
 .about {
 	color: #ffffff;
 	position: absolute;
@@ -15,13 +16,15 @@
 	box-sizing: border-box;
 	background: linear-gradient(#7bc087, #7bc087a9);
 }
-h1 {
+
+.about h1 {
 	font-family: 'Acme', sans-serif;
 	font-size: 40px;
 	position: relative;
 	bottom: 40px;
 }
-p {
+
+.about p {
 	font-size: 20px;
 }
 
