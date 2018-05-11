@@ -82,17 +82,17 @@ class RootPage extends Component {
 						<div className="feature">
 							<img src={writingImage} alt="Icon of user with a pen" />
 							<h3>No registration required</h3>
-							<p>View incidents at home or on the go.</p>
+							<p>View incident locations and descriptions without needing to login. Always know what's going on in your neighborhood</p>
 						</div>
 						<div className="feature">
 							<img src={groupImage} alt="Icon of 3 users" />
 							<h3>Community driven</h3>
-							<p>Register to report incidents locally.</p>
+							<p>Report incidents in your community and create a safer neighborhood for everyone.</p>
 						</div>
 						<div className="feature">
 							<img src={anonymousUserImage} alt="Icon of user crossed out" />
 							<h3>Anonymous and easy to use</h3>
-							<p>Keep your privacy.</p>
+							<p>We value the privacy of our users. Report incidents in your community easily with your private profile.</p>
 						</div>
 					</div>
 				</main>
