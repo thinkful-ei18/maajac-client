@@ -39,7 +39,7 @@ class reportForm extends Component {
 				<ul className="tabs">
 					<li>
 						<input checked="checked" type="radio" name="tabs" id="tab-1" />
-						<label for="tab-1">Form</label>
+						<label for="tab-1">Report</label>
 						<div className="tab-content">
 							<form
 								name={'report'}
@@ -102,7 +102,7 @@ class reportForm extends Component {
 					</li>
 					<li>
 						<input type="radio" name="tabs" id="tab-2" />
-						<label for="tab-2">Tools</label>
+						<label for="tab-2">Search</label>
 						<div className="tab-content">
 							<Filter />
 							<Search />

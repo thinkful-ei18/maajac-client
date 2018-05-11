@@ -19,7 +19,7 @@ body .mobile-only {
 .tabs li > label {
 	display: inline-block;
 	width: 100%;
-	left: 40%;
+	left: 28%;
 	margin: 13px;
 	border: 1px solid #3b4141;
 	height: 30px;
@@ -170,7 +170,7 @@ MEDIA QUERIES
 	}
 
 	.tabs li > label {
-		left: 230%;
+		left: 195%;
 	}
 	.report-button {
 		position: relative;
@@ -208,6 +208,8 @@ MEDIA QUERIES
 		display: none;
 	}
 	.tabs li > label {
+		position: relative;
+		left: -9%;
 		display: inline-block;
 		width: 100%;
 		margin: 13px;
@@ -273,7 +275,7 @@ MEDIA QUERIES
 	}
 
 	.tabs li > label {
-		left: 60%;
+		left: 50%;
 	}
 	.report-button {
 		position: relative;
@@ -303,7 +305,7 @@ MEDIA QUERIES
 	}
 
 	.tabs li > label {
-		left: 80%;
+		left: 65%;
 	}
 	.report-button {
 		position: relative;
