@@ -100,10 +100,10 @@ export class RegistrationForm extends React.Component {
           >
             Sign Up
         </button>
-          <button className="form-login form-button" onClick={() => this.handleLoginClick()}>
+          <p className="login-shortcut" onClick={() => this.handleLoginClick()}>
             Already have an account?{' '}
             <span className="form-login-text">Log in</span>
-          </button>
+          </p>
         </div>
       </form>
     );
