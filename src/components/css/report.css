@@ -146,10 +146,6 @@ body .mobile-only {
 	color: white;
 }
 
-.autocomplete-dropdown-container {
-	background: #2e3434;
-}
-
 /* ============================ 
 MEDIA QUERIES
 ============================*/
@@ -245,10 +241,6 @@ MEDIA QUERIES
 		margin: 15px;
 		border: none;
 		color: white;
-	}
-
-	.autocomplete-dropdown-container {
-		background: #2e3434;
 	}
 }
 
