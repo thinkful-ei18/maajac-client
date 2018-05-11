@@ -5,6 +5,9 @@ import { connect } from 'react-redux';
 import './css/about.css';
 
 class About extends React.Component {
+	componentWillMount() {
+		document.body.style.backgroundColor = 'white';
+	}
 	render() {
 		if (!this.props.currentUser) {
 			return <Redirect to="/map" />;

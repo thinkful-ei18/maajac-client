@@ -1,3 +1,64 @@
+body .mobile-only {
+	background-color: #3b4141;
+}
+.report,
+.mobile-only {
+	width: 300px;
+	display: block;
+}
+.tabs {
+	padding: 0px;
+	margin: 0px;
+}
+.tabs li {
+	float: left;
+}
+.tabs li > input {
+	display: none;
+}
+.tabs li > label {
+	display: inline-block;
+	width: 100%;
+	left: 40%;
+	margin: 13px;
+	border: 1px solid #3b4141;
+	height: 30px;
+	background: #7bc087;
+	padding: 5px 20px;
+	text-align: center;
+}
+.tabs .tab-content {
+	display: none;
+	position: absolute;
+	left: 0;
+}
+.tabs li > input:checked + label {
+	background: #7bc087a8;
+}
+.tabs li > input:checked ~ .tab-content {
+	display: block;
+}
+.filter {
+	background: #2e3434;
+	height: 30px;
+	width: 200px;
+	margin: 15px;
+	border: none;
+	color: white;
+}
+.location-search-input {
+	background: #2e3434;
+	height: 30px;
+	width: 200px;
+	margin: 15px;
+	border: none;
+	color: white;
+}
+
+.autocomplete-dropdown-container {
+	background: #2e3434;
+}
+
 .reg-label {
 	position: relative;
 	top: 10px;
@@ -71,7 +132,7 @@
 .filter {
 	background: #2e3434;
 	height: 30px;
-	width: 200px;
+	width: 270px;
 	margin: 15px;
 	border: none;
 	color: white;
@@ -79,7 +140,7 @@
 .location-search-input {
 	background: #2e3434;
 	height: 30px;
-	width: 200px;
+	width: 270px;
 	margin: 15px;
 	border: none;
 	color: white;
@@ -96,59 +157,35 @@ MEDIA QUERIES
 /* tablet */
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1023px) and (-webkit-min-device-pixel-ratio: 1) {
-	.report {
-		display: block;
+	#type,
+	#date,
+	#time,
+	#description {
+		position: relative;
+		left: 60%;
 	}
-	.tabs {
-		padding: 0px;
-		margin: 0px;
-	}
-	.tabs li {
-		float: left;
-	}
-	.tabs li > input {
-		display: none;
-	}
-	.tabs li > label {
-		display: inline-block;
-		width: 100%;
-		margin: 13px;
-		border: 1px solid #3b4141;
-		height: 30px;
-		background: #7bc087;
-		padding: 5px 20px;
-		text-align: center;
-	}
-	.tabs .tab-content {
-		display: none;
-		position: absolute;
-		left: 0;
-	}
-	.tabs li > input:checked + label {
-		background: #7bc087a8;
-	}
-	.tabs li > input:checked ~ .tab-content {
-		display: block;
-	}
-	.filter {
-		background: #2e3434;
-		height: 30px;
-		width: 200px;
-		margin: 15px;
-		border: none;
-		color: white;
-	}
-	.location-search-input {
-		background: #2e3434;
-		height: 30px;
-		width: 200px;
-		margin: 15px;
-		border: none;
-		color: white;
+	.reg-label {
+		position: relative;
+		left: 60%;
 	}
 
-	.autocomplete-dropdown-container {
-		background: #2e3434;
+	.tabs li > label {
+		left: 230%;
+	}
+	.report-button {
+		position: relative;
+		width: 45%;
+		left: 60%;
+	}
+	.filter {
+		position: relative;
+		width: 500px;
+		left: 20%;
+	}
+	.location-search-input {
+		position: relative;
+		width: 500px;
+		left: 20%;
 	}
 }
 
@@ -220,4 +257,65 @@ MEDIA QUERIES
 	border: none;
 	margin: 5px;
 	color: white;
+}
+
+@media only screen and (min-device-width: 360px) and (max-device-width: 400px) and (-webkit-min-device-pixel-ratio: 1) {
+	#type,
+	#date,
+	#time,
+	#description {
+		position: relative;
+		left: 7%;
+	}
+	.reg-label {
+		position: relative;
+		left: 7%;
+	}
+
+	.tabs li > label {
+		left: 60%;
+	}
+	.report-button {
+		position: relative;
+		width: 45%;
+		left: 7%;
+	}
+	.filter {
+		position: relative;
+		left: 13%;
+	}
+	.location-search-input {
+		position: relative;
+		left: 13%;
+	}
+}
+@media only screen and (min-device-width: 400px) and (max-device-width: 500px) and (-webkit-min-device-pixel-ratio: 1) {
+	#type,
+	#date,
+	#time,
+	#description {
+		position: relative;
+		left: 12%;
+	}
+	.reg-label {
+		position: relative;
+		left: 12%;
+	}
+
+	.tabs li > label {
+		left: 80%;
+	}
+	.report-button {
+		position: relative;
+		width: 45%;
+		left: 11%;
+	}
+	.filter {
+		position: relative;
+		left: 20%;
+	}
+	.location-search-input {
+		position: relative;
+		left: 20%;
+	}
 }

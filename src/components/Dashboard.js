@@ -18,6 +18,7 @@ export class Dashboard extends React.Component {
 		//changes background image to picture only for this component
 		// document.body.className="body-component-dashboard";
 		this.props.dispatch(getMarkersDashboard());
+		document.body.style.backgroundColor = 'white';
 	}
 
 	onClick(e) {
