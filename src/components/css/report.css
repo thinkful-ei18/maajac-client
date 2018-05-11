@@ -158,6 +158,11 @@ MEDIA QUERIES
 /* tablet */
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1023px) and (-webkit-min-device-pixel-ratio: 1) {
+	#type {
+		min-height: 40px;
+		height: 70px;
+	}
+
 	#type,
 	#date,
 	#time,
@@ -194,8 +199,8 @@ MEDIA QUERIES
 
 @media only screen and (min-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
 	#type {
-		min-height: 75px;
-		height: auto;
+		min-height: 40px;
+		height: 70px;
 	}
 
 	.report,
