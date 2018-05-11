@@ -1,5 +1,6 @@
 import React from 'react';
 import { Marker, InfoWindow } from 'react-google-maps';
+import './css/marker.css';
 
 export default class IncidentMarker extends React.Component {
   constructor(props) {
@@ -13,6 +14,22 @@ export default class IncidentMarker extends React.Component {
       isOpen: !this.state.isOpen
     });
   }
+
+  convert(time) {
+    // Check correct time format and split into components
+    time = time
+      .toString()
+      .match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+
+    if (time.length > 1) {
+      // If time format correct
+      time = time.slice(1); // Remove full string match value
+      time[5] = +time[0] < 12 ? ' AM' : ' PM'; // Set AM/PM
+      time[0] = +time[0] % 12 || 12; // Adjust hours
+    }
+    return time.join(''); // return adjusted time or original string
+  }
+
   markerImage(type) {
     if (type === 'Theft') {
       return 'http://res.cloudinary.com/dw6hemcpj/image/upload/v1525883157/map_icon_theft.png';
@@ -41,12 +58,15 @@ export default class IncidentMarker extends React.Component {
         onClick={() => this.onToggleOpen()}
       >
         {this.state.isOpen && (
-          <InfoWindow onCloseClick={() => this.onToggleOpen()}>
-            <div>
-              <p>{this.props.marker.incidentType}</p>
-              <p>{this.props.marker.description}</p>
-              <p>{this.props.marker.time}</p>
-              <p>{this.props.marker.date}</p>
+          <InfoWindow style={{Container: 'red'}} onCloseClick={() => this.onToggleOpen()}>
+            <div className='marker-info'>
+              <img src={this.markerImage(this.props.marker.incidentType)} alt=""/>
+              <h1 className='marker-header'>{this.props.marker.incidentType}</h1>
+              <p>
+                <span className='marker-desc'>{this.props.marker.description}</span>
+                <br/><span className='marker-date'>{this.props.marker.date}</span>
+                <span className='marker-time'>{this.convert(this.props.marker.time)}</span>
+              </p>
             </div>
           </InfoWindow>
         )}
