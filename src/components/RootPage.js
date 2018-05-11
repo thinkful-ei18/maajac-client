@@ -34,6 +34,15 @@ class RootPage extends Component {
 			textDecoration: 'none',
 		};
 
+		const getStartedStyle = {
+			color: 'white',
+			display: 'block',
+			fontWeight: 'bold',
+			fontSize: 24,
+			textTransform: 'uppercase',
+			textDecoration: 'none',
+		};
+
 		let modalForm;
 		if (this.props.currentTab) {
 			if (this.props.currentTab === 'signup') {
@@ -73,7 +82,7 @@ class RootPage extends Component {
 							<span className="landing-title">
 								<h2>View and report incidents in your community</h2>
 							</span>
-							<Link to="/map" style={linkStyle}>
+							<Link to="/map" style={getStartedStyle}>
 								<p>Get started &#8594;</p>
 							</Link>
 						</div>
