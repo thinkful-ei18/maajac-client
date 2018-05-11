@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import AvatarEditor from 'react-avatar-editor';
-import { postProfileImage } from '../actions/modalActions';
+import { postProfileImage, profileCloseDialog } from '../actions/modalActions';
 import '../components/css/profileEditor.css'
 
 class MyEditor extends React.Component {
@@ -14,18 +14,6 @@ class MyEditor extends React.Component {
     }
   }
 
-  onClickSave = () => {
-    console.log(this.state.image)
-    if (this.editor) {
-      // This returns a HTMLCanvasElement, it can be made into a data URL or a blob,
-      // drawn on another canvas, or added to the DOM.
-      const canvasScaled = this.editor.getImageScaledToCanvas()
-
-      this.props.dispatch(postProfileImage(this.state.selectedFile))
-      console.log('saved')
-      console.log(canvasScaled)
-    }
-  }
   fileChangedHandler = (event) => {
     this.setState({ selectedFile: event.target.files[0] })
   }
@@ -33,6 +21,7 @@ class MyEditor extends React.Component {
   uploadHandler = () => {
     console.log(this.state.selectedFile)
     this.props.dispatch(postProfileImage(this.state.selectedFile))
+    this.props.dispatch(profileCloseDialog())
   }
 
   setEditorRef = (editor) => this.editor = editor
@@ -46,7 +35,10 @@ class MyEditor extends React.Component {
           image={this.state.selectedFile}
           ref={this.setEditorRef} />
         <input type="file" onChange={this.fileChangedHandler}></input>
-        <button onClick={this.uploadHandler}>Upload!</button>
+        <div className='pp-form-buttons'>
+          <button onClick={this.uploadHandler} className='report-button'>Upload</button>
+          <button onClick={() => this.props.dispatch(profileCloseDialog())} className='report-button'>Cancel</button>
+        </div>
       </div>
     )
   }
