@@ -1,7 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
-import { withRouter } from 'react-router';
 import RequiresLogin from './Requires-Login';
 
 import { getMarkersDashboard, deleteMarkerDashboard } from '../actions/markerActions';

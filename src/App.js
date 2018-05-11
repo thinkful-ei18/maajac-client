@@ -3,13 +3,11 @@ import { Route } from 'react-router-dom';
 
 import RootPage from './components/RootPage';
 import LandingPage from './components/LandingPage';
-import Filter from './components/Filter';
 import RegistrationForm from './components/register';
 import LoginForm from './components/Login';
 import Navbar from './components/navbar';
 import Dashboard from './components/Dashboard';
 import About from './components/About';
-import Search from './components/SearchBox';
 
 import './App.css';
 

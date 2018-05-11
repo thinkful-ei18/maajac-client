@@ -5,9 +5,6 @@ import Incident from './IncidentMarker';
 import { styles } from './mapStyle';
 import image from '../images/map-marker.svg';
 
-// global google variable
-const google = window.google;
-
 // renders the map
 const GoogleMapsWrapper = withScriptjs(
 	withGoogleMap(props => {
