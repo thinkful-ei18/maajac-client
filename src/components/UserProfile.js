@@ -42,7 +42,6 @@ export class UserProfile extends Component {
         >
           {/* Modal body */}
           <MyEditor />
-          <button onClick={() => this.handleCloseDialog()}>Close</button>
           {/* End modal body */}
         </Dialog>
       </section>

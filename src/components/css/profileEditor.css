@@ -4,3 +4,15 @@
   justify-content: center;
   align-items: center;
 }
+
+.profileEditor input {
+  padding-top: 20px;
+}
+
+.pp-form-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+}
