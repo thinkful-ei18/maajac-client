@@ -39,7 +39,7 @@ class reportForm extends Component {
 				<ul className="tabs">
 					<li>
 						<input checked="checked" type="radio" name="tabs" id="tab-1" />
-						<label for="tab-1">Form</label>
+						<label htmlFor="tab-1">Report</label>
 						<div className="tab-content">
 							<form
 								name={'report'}
@@ -59,12 +59,12 @@ class reportForm extends Component {
 									Incident Type
 								</label>
 								<Field component="select" id="type" name="incidentType" required="required">
-									<option></option>
-									<option value="crime">Crime</option>
-									<option value="theft">Theft</option>
-									<option value="roadconstruction">Road Construction</option>
-									<option value="accident">Traffic Accident</option>
-									<option value="other">Other</option>
+									<option value="" />
+									<option value="Crime">Crime</option>
+									<option value="Theft">Theft</option>
+									<option value="Road-Construction">Road Construction</option>
+									<option value="Accident">Traffic Accident</option>
+									<option value="Other">Other</option>
 								</Field>
 								<label className="reg-label">Date</label>
 								<Field
@@ -102,7 +102,7 @@ class reportForm extends Component {
 					</li>
 					<li>
 						<input type="radio" name="tabs" id="tab-2" />
-						<label for="tab-2">Tools</label>
+						<label htmlFor="tab-2">Search</label>
 						<div className="tab-content">
 							<Filter />
 							<Search />
