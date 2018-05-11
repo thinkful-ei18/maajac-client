@@ -38,7 +38,7 @@ class reportForm extends Component {
 			<div className={style}>
 				<ul className="tabs">
 					<li>
-						<input checked="checked" type="radio" name="tabs" id="tab-1" />
+						<input checked="defaultChecked" type="radio" name="tabs" id="tab-1" />
 						<label htmlFor="tab-1">Report</label>
 						<div className="tab-content">
 							<form
