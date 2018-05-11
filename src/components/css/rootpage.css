@@ -121,12 +121,13 @@
   padding: 7px 0px;
 }
 
-/* ============================ 
+/* ============================
 MEDIA QUERIES
 ============================*/
 
 @media only screen and (min-width: 768px) {
   /* For tablet/desktop: */
+
   .tagline-header {
     margin: 0px 5vw;
   }
@@ -142,10 +143,7 @@ MEDIA QUERIES
     height: 20%;
   }
   .landing-container {
-    background-image: url('../../images/phone.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 500px;
+    height: 650px;
   }
   .footer {
     justify-content: left;
