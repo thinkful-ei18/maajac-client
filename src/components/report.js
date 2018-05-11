@@ -16,6 +16,9 @@ class reportForm extends Component {
 
 		this.state = { locationError: '' };
 	}
+	componentWillMount() {
+		document.body.style.backgroundColor = '#3b4141';
+	}
 
 	handleLocationError(error) {
 		this.setState({ locationError: error });

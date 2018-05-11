@@ -12,13 +12,16 @@ import RegistrationForm from '../components/register';
 import './css/landingPage.css';
 
 export class LandingPage extends Component {
+	componentWillMount() {
+		document.body.style.backgroundColor = 'white';
+	}
 	handleCloseDialog() {
 		this.props.dispatch(closeDialog());
 	}
 
 	render() {
 		if (!this.props.currentUser && this.props.match.path === '/report') {
-			return <Redirect to='/map'/>;
+			return <Redirect to="/map" />;
 		}
 
 		let modalForm;
