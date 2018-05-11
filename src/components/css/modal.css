@@ -60,7 +60,7 @@ LOGIN / REGISTER
 .form-button {
   background-color: #7bc087;
   height: 30px;
-  width: 160px;
+  width: 100%;
   border: none;
   margin: 5px;
   color: white;
@@ -75,7 +75,7 @@ LOGIN / REGISTER
   color: rgb(226, 226, 226);
 }
 
-/* ============================ 
+/* ============================
 MEDIA QUERIES
 ============================*/
 
