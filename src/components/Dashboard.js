@@ -60,7 +60,7 @@ export class Dashboard extends React.Component {
 
     return (
       <main className="dashboard">
-        <UserProfile />
+        <UserProfile incidentCount={userReports.length}/>
         <section className="user-reports">{userReports}</section>
         {instructions}
       </main>

@@ -27,7 +27,7 @@ export class UserProfile extends Component {
         <button className='report-button-large' onClick={() => this.ppUploadModal()}>Upload profile picture</button>
         <div className='user-info-div'>
           <p className='user username'>{this.props.currentUser.username}</p>
-          <p className='user'>blahzay</p>
+          <p className='user'>{this.props.incidentCount} incidents reported</p>
         </div>
         <Dialog
           bodyClassName="modal"
