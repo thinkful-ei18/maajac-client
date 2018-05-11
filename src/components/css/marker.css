@@ -1,3 +1,8 @@
+.marker-window {
+  background-color: red !important;
+  color: red;
+}
+
 .marker-info {
   color:  #3b4141;
   margin: 10px;
@@ -21,7 +26,6 @@
 
 .marker-desc {
   font-size: 16px;
-  text-align: left;
 }
 
 .marker-time, .marker-date {
