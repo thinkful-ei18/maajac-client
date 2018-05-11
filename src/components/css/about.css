@@ -1,45 +1,106 @@
-.body-component-about {
-	background: no-repeat;
-	background-image: url(birdseye.jpg);
-	background-size: auto;
-}
-
 .about {
-	color: #ffffff;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 320px;
-	height: 450px;
-	padding: 80px 40px;
-	box-sizing: border-box;
-	background: linear-gradient(#7bc087, #7bc087a9);
+	text-align: left;
+	margin: 5px 35px;
+	font-family: 'Work Sans', sans-serif;
 }
 
-.about h1 {
+.about-app-name {
 	font-family: 'Acme', sans-serif;
 	font-size: 40px;
-	position: relative;
+	margin: 25px 0 0;
 	bottom: 40px;
 }
 
-.about p {
-	font-size: 20px;
+.about-the-app {}
+
+.about-h4 {
+	font-weight: bolder;
+	padding: 20px 0 5px 0;
 }
+
+.about-paragraph {
+	font-size: 15px;
+	border-bottom: 3px solid #7bc087;
+	padding-bottom: 20px;
+}
+
+.about-the-team {}
+
+.team-member {
+	margin: 15px 0;
+}
+
+.member-name {
+	color: #3b4141;
+}
+
+.member-portfolio-link {
+	text-decoration: none;
+	font-size: 13px;
+	color: #7bc087;
+}
+
+/* ============================ 
+MEDIA QUERIES
+============================*/
+
+/* tablet */
 
 @media only screen and (min-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) {
 	.about {
-		font-family: lato;
-		color: #ffffff;
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		width: 400px;
-		height: 520px;
-		padding: 80px 40px;
-		box-sizing: border-box;
-		background: linear-gradient(#7bc087, #7bc087a9);
+		margin: 25px 50px;
+	}
+	.about-h4 {
+		font-size: 30px;
+	}
+	.about-paragraph {
+		font-size: 30px;
+		margin: 40px 0 20px 0;
+		padding-bottom: 30px;
+	}
+	.member-name {
+		font-size: 30px;
+		margin-bottom: 8px;
+	}
+	.member-portfolio-link {
+		font-size: 20px;
+	}
+	.team-member {
+		margin: 40px 0;
+	}
+}
+
+/* desktop */
+
+@media only screen and (min-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+	.about {
+		margin: 65px 0;
+		flex-direction: row;
+		display: flex;
+		justify-content: center;
+	}
+	.about-h4 {
+		font-size: 40px;
+	}
+	.about-paragraph {
+		font-size: 30px;
+		margin: 40px 25px 0 0;
+		padding-bottom: 30px;
+		width: 35vw;
+		border-bottom: none;
+	}
+	.member-name {
+		font-size: 30px;
+		margin-bottom: 8px;
+	}
+	.member-portfolio-link {
+		font-size: 20px;
+	}
+	.team-member {
+		margin: 40px 0;
+	}
+	.about-the-team {
+		border-left: 3px solid #7bc087;
+		padding-left: 55px;
 	}
 }
