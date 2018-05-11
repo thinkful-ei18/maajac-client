@@ -81,8 +81,7 @@ body .mobile-only {
 	margin: 20px;
 	width: 80%;
 	background-color: #2e3434;
-	min-height: 75px;
-	height: auto;
+	height: 40px;
 	color: #ffffff;
 	border: none;
 }
