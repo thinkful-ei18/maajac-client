@@ -77,11 +77,10 @@ body .mobile-only {
 }
 
 #type {
-	padding: 20px;
 	margin: 20px;
 	width: 80%;
 	background-color: #2e3434;
-	height: 30px;
+	height: 65px;
 	color: #ffffff;
 	border: none;
 }
@@ -146,13 +145,17 @@ body .mobile-only {
 	color: white;
 }
 
-/* ============================ 
+/* ============================
 MEDIA QUERIES
 ============================*/
 
 /* tablet */
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1023px) and (-webkit-min-device-pixel-ratio: 1) {
+	#type {
+		height: 65px;
+	}
+
 	#type,
 	#date,
 	#time,
@@ -188,6 +191,10 @@ MEDIA QUERIES
 /* desktop */
 
 @media only screen and (min-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+	#type {
+		height: 40px;
+	}
+
 	.report,
 	.mobile-only {
 		width: 300px;
@@ -254,6 +261,10 @@ MEDIA QUERIES
 }
 
 @media only screen and (min-device-width: 360px) and (max-device-width: 400px) and (-webkit-min-device-pixel-ratio: 1) {
+	 #type {
+		height: 65px;
+	}
+
 	#type,
 	#date,
 	#time,
@@ -284,6 +295,7 @@ MEDIA QUERIES
 	}
 }
 @media only screen and (min-device-width: 400px) and (max-device-width: 500px) and (-webkit-min-device-pixel-ratio: 1) {
+
 	#type,
 	#date,
 	#time,
