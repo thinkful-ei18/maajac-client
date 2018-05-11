@@ -74,10 +74,7 @@ class RootPage extends Component {
 					<div
 						className="landing-container"
 						style={{
-							background: 'url(' + beardGuy + ')',
-							backgroundSize: 'contain',
-							backgroundRepeat: 'norepeat'
-							// backgroundPosition: 'bottom',
+							background: 'url(' + beardGuy + ')'
 						}}
 					>
 						<div className="landing-signup">
