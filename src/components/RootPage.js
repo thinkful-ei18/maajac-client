@@ -125,7 +125,7 @@ class RootPage extends Component {
             </li>
             <li>
               <a
-                href="https://github.com/Mistermo716"
+                href="http://Muaath-Alaraj.com"
                 target="_blank"
                 rel="noopener noreferrer"
               >
