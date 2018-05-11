@@ -9,7 +9,6 @@ import LoginForm from './components/Login';
 import Navbar from './components/navbar';
 import Dashboard from './components/Dashboard';
 import About from './components/About';
-import Search from './components/SearchBox';
 
 import './App.css';
 

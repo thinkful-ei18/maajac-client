@@ -4,7 +4,6 @@ import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-au
 
 import { setSearchLocation } from '../actions/defaultLocationActions';
 
-const google = window.google;
 
 class LocationSearchInput extends React.Component {
 	constructor(props) {

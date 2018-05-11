@@ -2,7 +2,7 @@ import React from 'react';
 import GoogleMapComponent from './googleMap';
 import { connect } from 'react-redux';
 
-import { getMarkers, filterMarkers } from '../actions/markerActions';
+import { getMarkers } from '../actions/markerActions';
 import { setUserLocation } from '../actions/reportActions';
 import { setDefaultLocation } from '../actions/defaultLocationActions';
 
