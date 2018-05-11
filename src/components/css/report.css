@@ -81,7 +81,8 @@ body .mobile-only {
 	margin: 20px;
 	width: 80%;
 	background-color: #2e3434;
-	height: 30px;
+	min-height: 50px;
+	height: auto;
 	color: #ffffff;
 	border: none;
 }
@@ -150,7 +151,7 @@ body .mobile-only {
 	background: #2e3434;
 }
 
-/* ============================ 
+/* ============================
 MEDIA QUERIES
 ============================*/
 
