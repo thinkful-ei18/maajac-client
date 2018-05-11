@@ -60,11 +60,11 @@ class reportForm extends Component {
 								</label>
 								<Field component="select" id="type" name="incidentType" required="required">
 									<option value="" />
-									<option value="crime">Crime</option>
-									<option value="theft">Theft</option>
-									<option value="roadconstruction">Road Construction</option>
-									<option value="accident">Traffic Accident</option>
-									<option value="other">Other</option>
+									<option value="Crime">Crime</option>
+									<option value="Theft">Theft</option>
+									<option value="Road-Construction">Road Construction</option>
+									<option value="Accident">Traffic Accident</option>
+									<option value="Other">Other</option>
 								</Field>
 								<label className="reg-label">Date</label>
 								<Field
