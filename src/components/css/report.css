@@ -19,7 +19,7 @@ body .mobile-only {
 .tabs li > label {
 	display: inline-block;
 	width: 100%;
-	left: 28%;
+	left: 15%;
 	margin: 13px;
 	border: 1px solid #3b4141;
 	height: 30px;
@@ -80,7 +80,7 @@ body .mobile-only {
 	margin: 20px;
 	width: 80%;
 	background-color: #2e3434;
-	height: 65px;
+	height: 40px;
 	color: #ffffff;
 	border: none;
 }
@@ -161,11 +161,11 @@ MEDIA QUERIES
 	#time,
 	#description {
 		position: relative;
-		left: 60%;
+		left: 70%;
 	}
 	.reg-label {
 		position: relative;
-		left: 60%;
+		left: 70%;
 	}
 
 	.tabs li > label {
@@ -261,8 +261,8 @@ MEDIA QUERIES
 }
 
 @media only screen and (min-device-width: 360px) and (max-device-width: 400px) and (-webkit-min-device-pixel-ratio: 1) {
-	 #type {
-		height: 65px;
+	#type {
+		height: 40px;
 	}
 
 	#type,
@@ -270,11 +270,11 @@ MEDIA QUERIES
 	#time,
 	#description {
 		position: relative;
-		left: 7%;
+		left: 15%;
 	}
 	.reg-label {
 		position: relative;
-		left: 7%;
+		left: 15%;
 	}
 
 	.tabs li > label {
@@ -283,7 +283,7 @@ MEDIA QUERIES
 	.report-button {
 		position: relative;
 		width: 45%;
-		left: 7%;
+		left: 15%;
 	}
 	.filter {
 		position: relative;
@@ -295,26 +295,26 @@ MEDIA QUERIES
 	}
 }
 @media only screen and (min-device-width: 400px) and (max-device-width: 500px) and (-webkit-min-device-pixel-ratio: 1) {
-
 	#type,
 	#date,
 	#time,
 	#description {
+		height: 40px;
 		position: relative;
-		left: 12%;
+		left: 25%;
 	}
 	.reg-label {
 		position: relative;
-		left: 12%;
+		left: 25%;
 	}
 
 	.tabs li > label {
-		left: 65%;
+		left: 75%;
 	}
 	.report-button {
 		position: relative;
 		width: 45%;
-		left: 11%;
+		left: 25%;
 	}
 	.filter {
 		position: relative;
