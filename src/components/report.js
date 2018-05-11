@@ -55,11 +55,11 @@ class reportForm extends Component {
 									dispatch(reset('report'));
 								})}
 							>
-								<label className="reg-label" htmlFor="incident-type">
+								<label className="reg-label" htmlFor="incidentType">
 									Incident Type
 								</label>
 								<Field component="select" id="type" name="incidentType" required="required">
-									<option value="" />
+									<option></option>
 									<option value="crime">Crime</option>
 									<option value="theft">Theft</option>
 									<option value="roadconstruction">Road Construction</option>
