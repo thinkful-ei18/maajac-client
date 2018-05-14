@@ -32,15 +32,15 @@ export default class IncidentMarker extends React.Component {
 
   markerImage(type) {
     if (type === 'Theft') {
-      return 'http://res.cloudinary.com/adriantoddross/image/upload/v1526315717/100px_map_icon_theft.png';
+      return 'https://res.cloudinary.com/adriantoddross/image/upload/v1526329107/100px_map_icon_theft.png';
     } else if (type === 'Accident') {
-      return 'http://res.cloudinary.com/dw6hemcpj/image/upload/v1525883156/map_icon_accident.png';
+      return 'https://res.cloudinary.com/adriantoddross/image/upload/v1526329108/100px_map_icon_accident.png';
     } else if (type === 'Crime') {
-      return 'http://res.cloudinary.com/dw6hemcpj/image/upload/v1525883156/map_icon_crime.png';
+      return 'https://res.cloudinary.com/adriantoddross/image/upload/v1526329107/100px_map_icon_crime.png';
     } else if (type === 'Other') {
-      return 'http://res.cloudinary.com/dw6hemcpj/image/upload/v1525883157/map_icon_other.png';
+      return 'https://res.cloudinary.com/adriantoddross/image/upload/v1526329107/100px_map_icon_other.png';
     } else if (type === 'Road-Construction') {
-      return 'http://res.cloudinary.com/dw6hemcpj/image/upload/v1525883156/map_icon_traffic_construction.png';
+      return 'https://res.cloudinary.com/adriantoddross/image/upload/v1526329107/100px_map_icon_traffic_construction.png';
     }
   }
   render() {
