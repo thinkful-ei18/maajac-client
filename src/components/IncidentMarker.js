@@ -32,7 +32,7 @@ export default class IncidentMarker extends React.Component {
 
   markerImage(type) {
     if (type === 'Theft') {
-      return 'http://res.cloudinary.com/dw6hemcpj/image/upload/v1525883157/map_icon_theft.png';
+      return 'http://res.cloudinary.com/adriantoddross/image/upload/v1526315717/100px_map_icon_theft.png';
     } else if (type === 'Accident') {
       return 'http://res.cloudinary.com/dw6hemcpj/image/upload/v1525883156/map_icon_accident.png';
     } else if (type === 'Crime') {
