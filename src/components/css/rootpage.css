@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   text-align: left;
+  width: 100%;
 }
 
 .tagline-header {
@@ -27,8 +28,10 @@
 .landing-container {
   position: relative;
   background-color: #3b4141;
+  background-image: url("../../images/beardguymobile.jpg");
+  background-size: contain;
   color: white;
-  height: 350px;
+  height: 300px;
   width: 100%;
   margin-bottom: 35px;
   border-bottom: 10px solid #7bc087;
@@ -38,14 +41,15 @@
   position: absolute;
   bottom: 0;
   background-color: #3b4141;
-  height: 35%;
-  padding: 5px 0px 0px 55px;
+  height: 100px;
+  padding: 5px;
   width: 100%;
 }
 
 .landing-title {
   display: block;
   padding: 15px 0px;
+  width: 100%;
 }
 
 .feature-container {
@@ -121,12 +125,13 @@
   padding: 7px 0px;
 }
 
-/* ============================ 
+/* ============================
 MEDIA QUERIES
 ============================*/
 
 @media only screen and (min-width: 768px) {
   /* For tablet/desktop: */
+
   .tagline-header {
     margin: 0px 5vw;
   }
@@ -142,10 +147,10 @@ MEDIA QUERIES
     height: 20%;
   }
   .landing-container {
-    background-image: url('../../images/phone.jpg');
+    height: 625px;
+    background-image: url("../../images/beardguy.jpg");
+    background-size: contain;
     background-repeat: no-repeat;
-    background-size: cover;
-    height: 500px;
   }
   .footer {
     justify-content: left;

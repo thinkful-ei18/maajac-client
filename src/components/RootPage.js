@@ -6,6 +6,7 @@ import { Link, Redirect } from 'react-router-dom';
 import LoginForm from '../components/Login';
 import RegistrationForm from '../components/register';
 import phoneImage from '../images/phone.jpg';
+import beardGuy from '../images/beardguy.jpg';
 import groupImage from '../images/group.svg';
 import anonymousUserImage from '../images/user-15.svg';
 import writingImage from '../images/user-10.svg';
@@ -65,22 +66,17 @@ class RootPage extends Component {
 				>
 					{modalForm}
 				</Dialog>
-
 				<header className="tagline-header">
 					<h1 className="tagline-title">Be safe</h1>
-					<p className="tagline-desc">Know your neighborhood</p>
+					<p className="tagline-desc">Always know what's going on in your neighborhood</p>
 				</header>
 				<main>
 					<div
 						className="landing-container"
-						style={{
-							background: 'url(' + phoneImage + ')',
-							backgroundSize: 'cover',
-						}}
 					>
 						<div className="landing-signup">
 							<span className="landing-title">
-								<h2>View and report incidents in your community</h2>
+								<h2>safeR makes it easy to find out about crimes and incidents in your community.</h2>
 							</span>
 							<Link to="/map" style={getStartedStyle}>
 								<p>Get started &#8594;</p>
@@ -91,12 +87,12 @@ class RootPage extends Component {
 						<div className="feature">
 							<img src={writingImage} alt="Icon of user with a pen" />
 							<h3>No registration required</h3>
-							<p>View incident locations and descriptions without needing to login. Always know what's going on in your neighborhood</p>
+							<p>View incident locations and descriptions without signing up. Always know what's going on in your neighborhood.</p>
 						</div>
 						<div className="feature">
 							<img src={groupImage} alt="Icon of 3 users" />
 							<h3>Community driven</h3>
-							<p>Report incidents in your community and create a safer neighborhood for everyone.</p>
+							<p>Create an account to report incidents in your community and create a safer neighborhood for everyone.</p>
 						</div>
 						<div className="feature">
 							<img src={anonymousUserImage} alt="Icon of user crossed out" />
