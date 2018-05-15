@@ -69,9 +69,9 @@ export class LoginForm extends Component {
             >
               Log in
           </button>
-            <button className="form-register form-button" onClick={() => this.handleSignup()}>
+            {/* <button className="form-register form-button" onClick={() => this.handleSignup()}>
               <span className="form-register-text">Sign up</span>
-            </button>
+            </button> */}
           </div>
         </form>
       </div>
