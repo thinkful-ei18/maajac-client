@@ -54,28 +54,45 @@ LOGIN / REGISTER
 
 .button-group {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
 }
 
 .form-button {
   background-color: #7bc087;
   height: 30px;
-  width: 160px;
+  width: 100%;
   border: none;
   margin: 5px;
   color: white;
 }
 
 .form-button:disabled {
-  background-color: #a0d8a9;
+  display: none;
+  background-color: #2d332e;
   height: 30px;
   width: 160px;
   border: none;
   margin: 5px;
-  color: rgb(226, 226, 226);
+  /* color: rgb(226, 226, 226); */
 }
 
-/* ============================ 
+.form-primary-button {
+  width: 100%;
+}
+
+.login-shortcut {
+  color: gray;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+p.login-shortcut:hover{
+  color: black;
+  border-bottom: 2px solid #7bc087;
+}
+
+/* ============================
 MEDIA QUERIES
 ============================*/
 
