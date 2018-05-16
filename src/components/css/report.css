@@ -150,10 +150,29 @@ MEDIA QUERIES
 ============================*/
 
 /* tablet */
-
+@media only screen and (min-device-width: 300px) and (max-device-width: 359px) and (-webkit-min-device-pixel-ratio: 1) {
+	#type,
+	#date,
+	#time,
+	#description {
+		position: relative;
+		left: 5%;
+	}
+	.tabs li > label {
+		left: 25%;
+	}
+	.reg-label {
+		position: relative;
+		left: 5%;
+	}
+	.report-button {
+		position: relative;
+		left: 5%;
+	}
+}
 @media only screen and (min-device-width: 768px) and (max-device-width: 1023px) and (-webkit-min-device-pixel-ratio: 1) {
 	#type {
-		height: 65px;
+		height: 40px;
 	}
 
 	#type,
@@ -161,15 +180,15 @@ MEDIA QUERIES
 	#time,
 	#description {
 		position: relative;
-		left: 70%;
+		left: 80%;
 	}
 	.reg-label {
 		position: relative;
-		left: 70%;
+		left: 80%;
 	}
 
 	.tabs li > label {
-		left: 195%;
+		left: 210%;
 	}
 	.report-button {
 		position: relative;
@@ -185,6 +204,10 @@ MEDIA QUERIES
 		position: relative;
 		width: 500px;
 		left: 20%;
+	}
+	.report-button {
+		position: relative;
+		left: 80%;
 	}
 }
 
