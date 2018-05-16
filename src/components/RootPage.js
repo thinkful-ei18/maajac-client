@@ -5,11 +5,6 @@ import { Link, Redirect } from 'react-router-dom';
 
 import LoginForm from '../components/Login';
 import RegistrationForm from '../components/register';
-import phoneImage from '../images/phone.jpg';
-import beardGuy from '../images/beardguy.jpg';
-import groupImage from '../images/group.svg';
-import anonymousUserImage from '../images/user-15.svg';
-import writingImage from '../images/user-10.svg';
 import { closeDialog } from '../actions/modalActions';
 
 import './css/rootpage.css';
