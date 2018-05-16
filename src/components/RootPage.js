@@ -58,17 +58,17 @@ class RootPage extends Component {
 					<div className="feature-container">
 						<div className="feature">
 							<img src={writingImage} alt="Icon of user with a pen" />
-							<h3>No registration required</h3>
+							<h2>No registration required</h2>
 							<p>View incident locations and descriptions without signing up. Always know what's going on in your neighborhood.</p>
 						</div>
 						<div className="feature">
 							<img src={groupImage} alt="Icon of 3 users" />
-							<h3>Community driven</h3>
+							<h2>Community driven</h2>
 							<p>Create an account to report incidents in your community and create a safer neighborhood for everyone.</p>
 						</div>
 						<div className="feature">
 							<img src={anonymousUserImage} alt="Icon of user crossed out" />
-							<h3>Anonymous and easy to use</h3>
+							<h2>Anonymous and easy to use</h2>
 							<p>We value the privacy of our users. Report incidents in your community easily with your private profile.</p>
 						</div>
 					</div>
@@ -79,8 +79,8 @@ class RootPage extends Component {
 					</div>
 				</main>
 				<footer className="footer">
+						<h3>Team MAJAAC</h3>
 					<ul className="footer-credits">
-						<h4>Team MAJAAC</h4>
 						<li>
 							<a href="http://www.alishaantoinette.com/" target="_blank" rel="noopener noreferrer">
 								Alisha Evans
@@ -107,8 +107,8 @@ class RootPage extends Component {
 							</a>
 						</li>
 					</ul>
+						<h3>View on GitHub</h3>
 					<div className="github-container">
-						<h4>View on GitHub</h4>
 						<a
 							className="github-link"
 							href="https://github.com/thinkful-ei18/maajac-client"
