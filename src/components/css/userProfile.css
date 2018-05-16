@@ -17,9 +17,13 @@ MOBILE VIEW
 .user-profile {
   background-color: #3b4141;
   display: flex;
+  flex-direction: column;
+  padding: 25px;
 }
 
-.user-pic-div {}
+.user-pic-div {
+  flex: 1;
+}
 
 .profile-pic {
   width: 130px;
@@ -28,11 +32,19 @@ MOBILE VIEW
 
 .user-info-div {
   align-self: center;
+  flex: 1;
+}
+
+.user-profile .report-button-large {
+  align-self: center;
+  flex: 1;
+  height: 35px;
+  width: 150px;
 }
 
 .user {
   background-color: #2e3434;
-  width: 160px;
+  width: 200px;
   height: 35px;
   margin: 10px;
   color: #ffffff;
@@ -40,7 +52,7 @@ MOBILE VIEW
   font-family: 'Work Sans', sans-serif;
 }
 
-/* ============================ 
+/* ============================
 MEDIA QUERIES
 ============================*/
 
@@ -72,5 +84,5 @@ MEDIA QUERIES
     padding-top: 15px;
     font-size: 18px;
   }
-  
+
 }
