@@ -17,13 +17,14 @@
 }
 
 .start-link {
+  align-self: center;
   background-color: #7bc087;
   font-weight: bold;
   font-size: 26px;
+  flex: 1;
   padding: 25px;
   margin-bottom: 25px;
-  flex: 1;
-  align-self: center;
+  margin-top: 10px;
 }
 
 .start-link a {

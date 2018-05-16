@@ -76,7 +76,7 @@ class RootPage extends Component {
 					</div>
 				</main>
 				<footer className="footer">
-						<h3>Team MAJAAC</h3>
+						<h3>Created by Team MAJAAC</h3>
 					<ul className="footer-credits">
 						<li>
 							<a href="http://www.alishaantoinette.com/" target="_blank" rel="noopener noreferrer">
