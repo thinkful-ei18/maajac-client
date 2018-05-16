@@ -6,52 +6,6 @@
   width: 100%;
 }
 
-.tagline-header {
-  padding: 0 55px;
-  width: 100%;
-}
-
-.tagline-title {
-  color: rgb(27, 27, 27);
-  font-weight: bold;
-  font-size: 40px;
-  padding-top: 20px;
-  padding-bottom: 5px;
-}
-
-.tagline-desc {
-  font-size: 30px;
-  padding-bottom: 20px;
-  color: #3b4141;
-}
-
-.landing-container {
-  position: relative;
-  background-color: #3b4141;
-  background-image: url("../../images/beardguymobile.jpg");
-  background-size: contain;
-  color: white;
-  height: 300px;
-  width: 100%;
-  margin-bottom: 35px;
-  border-bottom: 10px solid #7bc087;
-}
-
-.landing-signup {
-  position: absolute;
-  bottom: 0;
-  background-color: #3b4141;
-  height: 100px;
-  padding: 5px;
-  width: 100%;
-}
-
-.landing-title {
-  display: block;
-  padding: 15px 0px;
-  width: 100%;
-}
-
 .feature-container {
   display: flex;
   flex-direction: column;
@@ -132,26 +86,6 @@ MEDIA QUERIES
 @media only screen and (min-width: 768px) {
   /* For tablet/desktop: */
 
-  .tagline-header {
-    margin: 0px 5vw;
-  }
-  .feature-container {
-    flex-direction: row;
-    margin: 0px 5vw;
-  }
-  .feature {
-    border: none;
-    margin: 25px;
-  }
-  .landing-signup {
-    height: 20%;
-  }
-  .landing-container {
-    height: 625px;
-    background-image: url("../../images/beardguy.jpg");
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
   .footer {
     justify-content: left;
   }
