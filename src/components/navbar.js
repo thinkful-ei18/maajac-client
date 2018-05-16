@@ -70,8 +70,10 @@ export class Navbar extends Component {
 							alt="user profile icon"
 							className="small-profile-nav"
 						/>
-						Menu
-						<i className="arrow down" />
+						<p>
+							Menu
+						</p>
+							<div className='nav-arrow'>&#x25BC;</div>
 					</div>
 				</button>
 			);
