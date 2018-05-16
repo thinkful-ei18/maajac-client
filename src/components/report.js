@@ -28,10 +28,16 @@ class reportForm extends Component {
     this.setState({ locationError: error });
   }
   // Invert Function
-  flip() {
+  flip1() {
     this.setState({
-      check1: !this.state.check1,
-      check2: !this.state.check2
+      check1: true,
+      check2: false
+    });
+  }
+  flip2() {
+    this.setState({
+      check1: false,
+      check2: true
     });
   }
 
@@ -54,7 +60,7 @@ class reportForm extends Component {
               type="radio"
               name="tabs"
               id="tab-1"
-              onClick={() => this.flip()}
+              onClick={() => this.flip1()}
             />
             <label htmlFor="tab-1">Report</label>
             <div className="tab-content">
@@ -134,7 +140,7 @@ class reportForm extends Component {
               type="radio"
               name="tabs"
               id="tab-2"
-              onClick={() => this.flip()}
+              onClick={() => this.flip2()}
             />
             <label htmlFor="tab-2">Search</label>
             <div className="tab-content">
