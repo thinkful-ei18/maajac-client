@@ -62,7 +62,6 @@ export class Navbar extends Component {
 			loggedInNavbar = (
 				<button className="report-button-large" onClick={this.showMenu}>
 					<div className="navbar-flex">
-						Welcome, {this.props.currentUser.username}
 						<img
 							src={
 								this.props.profilePicture ||
@@ -71,7 +70,10 @@ export class Navbar extends Component {
 							alt="user profile icon"
 							className="small-profile-nav"
 						/>
-						<i className="arrow down" />
+						<p>
+							Menu
+						</p>
+							<div className='nav-arrow'>&#x25BC;</div>
 					</div>
 				</button>
 			);
