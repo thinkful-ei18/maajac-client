@@ -9,6 +9,10 @@
 .header {
   flex: 1;
   font-size: 28px;
+  font-weight: bold;
+  /* border-bottom: 10px solid #7bc087; */
+  background-color: #7bc087;
+  color: white;
   padding: 25px;
 }
 
