@@ -60,12 +60,8 @@
 	border: none;
 }
 
-i {
-	border: solid #2e3434;
-	border-width: 0 3px 3px 0;
-	display: inline-block;
-	padding: 3px;
-	margin-left: 12px;
+.nav-arrow {
+	text-align: right;
 }
 
 .down {
@@ -89,7 +85,7 @@ i {
 .navbar-flex {
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
+	justify-content: space-evenly;
 	align-items: center;
 }
 /* ============================
