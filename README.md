@@ -6,6 +6,7 @@ SafeReport/safeR is an app that aims to keep the community safer by making sure 
 * live app: https://safer.netlify.com/
 * Github Client: https://github.com/thinkful-ei18/maajac-client
 * Github Server: https://github.com/thinkful-ei18/majaac-server
+* Github Mobile: https://github.com/thinkful-ei18/MOBILE-maajac-client
 
 # Technology Stack
 ## Front End
