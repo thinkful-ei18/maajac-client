@@ -6,6 +6,15 @@
   width: 100%;
 }
 
+.header {
+  flex: 1;
+  padding: 25px;
+}
+
+.start-link {
+  flex: 1;
+  padding: 25px;
+}
 .feature-container {
   display: flex;
   flex-direction: column;
