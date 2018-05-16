@@ -72,10 +72,11 @@ i {
 	-webkit-transform: rotate(45deg);
 }
 
-.report-button-large {
+.navbar .report-button-large {
 	background-color: #7bc087;
 	height: 30px;
-	width: 150px;
+	min-width: 175px;
+	width: auto;
 	border: none;
 	margin: 5px;
 	color: white;
@@ -91,7 +92,7 @@ i {
 	justify-content: center;
 	align-items: center;
 }
-/* ============================ 
+/* ============================
 MEDIA QUERIES
 ============================*/
 
@@ -113,7 +114,8 @@ MEDIA QUERIES
 		width: 190px;
 	}
 
-	.report-button-large {
-		width: 190px;
+	.navbar .report-button-large {
+		min-width: 200px;
+		width: auto;
 	}
 }
