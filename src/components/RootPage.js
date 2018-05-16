@@ -18,9 +18,6 @@ class RootPage extends Component {
 	handleCloseDialog() {
 		this.props.dispatch(closeDialog());
 	}
-	componentWillMount() {
-		document.body.style.backgroundColor = 'white';
-	}
 
 	render() {
 		if (this.props.currentUser) {
