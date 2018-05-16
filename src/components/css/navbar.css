@@ -88,6 +88,22 @@
 	justify-content: space-evenly;
 	align-items: center;
 }
+.signin {
+	background-color: #7bc087;
+	height: 30px;
+	width: 80px;
+	border: none;
+	margin: 5px;
+	color: white;
+}
+.signup {
+	background-color: #7bc087;
+	height: 30px;
+	width: 80px;
+	border: none;
+	margin: 5px;
+	color: white;
+}
 /* ============================
 MEDIA QUERIES
 ============================*/
@@ -112,5 +128,58 @@ MEDIA QUERIES
 
 	.navbar .report-button-large {
 		width: 175px;
+	}
+	.signin {
+		background-color: #7bc087;
+		height: 25px;
+		width: 80px;
+		border: none;
+		margin: 5px;
+		color: white;
+	}
+	.signup {
+		background-color: #7bc087;
+		height: 25px;
+		width: 80px;
+		border: none;
+		margin: 5px;
+		color: white;
+	}
+}
+@media only screen and (min-device-width: 300px) and (max-device-width: 374px) and (-webkit-min-device-pixel-ratio: 1) {
+	.signin {
+		background-color: #7bc087;
+		height: 25px;
+		width: 65px;
+		border: none;
+		margin: 5px;
+		color: white;
+	}
+	.signup {
+		background-color: #7bc087;
+		height: 25px;
+		width: 65px;
+		border: none;
+		margin: 5px;
+		color: white;
+	}
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 700px) and (-webkit-min-device-pixel-ratio: 1) {
+	.signin {
+		background-color: #7bc087;
+		height: 25px;
+		width: 75px;
+		border: none;
+		margin: 5px;
+		color: white;
+	}
+	.signup {
+		background-color: #7bc087;
+		height: 25px;
+		width: 75px;
+		border: none;
+		margin: 5px;
+		color: white;
 	}
 }
