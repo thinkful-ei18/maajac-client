@@ -27,7 +27,7 @@ class reportForm extends Component {
   handleLocationError(error) {
     this.setState({ locationError: error });
   }
-
+  // Invert Function
   flip() {
     this.setState({
       check1: !this.state.check1,
