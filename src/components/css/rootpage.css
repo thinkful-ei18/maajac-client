@@ -12,15 +12,30 @@
   padding: 25px;
 }
 
-.start-link {
+.rootpage main {
   flex: 1;
+}
+
+.start-link {
+  background-color: #7bc087;
+  font-weight: bold;
+  font-size: 26px;
   padding: 25px;
+  margin-bottom: 25px;
+  flex: 1;
+  align-self: center;
+}
+
+.start-link a {
+  text-decoration: none;
+  color: white;
 }
 
 .footer {
   background-color: #3b4141;
   color: white;
   display: flex;
+  flex: 1;
   flex-direction: column;
   justify-content: space-between;
   margin-top: 10px;
