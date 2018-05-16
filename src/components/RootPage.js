@@ -26,23 +26,6 @@ class RootPage extends Component {
 		if (this.props.currentUser) {
 			return <Redirect to="/map" />;
 		}
-		const linkStyle = {
-			color: 'white',
-			display: 'block',
-			fontWeight: 'bold',
-			fontSize: 16,
-			textTransform: 'uppercase',
-			textDecoration: 'none',
-		};
-
-		const getStartedStyle = {
-			color: 'white',
-			display: 'block',
-			fontWeight: 'bold',
-			fontSize: 24,
-			textTransform: 'uppercase',
-			textDecoration: 'none',
-		};
 
 		let modalForm;
 		if (this.props.currentTab) {
@@ -66,23 +49,12 @@ class RootPage extends Component {
 				>
 					{modalForm}
 				</Dialog>
-				<header className="tagline-header">
-					<h1 className="tagline-title">Be safe</h1>
-					<p className="tagline-desc">Always know what's going on in your neighborhood</p>
+				<header className="header">
+					<h1>
+						safeR makes it easy to find out about crimes and incidents in your community.
+					</h1>
 				</header>
 				<main>
-					<div
-						className="landing-container"
-					>
-						<div className="landing-signup">
-							<span className="landing-title">
-								<h2>safeR makes it easy to find out about crimes and incidents in your community.</h2>
-							</span>
-							<Link to="/map" style={getStartedStyle}>
-								<p>Get started &#8594;</p>
-							</Link>
-						</div>
-					</div>
 					<div className="feature-container">
 						<div className="feature">
 							<img src={writingImage} alt="Icon of user with a pen" />
@@ -99,6 +71,11 @@ class RootPage extends Component {
 							<h3>Anonymous and easy to use</h3>
 							<p>We value the privacy of our users. Report incidents in your community easily with your private profile.</p>
 						</div>
+					</div>
+					<div className='start-link'>
+						<Link to="/map">
+							<p>Get started &#8594;</p>
+						</Link>
 					</div>
 				</main>
 				<footer className="footer">
