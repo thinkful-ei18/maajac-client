@@ -54,17 +54,17 @@ class RootPage extends Component {
 				<main>
 					<div className="feature-container">
 						<div className="feature">
-							<img src={writingImage} alt="Icon of user with a pen" />
+							<img src='https://res.cloudinary.com/adriantoddross/image/upload/v1526504536/user-9.svg' alt='null' />
 							<h2>Discover Incidents</h2>
 							<p>View a map of incident locations and descriptions without signing up. Always know what's going on in your neighborhood.</p>
 						</div>
 						<div className="feature">
-							<img src={groupImage} alt="Icon of 3 users" />
+							<img src='https://res.cloudinary.com/adriantoddross/image/upload/v1526504456/user-10.svg' alt="null" />
 							<h2>Report An Incident</h2>
 							<p>Create an account and report incidents anonymously to contribute to a safer community for everyone.</p>
 						</div>
 						<div className="feature">
-							<img src={anonymousUserImage} alt="Icon of user crossed out" />
+							<img src='https://res.cloudinary.com/adriantoddross/image/upload/v1526504613/user-13.svg' alt="null" />
 							<h2>Stay safeR</h2>
 							<p>Add a profile picture or delete old incidents from your dashboard. It's up to you!</p>
 						</div>
