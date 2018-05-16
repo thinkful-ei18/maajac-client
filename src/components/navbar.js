@@ -70,20 +70,18 @@ export class Navbar extends Component {
 							alt="user profile icon"
 							className="small-profile-nav"
 						/>
-						<p>
-							Menu
-						</p>
-							<div className='nav-arrow'>&#x25BC;</div>
+						<p>Menu</p>
+						<div className="nav-arrow">&#x25BC;</div>
 					</div>
 				</button>
 			);
 		} else {
 			loggedInNavbar = (
 				<div>
-					<button className="report-button" onClick={() => this.signUp()}>
+					<button className="signup" onClick={() => this.signUp()}>
 						Sign Up
 					</button>
-					<button className="report-button" onClick={() => this.logIn()}>
+					<button className="signin" onClick={() => this.logIn()}>
 						Log In
 					</button>
 				</div>
