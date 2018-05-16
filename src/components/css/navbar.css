@@ -115,7 +115,6 @@ MEDIA QUERIES
 	}
 
 	.navbar .report-button-large {
-		min-width: 200px;
-		width: auto;
+		width: 175px;
 	}
 }
