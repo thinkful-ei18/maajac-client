@@ -54,7 +54,6 @@ export class Dashboard extends React.Component {
       1 > reports.length ? (
         <p className="instructions">
           To create a your first report, click the 'Menu' button above.
-          <br/> <br/>
           If you're on a computer, click <em>'Map'</em>. If you're on a phone, click <em>'Report'</em>.
 				</p>
       ) : null;
