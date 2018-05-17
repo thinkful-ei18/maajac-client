@@ -3,6 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import Input from './input';
 import { Redirect } from 'react-router-dom';
+import { getOS } from '../osFinder';
 // import { Redirect } from 'react-router-dom';
 import { required, nonEmpty } from '../utils/validators';
 import { login } from '../actions/userActions';
@@ -23,28 +24,7 @@ export class LoginForm extends Component {
 
 	render() {
 		const { handleSubmit, pristine, submitting } = this.props;
-		function getOS() {
-			let userAgent = window.navigator.userAgent,
-				platform = window.navigator.platform,
-				macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
-				windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
-				iosPlatforms = ['iPhone', 'iPad', 'iPod'],
-				os = null;
 
-			if (macosPlatforms.indexOf(platform) !== -1) {
-				os = 'Mac OS';
-			} else if (iosPlatforms.indexOf(platform) !== -1) {
-				os = 'iOS';
-			} else if (windowsPlatforms.indexOf(platform) !== -1) {
-				os = 'Windows';
-			} else if (/Android/.test(userAgent)) {
-				os = 'Android';
-			} else if (!os && /Linux/.test(platform)) {
-				os = 'Linux';
-			}
-
-			return os;
-		}
 		const os = getOS();
 		const isMobile = window.innerWidth <= 1023;
 
