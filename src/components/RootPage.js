@@ -23,9 +23,35 @@ class RootPage extends Component {
 	}
 
 	render() {
-		if (this.props.currentUser) {
-			return <Redirect to="/map" />;
+		function getOS() {
+			let userAgent = window.navigator.userAgent,
+				platform = window.navigator.platform,
+				macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
+				windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
+				iosPlatforms = ['iPhone', 'iPad', 'iPod'],
+				os = null;
+
+			if (macosPlatforms.indexOf(platform) !== -1) {
+				os = 'Mac OS';
+			} else if (iosPlatforms.indexOf(platform) !== -1) {
+				os = 'iOS';
+			} else if (windowsPlatforms.indexOf(platform) !== -1) {
+				os = 'Windows';
+			} else if (/Android/.test(userAgent)) {
+				os = 'Android';
+			} else if (!os && /Linux/.test(platform)) {
+				os = 'Linux';
+			}
+
+			return os;
 		}
+		const os = getOS();
+		if (this.props.currentUser && (os === 'Mac Os' || 'Windows' || 'Linux')) {
+			return <Redirect to="/map" />;
+		} else if (this.props.currentUser && (os === 'iOS' || 'Android')) {
+			return <Redirect to="/report" />;
+		}
+
 		const linkStyle = {
 			color: 'white',
 			display: 'block',
@@ -71,9 +97,7 @@ class RootPage extends Component {
 					<p className="tagline-desc">Always know what's going on in your neighborhood</p>
 				</header>
 				<main>
-					<div
-						className="landing-container"
-					>
+					<div className="landing-container">
 						<div className="landing-signup">
 							<span className="landing-title">
 								<h2>safeR makes it easy to find out about crimes and incidents in your community.</h2>
@@ -87,17 +111,26 @@ class RootPage extends Component {
 						<div className="feature">
 							<img src={writingImage} alt="Icon of user with a pen" />
 							<h3>No registration required</h3>
-							<p>View incident locations and descriptions without signing up. Always know what's going on in your neighborhood.</p>
+							<p>
+								View incident locations and descriptions without signing up. Always know what's going on
+								in your neighborhood.
+							</p>
 						</div>
 						<div className="feature">
 							<img src={groupImage} alt="Icon of 3 users" />
 							<h3>Community driven</h3>
-							<p>Create an account to report incidents in your community and create a safer neighborhood for everyone.</p>
+							<p>
+								Create an account to report incidents in your community and create a safer neighborhood
+								for everyone.
+							</p>
 						</div>
 						<div className="feature">
 							<img src={anonymousUserImage} alt="Icon of user crossed out" />
 							<h3>Anonymous and easy to use</h3>
-							<p>We value the privacy of our users. Report incidents in your community easily with your private profile.</p>
+							<p>
+								We value the privacy of our users. Report incidents in your community easily with your
+								private profile.
+							</p>
 						</div>
 					</div>
 				</main>
