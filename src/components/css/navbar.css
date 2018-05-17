@@ -24,7 +24,8 @@
 }
 .home .logo {
 	font-size: 30px;
-	font-family: 'Acme', sans-serif;
+	font-family: 'Lato', sans-serif;
+	font-weight: bold;
 }
 
 .dropdown-menu {
