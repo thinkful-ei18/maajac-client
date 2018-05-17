@@ -13,6 +13,7 @@
   flex: 1;
   font-size: 28px;
   font-weight: bold;
+  font-family: 'Lato', sans-serif;
   padding: 25px;
 }
 
@@ -130,15 +131,11 @@ MEDIA QUERIES
 
   .rootpage {
     flex-direction: column;
-    
+
   }
 
   .header {
     font-size: 50px;
-  }
-
-  .start-link {
-   
   }
 
   .feature-container {
@@ -146,15 +143,15 @@ MEDIA QUERIES
     padding: 0px 25px;
     justify-content: space-around;
     text-align: center
-    
+
   }
 
   .feature {
     border: none;
     margin: 50px;
     justify-content: center;
-    
-   
+
+
   }
 
   .feature p {
