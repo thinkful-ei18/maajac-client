@@ -37,11 +37,14 @@ class RootPage extends Component {
 
 			return os;
 		}
+		const isMobile = window.innerWidth <= 768;
 		const os = getOS();
 		if (this.props.currentUser && (os === 'Mac Os' || 'Windows' || 'Linux')) {
 			return <Redirect to="/map" />;
-		} else if (this.props.currentUser && (os === 'iOS' || 'Android')) {
+		} else if (this.props.currentUser && (os === 'iOS' || 'Android') && isMobile) {
 			return <Redirect to="/report" />;
+		} else if (this.props.currentUser && (os === 'iOS' || 'Android') && !isMobile) {
+			return <Redirect to="/map" />;
 		}
 
 		const linkStyle = {
