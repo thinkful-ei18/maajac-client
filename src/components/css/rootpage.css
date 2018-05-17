@@ -130,6 +130,7 @@ MEDIA QUERIES
 
   .rootpage {
     flex-direction: column;
+    height: 100vh;
   }
 
   .header {
@@ -140,8 +141,12 @@ MEDIA QUERIES
     display: none;
   }
 
-  .feature-container{
+  .feature-container {
     flex-direction: row;
+  }
+
+  .feature {
+    border: none;
   }
 
   .footer h3 {
