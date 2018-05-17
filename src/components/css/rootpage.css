@@ -129,7 +129,31 @@ MEDIA QUERIES
   /* For tablet/desktop: */
 
   .rootpage {
+    flex-direction: column;
+  }
+
+  .header {
+    font-size: 50px;
+  }
+
+  .start-link {
+    display: none;
+  }
+
+  .feature-container{
     flex-direction: row;
+  }
+
+  .footer h3 {
+    flex: 0;
+  }
+
+   .footer-credits li {
+    flex: 0;
+  }
+
+  .github-link {
+    flex: 0;
   }
 
 }
