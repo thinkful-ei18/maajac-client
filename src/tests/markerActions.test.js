@@ -1,4 +1,41 @@
-import { getMarkerSuccess, GET_MARKER_SUCCESS, getMarkerError, GET_MARKER_ERROR, getMarkerRequest, GET_MARKER_REQUEST, newMarkerSuccess, NEW_MARKER_SUCCESS, newMarkerError, NEW_MARKER_ERROR, newMarkerRequest, NEW_MARKER_REQUEST } from "../actions/markerActions";
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+import fetchMock from 'fetch-mock';
+import { API_BASE_URL } from '../config';
+import { getMarkers, getMarkerSuccess, GET_MARKER_SUCCESS, getMarkerError, GET_MARKER_ERROR, getMarkerRequest, GET_MARKER_REQUEST, newMarkerSuccess, NEW_MARKER_SUCCESS, newMarkerError, NEW_MARKER_ERROR, newMarkerRequest, NEW_MARKER_REQUEST } from "../actions/markerActions";
+import Marker from '../utils/fakemarkers.json';
+import * as actions from '../actions/markerActions';
+import * as types from '../actions/markerActions';
+
+const middlewares = [thunk];
+const mockStore = configureMockStore(middlewares);
+
+describe('async actions', () => {
+  afterEach(() => {
+    fetchMock.reset()
+    fetchMock.restore()
+  });
+
+  it('creates GET_MARKER_SUCCESS when getting markers', () => {
+    fetchMock
+    .getOnce(`${API_BASE_URL}/markers`, { body: 'pizza', headers: { method: 'GET', 'content-type': 'application/json' } });
+
+    const expectedActions = [
+      { type: types.GET_MARKER_REQUEST },
+      { type: types.GET_MARKER_ERROR },
+      { type: types.GET_MARKER_SUCCESS, body: Marker }
+    ]
+
+    const store = mockStore({ body: Marker }); // make an object that looks like the real store
+
+    return store.dispatch(actions.getMarkers()).then(() => {
+      // return of async actions
+      expect(store.getActions()).toEqual(expectedActions)
+    })
+  });
+
+});
+
 
 // GET /api/markers
 describe('GET markers actions', () => {
