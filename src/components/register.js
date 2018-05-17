@@ -56,9 +56,17 @@ export class RegistrationForm extends React.Component {
 			return os;
 		}
 		const os = getOS();
-		const isMobile = window.innerWidth <= 768;
-		if (this.props.currentUser && (os === 'iOS' || 'Android') && isMobile) {
-			return <Redirect to="/report" />;
+		const isMobile = window.innerWidth <= 1023;
+		if (this.props.currentUser) {
+			if (os === ('iOS' || 'Android')) {
+				if (isMobile) {
+					return <Redirect to="/report" />;
+				} else {
+					return <Redirect to="/map" />;
+				}
+			} else {
+				return <Redirect to="/map" />;
+			}
 		}
 
 		return (

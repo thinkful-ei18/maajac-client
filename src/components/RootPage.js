@@ -37,10 +37,19 @@ class RootPage extends Component {
 
 			return os;
 		}
-		const isMobile = window.innerWidth <= 768;
+		const isMobile = window.innerWidth <= 1023;
 		const os = getOS();
-		if (this.props.currentUser && (os === 'iOS' || 'Android') && isMobile) {
-			return <Redirect to="/report" />;
+		console.log('OS: ', os);
+		if (this.props.currentUser) {
+			if (os === ('iOS' || 'Android')) {
+				if (isMobile) {
+					return <Redirect to="/report" />;
+				} else {
+					return <Redirect to="/map" />;
+				}
+			} else {
+				return <Redirect to="/map" />;
+			}
 		}
 
 		const linkStyle = {
@@ -60,10 +69,6 @@ class RootPage extends Component {
 			textTransform: 'uppercase',
 			textDecoration: 'none',
 		};
-
-		if (this.props.currentUser) {
-			return <Redirect to="/map" />;
-		}
 
 		let modalForm;
 		if (this.props.currentTab) {

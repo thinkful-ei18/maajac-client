@@ -46,7 +46,7 @@ export class LoginForm extends Component {
 			return os;
 		}
 		const os = getOS();
-		const isMobile = window.innerWidth <= 768;
+		const isMobile = window.innerWidth <= 1023;
 
 		let errorMessage;
 		if (this.props.error) {
@@ -57,9 +57,23 @@ export class LoginForm extends Component {
 			);
 		}
 
+		function viewPort(props) {
+			if (props.currentUser) {
+				if (os === ('iOS' || 'Android')) {
+					if (isMobile) {
+						return <Redirect to="/report" />;
+					} else {
+						return <Redirect to="/map" />;
+					}
+				} else {
+					return <Redirect to="/map" />;
+				}
+			}
+		}
+
 		return (
 			<div className="login">
-				{this.props.loggedIn && (os === 'Android' || 'iOS') && isMobile ? <Redirect to="/report" /> : ''}
+				{viewPort(this.props)}
 				{/* {this.props.loggedIn && (os === 'Android' || 'iOS') && !isMobile ? <Redirect to="/map" /> : ''}
 				{this.props.loggedIn && (os === 'Windows' || 'Mac OS' || 'Linux') ? <Redirect to="/map" /> : ''} */}
 				<form className="login-form" onSubmit={handleSubmit(values => this.onLogin(values))}>
