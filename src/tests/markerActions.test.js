@@ -18,15 +18,20 @@ describe('async actions', () => {
 
   it('creates GET_MARKER_SUCCESS when getting markers', () => {
     fetchMock
-    .getOnce(`${API_BASE_URL}/markers`, { body: 'pizza', headers: { method: 'GET', 'content-type': 'application/json' } });
+    .getOnce(`${API_BASE_URL}/markers`, { headers: { method: 'GET', 'content-type': 'application/json' } });
 
     const expectedActions = [
       { type: types.GET_MARKER_REQUEST },
-      { type: types.GET_MARKER_ERROR },
-      { type: types.GET_MARKER_SUCCESS, body: Marker }
+      { type: types.GET_MARKER_SUCCESS, markers: Marker }
     ]
 
-    const store = mockStore({ body: Marker }); // make an object that looks like the real store
+    const initialState = {
+      allMarkers: [],
+      loading: false,
+      error: false,
+    };
+
+    const store = mockStore({initialState}); // make an object that looks like the real store
 
     return store.dispatch(actions.getMarkers()).then(() => {
       // return of async actions
