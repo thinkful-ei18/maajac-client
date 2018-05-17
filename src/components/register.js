@@ -35,7 +35,7 @@ export class RegistrationForm extends React.Component {
 		}
 		const os = getOS();
 		const isMobile = window.innerWidth <= 1023;
-		if (this.props.currentUser) {
+		if (this.props.loggedIn) {
 			if (os === ('iOS' || 'Android')) {
 				if (isMobile) {
 					return <Redirect to="/report" />;
