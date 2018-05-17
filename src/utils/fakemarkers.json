@@ -1,16 +1,16 @@
 [
   {
-      "_id": "5afca43da83e3a0014924b4b",
-      "incidentType": "Theft",
-      "date": "05-16-2018",
-      "time": "14:29",
-      "description": "Someone stole my textbooks",
-      "location": {
-          "lat": 32.77320826978745,
-          "lng": -117.07112932460483
-      },
-      "userId": "5afca1e1a83e3a0014924b49",
-      "__v": 0,
-      "icon": "https://res.cloudinary.com/adriantoddross/image/upload/v1526329107/100px_map_icon_theft.png"
-  }
+    "_id": "5afca43da83e3a0014924b4b",
+    "incidentType": "Theft",
+    "date": "05-16-2018",
+    "time": "14:29",
+    "description": "Someone stole my textbooks",
+    "location": {
+        "lat": 32.77320826978745,
+        "lng": -117.07112932460483
+    },
+    "userId": "5afca1e1a83e3a0014924b49",
+    "__v": 0,
+    "icon": "https://res.cloudinary.com/adriantoddross/image/upload/v1526329107/100px_map_icon_theft.png"
+}
 ]
