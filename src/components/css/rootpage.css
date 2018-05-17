@@ -4,58 +4,44 @@
   flex-direction: column;
   text-align: left;
   width: 100%;
+  background-color: white;
 }
 
-.tagline-header {
-  padding: 0 55px;
-  width: 100%;
-}
-
-.tagline-title {
-  color: rgb(27, 27, 27);
-  font-weight: bold;
-  font-size: 40px;
-  padding-top: 20px;
-  padding-bottom: 5px;
-}
-
-.tagline-desc {
-  font-size: 30px;
-  padding-bottom: 20px;
-  color: #3b4141;
-}
-
-.landing-container {
-  position: relative;
-  background-color: #3b4141;
-  background-image: url("../../images/beardguymobile.jpg");
-  background-size: contain;
+.header {
+  background-color: #7bc087;
   color: white;
-  height: 300px;
-  width: 100%;
-  margin-bottom: 35px;
-  border-bottom: 10px solid #7bc087;
+  flex: 1;
+  font-size: 28px;
+  font-weight: bold;
+  font-family: 'Lato', sans-serif;
+  padding: 25px;
 }
 
-.landing-signup {
-  position: absolute;
-  bottom: 0;
-  background-color: #3b4141;
-  height: 100px;
-  padding: 5px;
-  width: 100%;
+.rootpage main {
+  flex: 1;
 }
 
-.landing-title {
-  display: block;
-  padding: 15px 0px;
-  width: 100%;
+.start-link {
+  align-self: center;
+  background-color: #7bc087;
+  font-weight: bold;
+  font-size: 26px;
+  flex: 1;
+  padding: 25px;
+  /* margin-bottom: 25px; */
+  margin-top: 10px;
+}
+
+.start-link a {
+  text-decoration: none;
+  color: white;
 }
 
 .feature-container {
   display: flex;
   flex-direction: column;
   padding: 0 25px;
+  margin-top: 25px;
 }
 
 .feature {
@@ -65,7 +51,7 @@
   line-height: 1.6
 }
 
-.feature h3 {
+.feature h2 {
   font-size: 22px;
   padding-bottom: 10px;
   color: rgb(27, 27, 27)
@@ -86,22 +72,31 @@
   background-color: #3b4141;
   color: white;
   display: flex;
-  justify-content: space-evenly;
-  margin-top: 10px;
-  padding: 25px 0px;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 50px 25px;
   width: 100%;
 }
 
-.footer h4 {
+.footer h3 {
   border-bottom: 1px solid white;
   font-weight: bold;
-  padding-bottom: 5px;
-  margin-bottom: 5px;
+  flex: 1;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .footer a:hover {
   color: #7bc087;
   font-weight: bold;
+}
+
+.footer-credits {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
 }
 
 .footer-credits li {
@@ -115,11 +110,13 @@
 }
 
 .github-container {
+  flex: 1;
   display: flex;
   flex-direction: column;
 }
 
 .github-link {
+  flex: 1;
   color: white;
   text-decoration: none;
   padding: 7px 0px;
@@ -132,32 +129,45 @@ MEDIA QUERIES
 @media only screen and (min-width: 768px) {
   /* For tablet/desktop: */
 
-  .tagline-header {
-    margin: 0px 5vw;
+  .rootpage {
+    flex-direction: column;
+
   }
+
+  .header {
+    font-size: 50px;
+  }
+
   .feature-container {
     flex-direction: row;
-    margin: 0px 5vw;
+    padding: 0px 25px;
+    justify-content: space-around;
+    text-align: center
+
   }
+
   .feature {
     border: none;
-    margin: 25px;
+    margin: 50px;
+    justify-content: center;
+
+
   }
-  .landing-signup {
-    height: 20%;
+
+  .feature p {
+    text-align: left
   }
-  .landing-container {
-    height: 625px;
-    background-image: url("../../images/beardguy.jpg");
-    background-size: contain;
-    background-repeat: no-repeat;
+
+  .footer h3 {
+    flex: 0;
   }
-  .footer {
-    justify-content: left;
+
+   .footer-credits li {
+    flex: 0;
   }
-  .footer-credits {
-    margin: 0 100px 0px 30px;
-    ;
+
+  .github-link {
+    flex: 0;
   }
 
 }
