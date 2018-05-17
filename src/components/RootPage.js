@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Dialog from 'material-ui/Dialog';
 import { Link, Redirect } from 'react-router-dom';
-
+import { getOS } from '../osFinder';
 import LoginForm from '../components/Login';
 import RegistrationForm from '../components/register';
 import { closeDialog } from '../actions/modalActions';
@@ -15,30 +15,8 @@ class RootPage extends Component {
 	}
 
 	render() {
-		function getOS() {
-			let userAgent = window.navigator.userAgent,
-				platform = window.navigator.platform,
-				macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
-				windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
-				iosPlatforms = ['iPhone', 'iPad', 'iPod'],
-				os = null;
-
-			if (macosPlatforms.indexOf(platform) !== -1) {
-				os = 'Mac OS';
-			} else if (iosPlatforms.indexOf(platform) !== -1) {
-				os = 'iOS';
-			} else if (windowsPlatforms.indexOf(platform) !== -1) {
-				os = 'Windows';
-			} else if (/Android/.test(userAgent)) {
-				os = 'Android';
-			} else if (!os && /Linux/.test(platform)) {
-				os = 'Linux';
-			}
-
-			return os;
-		}
-		const isMobile = window.innerWidth <= 1023;
 		const os = getOS();
+		const isMobile = window.innerWidth <= 1023;
 		console.log('OS: ', os);
 		if (this.props.currentUser) {
 			if (os === ('iOS' || 'Android')) {
