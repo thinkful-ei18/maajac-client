@@ -56,14 +56,11 @@ export class RegistrationForm extends React.Component {
 			return os;
 		}
 		const os = getOS();
-		if (this.props.currentUser && (os === 'Mac Os' || 'Windows' || 'Linux')) {
-			return <Redirect to="/map" />;
-		} else if (this.props.currentUser && (os === 'iOS' || 'Android')) {
-			return <Redirect to="/report" />;
-		}
 
 		return (
 			<form className="modal-form" onSubmit={handleSubmit(values => this.onSubmit(values))}>
+				{this.props.loggedIn && (os === 'Android' || 'iOS') ? <Redirect to="/report" /> : ''}
+				{this.props.loggedIn && (os === 'Windows' || 'Mac OS' || 'Linux') ? <Redirect to="/map" /> : ''}
 				<div className="form-error" aria-live="polite">
 					{errorMessage}
 				</div>
