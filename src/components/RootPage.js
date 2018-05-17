@@ -66,7 +66,6 @@ class RootPage extends Component {
 			return <Redirect to="/map" />;
 		}
 
-
 		let modalForm;
 		if (this.props.currentTab) {
 			if (this.props.currentTab === 'signup') {
@@ -90,71 +89,49 @@ class RootPage extends Component {
 					{modalForm}
 				</Dialog>
 				<header className="header">
-					<h1>
-						safeR makes it easy to find out about crimes and incidents in your community.
-					</h1>
+					<h1>safeR makes it easy to find out about crimes and incidents in your community.</h1>
 				</header>
 				<main>
-					<div className="landing-container">
-						<div className="landing-signup">
-							<span className="landing-title">
-								<h2>safeR makes it easy to find out about crimes and incidents in your community.</h2>
-							</span>
-							<Link to="/map" style={getStartedStyle}>
-								<p>Get started &#8594;</p>
-							</Link>
-						</div>
-					</div>
 					<div className="feature-container">
 						<div className="feature">
-							<img src={writingImage} alt="Icon of user with a pen" />
-							<h3>No registration required</h3>
+							<img
+								src="https://res.cloudinary.com/adriantoddross/image/upload/v1526504536/user-9.svg"
+								alt="null"
+							/>
+							<h2>Discover Incidents</h2>
 							<p>
-								View incident locations and descriptions without signing up. Always know what's going on
-								in your neighborhood.
+								View a map of incident locations and descriptions without signing up. Always know what's
+								going on in your neighborhood.
 							</p>
 						</div>
 						<div className="feature">
-							<img src={groupImage} alt="Icon of 3 users" />
-							<h3>Community driven</h3>
+							<img
+								src="https://res.cloudinary.com/adriantoddross/image/upload/v1526504456/user-10.svg"
+								alt="null"
+							/>
+							<h2>Report An Incident</h2>
 							<p>
-								Create an account to report incidents in your community and create a safer neighborhood
+								Create an account and report incidents anonymously to contribute to a safer community
 								for everyone.
 							</p>
 						</div>
 						<div className="feature">
-							<img src={anonymousUserImage} alt="Icon of user crossed out" />
-							<h3>Anonymous and easy to use</h3>
-							<p>
-								We value the privacy of our users. Report incidents in your community easily with your
-								private profile.
-							</p>
-							</div>
-					<div className="feature-container">
-						<div className="feature">
-							<img src='https://res.cloudinary.com/adriantoddross/image/upload/v1526504536/user-9.svg' alt='null' />
-							<h2>Discover Incidents</h2>
-							<p>View a map of incident locations and descriptions without signing up. Always know what's going on in your neighborhood.</p>
-						</div>
-						<div className="feature">
-							<img src='https://res.cloudinary.com/adriantoddross/image/upload/v1526504456/user-10.svg' alt="null" />
-							<h2>Report An Incident</h2>
-							<p>Create an account and report incidents anonymously to contribute to a safer community for everyone.</p>
-						</div>
-						<div className="feature">
-							<img src='https://res.cloudinary.com/adriantoddross/image/upload/v1526504613/user-13.svg' alt="null" />
+							<img
+								src="https://res.cloudinary.com/adriantoddross/image/upload/v1526504613/user-13.svg"
+								alt="null"
+							/>
 							<h2>Stay safeR</h2>
 							<p>Add a profile picture or delete old incidents from your dashboard. It's up to you!</p>
 						</div>
 					</div>
-					<div className='start-link'>
+					<div className="start-link">
 						<Link to="/map">
 							<p>Get started &#8594;</p>
 						</Link>
 					</div>
 				</main>
 				<footer className="footer">
-						<h3>Created by Team MAJAAC</h3>
+					<h3>Created by Team MAJAAC</h3>
 					<ul className="footer-credits">
 						<li>
 							<a href="http://www.alishaantoinette.com/" target="_blank" rel="noopener noreferrer">
@@ -182,7 +159,7 @@ class RootPage extends Component {
 							</a>
 						</li>
 					</ul>
-						<h3>View on GitHub</h3>
+					<h3>View on GitHub</h3>
 					<div className="github-container">
 						<a
 							className="github-link"
