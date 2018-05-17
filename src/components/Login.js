@@ -60,8 +60,8 @@ export class LoginForm extends Component {
 		return (
 			<div className="login">
 				{this.props.loggedIn && (os === 'Android' || 'iOS') && isMobile ? <Redirect to="/report" /> : ''}
-				{this.props.loggedIn && (os === 'Android' || 'iOS') && !isMobile ? <Redirect to="/map" /> : ''}
-				{this.props.loggedIn && (os === 'Windows' || 'Mac OS' || 'Linux') ? <Redirect to="/map" /> : ''}
+				{/* {this.props.loggedIn && (os === 'Android' || 'iOS') && !isMobile ? <Redirect to="/map" /> : ''}
+				{this.props.loggedIn && (os === 'Windows' || 'Mac OS' || 'Linux') ? <Redirect to="/map" /> : ''} */}
 				<form className="login-form" onSubmit={handleSubmit(values => this.onLogin(values))}>
 					<div className="form-error" aria-live="polite">
 						{errorMessage}
