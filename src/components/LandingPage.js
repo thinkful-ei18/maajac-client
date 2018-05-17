@@ -22,42 +22,6 @@ export class LandingPage extends Component {
 	render() {
 		if (!this.props.currentUser && this.props.match.path === '/report') {
 			return <Redirect to="/map" />;
-		} else if (this.props.currentUser && this.props.match.path === '/map') {
-			function getOS() {
-				let userAgent = window.navigator.userAgent,
-					platform = window.navigator.platform,
-					macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
-					windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
-					iosPlatforms = ['iPhone', 'iPad', 'iPod'],
-					os = null;
-
-				if (macosPlatforms.indexOf(platform) !== -1) {
-					os = 'Mac OS';
-				} else if (iosPlatforms.indexOf(platform) !== -1) {
-					os = 'iOS';
-				} else if (windowsPlatforms.indexOf(platform) !== -1) {
-					os = 'Windows';
-				} else if (/Android/.test(userAgent)) {
-					os = 'Android';
-				} else if (!os && /Linux/.test(platform)) {
-					os = 'Linux';
-				}
-
-				return os;
-			}
-			const os = getOS();
-			const isMobile = window.innerWidth <= 1023;
-			if (this.props.currentUser) {
-				if (os === ('iOS' || 'Android')) {
-					if (isMobile) {
-						return <Redirect to="/report" />;
-					} else {
-						return <Redirect to="/map" />;
-					}
-				} else {
-					return <Redirect to="/map" />;
-				}
-			}
 		}
 
 		let modalForm;
