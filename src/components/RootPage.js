@@ -5,11 +5,6 @@ import { Link, Redirect } from 'react-router-dom';
 
 import LoginForm from '../components/Login';
 import RegistrationForm from '../components/register';
-import phoneImage from '../images/phone.jpg';
-import beardGuy from '../images/beardguy.jpg';
-import groupImage from '../images/group.svg';
-import anonymousUserImage from '../images/user-15.svg';
-import writingImage from '../images/user-10.svg';
 import { closeDialog } from '../actions/modalActions';
 
 import './css/rootpage.css';
@@ -17,9 +12,6 @@ import './css/rootpage.css';
 class RootPage extends Component {
 	handleCloseDialog() {
 		this.props.dispatch(closeDialog());
-	}
-	componentWillMount() {
-		document.body.style.backgroundColor = 'white';
 	}
 
 	render() {
@@ -70,6 +62,11 @@ class RootPage extends Component {
 			textDecoration: 'none',
 		};
 
+		if (this.props.currentUser) {
+			return <Redirect to="/map" />;
+		}
+
+
 		let modalForm;
 		if (this.props.currentTab) {
 			if (this.props.currentTab === 'signup') {
@@ -92,9 +89,10 @@ class RootPage extends Component {
 				>
 					{modalForm}
 				</Dialog>
-				<header className="tagline-header">
-					<h1 className="tagline-title">Be safe</h1>
-					<p className="tagline-desc">Always know what's going on in your neighborhood</p>
+				<header className="header">
+					<h1>
+						safeR makes it easy to find out about crimes and incidents in your community.
+					</h1>
 				</header>
 				<main>
 					<div className="landing-container">
@@ -131,12 +129,33 @@ class RootPage extends Component {
 								We value the privacy of our users. Report incidents in your community easily with your
 								private profile.
 							</p>
+							</div>
+					<div className="feature-container">
+						<div className="feature">
+							<img src='https://res.cloudinary.com/adriantoddross/image/upload/v1526504536/user-9.svg' alt='null' />
+							<h2>Discover Incidents</h2>
+							<p>View a map of incident locations and descriptions without signing up. Always know what's going on in your neighborhood.</p>
 						</div>
+						<div className="feature">
+							<img src='https://res.cloudinary.com/adriantoddross/image/upload/v1526504456/user-10.svg' alt="null" />
+							<h2>Report An Incident</h2>
+							<p>Create an account and report incidents anonymously to contribute to a safer community for everyone.</p>
+						</div>
+						<div className="feature">
+							<img src='https://res.cloudinary.com/adriantoddross/image/upload/v1526504613/user-13.svg' alt="null" />
+							<h2>Stay safeR</h2>
+							<p>Add a profile picture or delete old incidents from your dashboard. It's up to you!</p>
+						</div>
+					</div>
+					<div className='start-link'>
+						<Link to="/map">
+							<p>Get started &#8594;</p>
+						</Link>
 					</div>
 				</main>
 				<footer className="footer">
+						<h3>Created by Team MAJAAC</h3>
 					<ul className="footer-credits">
-						<h4>Team MAJAAC</h4>
 						<li>
 							<a href="http://www.alishaantoinette.com/" target="_blank" rel="noopener noreferrer">
 								Alisha Evans
@@ -163,8 +182,8 @@ class RootPage extends Component {
 							</a>
 						</li>
 					</ul>
+						<h3>View on GitHub</h3>
 					<div className="github-container">
-						<h4>View on GitHub</h4>
 						<a
 							className="github-link"
 							href="https://github.com/thinkful-ei18/maajac-client"
