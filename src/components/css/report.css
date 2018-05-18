@@ -187,7 +187,8 @@ MEDIA QUERIES
 	#time,
 	#description {
 		position: relative;
-		left: 90%;
+		left: 85%;
+		width: 100%;
 	}
 	.reg-label {
 		position: relative;
@@ -195,7 +196,7 @@ MEDIA QUERIES
 	}
 
 	.tabs li > label {
-		left: 210%;
+		left: 215%;
 	}
 	.report-button {
 		position: relative;
@@ -214,7 +215,7 @@ MEDIA QUERIES
 	}
 	.report-button {
 		position: relative;
-		left: 240px;
+		left: 92%;
 	}
 }
 
@@ -300,7 +301,8 @@ MEDIA QUERIES
 	#time,
 	#description {
 		position: relative;
-		left: 20%;
+		left: 13%;
+		width: 100%;
 	}
 	.reg-label {
 		position: relative;
@@ -330,8 +332,9 @@ MEDIA QUERIES
 	#time,
 	#description {
 		height: 40px;
+		width: 100%;
 		position: relative;
-		left: 25%;
+		left: 20%;
 	}
 	.reg-label {
 		position: relative;
@@ -339,7 +342,7 @@ MEDIA QUERIES
 	}
 
 	.tabs li > label {
-		left: 60%;
+		left: 70%;
 	}
 	.report-button {
 		position: relative;
