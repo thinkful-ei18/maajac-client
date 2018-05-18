@@ -1,6 +1,10 @@
 body .mobile-only {
 	background-color: #3b4141;
 }
+input,
+select {
+	-webkit-appearance: none;
+}
 .report,
 .mobile-only {
 	width: 300px;
@@ -77,6 +81,7 @@ body .mobile-only {
 }
 
 #type {
+	-webkit-appearance: none;
 	margin: 20px;
 	width: 80%;
 	background-color: #2e3434;
@@ -92,6 +97,7 @@ body .mobile-only {
 }
 
 #date {
+	-webkit-appearance: none;
 	padding: 20px;
 	margin: 20px;
 	width: 80%;
@@ -102,6 +108,7 @@ body .mobile-only {
 }
 
 #time {
+	-webkit-appearance: none;
 	padding: 20px;
 	margin: 20px;
 	width: 80%;
@@ -156,18 +163,18 @@ MEDIA QUERIES
 	#time,
 	#description {
 		position: relative;
-		left: 5%;
+		left: 10%;
 	}
 	.tabs li > label {
 		left: 25%;
 	}
 	.reg-label {
 		position: relative;
-		left: 5%;
+		left: 10%;
 	}
 	.report-button {
 		position: relative;
-		left: 5%;
+		left: 10%;
 	}
 }
 @media only screen and (min-device-width: 768px) and (max-device-width: 1023px) and (-webkit-min-device-pixel-ratio: 1) {
@@ -180,11 +187,11 @@ MEDIA QUERIES
 	#time,
 	#description {
 		position: relative;
-		left: 80%;
+		left: 90%;
 	}
 	.reg-label {
 		position: relative;
-		left: 80%;
+		left: 90%;
 	}
 
 	.tabs li > label {
@@ -193,7 +200,7 @@ MEDIA QUERIES
 	.report-button {
 		position: relative;
 		width: 45%;
-		left: 60%;
+		left: 110%;
 	}
 	.filter {
 		position: relative;
@@ -207,7 +214,7 @@ MEDIA QUERIES
 	}
 	.report-button {
 		position: relative;
-		left: 80%;
+		left: 240px;
 	}
 }
 
@@ -293,11 +300,11 @@ MEDIA QUERIES
 	#time,
 	#description {
 		position: relative;
-		left: 15%;
+		left: 20%;
 	}
 	.reg-label {
 		position: relative;
-		left: 15%;
+		left: 20%;
 	}
 
 	.tabs li > label {
@@ -306,7 +313,7 @@ MEDIA QUERIES
 	.report-button {
 		position: relative;
 		width: 45%;
-		left: 15%;
+		left: 20%;
 	}
 	.filter {
 		position: relative;
@@ -332,7 +339,7 @@ MEDIA QUERIES
 	}
 
 	.tabs li > label {
-		left: 75%;
+		left: 60%;
 	}
 	.report-button {
 		position: relative;

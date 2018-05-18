@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
-
+import './css/report.css';
 import { setSearchLocation } from '../actions/defaultLocationActions';
-
 
 class LocationSearchInput extends React.Component {
 	constructor(props) {
@@ -24,7 +23,12 @@ class LocationSearchInput extends React.Component {
 
 	render() {
 		return (
-			<PlacesAutocomplete value={this.state.address} onChange={this.handleChange} onSelect={this.handleSelect}>
+			<PlacesAutocomplete
+				class="input"
+				value={this.state.address}
+				onChange={this.handleChange}
+				onSelect={this.handleSelect}
+			>
 				{({ getInputProps, suggestions, getSuggestionItemProps }) => (
 					<div>
 						<input
