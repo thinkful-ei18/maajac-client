@@ -24,7 +24,7 @@ const GoogleMapComponent = props => {
 	}
 	return (
 		<GoogleMapsWrapper
-			googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+			googleMapURL="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96873.73653502829!2d-74.01503741591657!3d40.64522284217501!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24416947c2109%3A0x82765c7404007886!2sBrooklyn%2C+NY!5e0!3m2!1sen!2sus!4v1539994390229"
 			loadingElement={<div style={{ height: `100vh` }} />}
 			containerElement={<div style={{ height: height, width: `100vw` }} />}
 			mapElement={<div style={{ height: height }} />}
@@ -73,5 +73,6 @@ export default GoogleMapComponent;
 
 /**
  Resources:
-  - https://github.com/tomchentw/react-google-maps/issues/636
+	- https://github.com/tomchentw/react-google-maps/issues/636
+	- https://help.webriti.com/common-docs/tutorials/how-to-get-google-map-url/
  */
